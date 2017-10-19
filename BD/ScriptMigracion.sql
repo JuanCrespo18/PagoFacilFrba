@@ -20,11 +20,14 @@ insert into gd_esquema.Rubros
 	from gd_esquema.Maestra
 GO
 
-declare @sucu_nombre as varchar(20) = (select distinct Sucursal_Nombre from gd_esquema.Maestra where Sucursal_Nombre is not null)
-declare @sucu_direccion as int = (select id from gd_esquema.Direcciones where direccion = (select distinct Sucursal_Dirección from gd_esquema.Maestra where Sucursal_Nombre = @sucu_nombre))
 insert into gd_esquema.Sucursales
 (nombre, direccion)
-Values(@sucu_nombre, @sucu_direccion)
+	select distinct Sucursal_Nombre, 
+			(select id from gd_esquema.Direcciones
+			where direccion = Sucursal_Dirección
+			and codigo_postal = Sucursal_Codigo_Postal)
+	from gd_esquema.Maestra
+	where Sucursal_Nombre is not null
 GO
 
 insert into gd_esquema.Clientes
