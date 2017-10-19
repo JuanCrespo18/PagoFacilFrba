@@ -49,11 +49,10 @@ GO
 
 insert into ONEFORALL.SUCURSALES
 (SUC_NOMBRE, SUC_DIR_ID)
-	select distinct Sucursal_Nombre, 
-			(select DIR_ID from ONEFORALL.DIRECCIONES
-			where DIR_DIRECCION = Sucursal_Dirección
-			and DIR_CODIGO_POSTAL = Sucursal_Codigo_Postal)
-	from gd_esquema.Maestra
+	select distinct Sucursal_Nombre, B.DIR_ID
+	from gd_esquema.Maestra A 
+	left join ONEFORALL.DIRECCIONES B 
+		ON A.Sucursal_Dirección= B.DIR_DIRECCION
 	where Sucursal_Nombre is not null
 GO
 
