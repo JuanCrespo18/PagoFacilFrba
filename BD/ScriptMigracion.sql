@@ -58,11 +58,11 @@ GO
 
 insert into ONEFORALL.CLIENTES
 (CLIE_DNI, CLIE_APELLIDO, CLIE_NOMBRE, CLIE_FECHA_NACIMIENTO, CLIE_MAIL, CLIE_DIR_ID)
-	select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre], CAST([Cliente-Fecha_Nac] as DATE), Cliente_Mail, 
-		(select DIR_ID from ONEFORALL.DIRECCIONES
-		where DIR_DIRECCION = Cliente_Direccion
-		and DIR_CODIGO_POSTAL = Cliente_Codigo_Postal)
-	from gd_esquema.Maestra
+	select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre], CAST([Cliente-Fecha_Nac] as DATE), Cliente_Mail,B.DIR_ID
+	from gd_esquema.Maestra A
+	left join ONEFORALL.DIRECCIONES B 
+		ON A.Cliente_Direccion= B.DIR_DIRECCION
+		AND B.DIR_CODIGO_POSTAL = A.Cliente_Codigo_Postal
 GO
  
 insert into ONEFORALL.EMPRESAS
