@@ -67,12 +67,12 @@ GO
  
 insert into ONEFORALL.EMPRESAS
 (EMP_CUIT, EMP_NOMBRE, EMP_DIR_ID, EMP_RUB_ID, EMP_ACTIVA)
-	select distinct Empresa_Cuit, Empresa_Nombre, 
-		(select DIR_ID from ONEFORALL.DIRECCIONES
-		where DIR_DIRECCION = Empresa_Direccion),
-		(select RUB_ID from ONEFORALL.RUBROS
-		where RUB_DESCRIPCION = Rubro_Descripcion), 1
-	from gd_esquema.Maestra
+	select distinct Empresa_Cuit, Empresa_Nombre, B.DIR_ID, C.RUB_ID, 1 as EMP_ACTIVA
+	from gd_esquema.Maestra A
+	left join ONEFORALL.DIRECCIONES B 
+		ON A.Empresa_Direccion= B.DIR_DIRECCION
+	left join ONEFORALL.RUBROS C 
+		ON a.Rubro_Descripcion = C.RUB_DESCRIPCION
 GO
 
 
