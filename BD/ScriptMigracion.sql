@@ -31,7 +31,7 @@ insert into ONEFORALL.DIRECCIONES
 	from gd_esquema.Maestra
 
 insert into ONEFORALL.DIRECCIONES
-values ((select distinct Empresa_Direccion from gd_esquema.Maestra), 1416)
+select distinct Empresa_Direccion,1702 as CP  from gd_esquema.Maestra
 GO
 
 insert into ONEFORALL.DIRECCIONES
