@@ -76,7 +76,6 @@ insert into ONEFORALL.EMPRESAS
 GO
 
 
-SET IDENTITY_INSERT ONEFORALL.Rendiciones ON
 insert into ONEFORALL.RENDICIONES
 (REND_ID, REND_FECHA, REND_EMP_ID, REND_TOTAL_RENDICION, REND_PORCENTAJE_COMISION)
 	select distinct Rendicion_Nro, Rendicion_Fecha, 
@@ -87,5 +86,4 @@ insert into ONEFORALL.RENDICIONES
 	where m1.Rendicion_Nro is not null
 	group by Rendicion_Nro, Rendicion_Fecha, Empresa_Cuit, Empresa_Nombre
 	order by 1
-SET IDENTITY_INSERT ONEFORALL.Rendiciones OFF
 GO
