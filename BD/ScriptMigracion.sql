@@ -78,12 +78,13 @@ GO
 
 insert into ONEFORALL.RENDICIONES
 (REND_ID, REND_FECHA, REND_EMP_ID, REND_TOTAL_RENDICION, REND_PORCENTAJE_COMISION)
-	select distinct Rendicion_Nro, Rendicion_Fecha, 
-		(select EMP_ID from ONEFORALL.EMPRESAS where EMP_CUIT = Empresa_Cuit and EMP_NOMBRE = Empresa_Nombre),
-		sum(ItemRendicion_Importe), 
-		CAST(ROUND((select top 1 ItemRendicion_Importe/Total from gd_esquema.Maestra  m2 where m2.Rendicion_Nro = m1.Rendicion_Nro)*100, -1) as int)
-	from gd_esquema.Maestra m1
-	where m1.Rendicion_Nro is not null
-	group by Rendicion_Nro, Rendicion_Fecha, Empresa_Cuit, Empresa_Nombre
+	select distinct Rendicion_Nro, Rendicion_Fecha, B.EMP_ID,
+			sum(ItemRendicion_Importe)AS REND_TOTAL_RENDICION, --ANALIZAR SI ES CORRECTO EL SUM 
+			CAST(ROUND((select top 1 ItemRendicion_Importe/Total from gd_esquema.Maestra  m2 where m2.Rendicion_Nro = A.Rendicion_Nro)*100, -1) as int)-- ANALIZAR
+	from gd_esquema.Maestra A
+	LEFT JOIN ONEFORALL.EMPRESAS B
+	ON B.EMP_CUIT = A.Empresa_Cuit AND B.EMP_NOMBRE = A.Empresa_Nombre
+	where A.Rendicion_Nro is not null
+	group by Rendicion_Nro, Rendicion_Fecha,B.EMP_ID
 	order by 1
 GO
