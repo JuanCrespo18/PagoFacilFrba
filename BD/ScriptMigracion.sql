@@ -75,7 +75,7 @@ insert into ONEFORALL.EMPRESAS
 		ON a.Rubro_Descripcion = C.RUB_DESCRIPCION
 GO
 
-
+set identity_insert ONEFORALL.RENDICIONES on
 insert into ONEFORALL.RENDICIONES
 (REND_ID, REND_FECHA, REND_EMP_ID, REND_TOTAL_RENDICION, REND_PORCENTAJE_COMISION)
 	select distinct Rendicion_Nro, Rendicion_Fecha, B.EMP_ID,
@@ -88,3 +88,4 @@ insert into ONEFORALL.RENDICIONES
 	group by Rendicion_Nro, Rendicion_Fecha,B.EMP_ID
 	order by 1
 GO
+set identity_insert ONEFORALL.RENDICIONES off
