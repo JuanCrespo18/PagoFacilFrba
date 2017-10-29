@@ -49,43 +49,58 @@ GO
 
 insert into ONEFORALL.SUCURSALES
 (SUC_NOMBRE, SUC_DIR_ID)
-	select distinct Sucursal_Nombre, B.DIR_ID
-	from gd_esquema.Maestra A 
-	left join ONEFORALL.DIRECCIONES B 
-		ON A.Sucursal_Dirección= B.DIR_DIRECCION
+	select distinct Sucursal_Nombre, D.DIR_ID
+	from gd_esquema.Maestra M 
+	left join ONEFORALL.DIRECCIONES D 
+		ON M.Sucursal_Dirección= D.DIR_DIRECCION
 	where Sucursal_Nombre is not null
 GO
 
 insert into ONEFORALL.CLIENTES
 (CLIE_DNI, CLIE_APELLIDO, CLIE_NOMBRE, CLIE_FECHA_NACIMIENTO, CLIE_MAIL, CLIE_DIR_ID)
-	select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre], CAST([Cliente-Fecha_Nac] as DATE), Cliente_Mail,B.DIR_ID
-	from gd_esquema.Maestra A
-	left join ONEFORALL.DIRECCIONES B 
-		ON A.Cliente_Direccion= B.DIR_DIRECCION
-		AND B.DIR_CODIGO_POSTAL = A.Cliente_Codigo_Postal
+	select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre], CAST([Cliente-Fecha_Nac] as DATE), Cliente_Mail,D.DIR_ID
+	from gd_esquema.Maestra M
+	left join ONEFORALL.DIRECCIONES D 
+		ON M.Cliente_Direccion= D.DIR_DIRECCION
+		AND D.DIR_CODIGO_POSTAL = M.Cliente_Codigo_Postal
 GO
  
 insert into ONEFORALL.EMPRESAS
 (EMP_CUIT, EMP_NOMBRE, EMP_DIR_ID, EMP_RUB_ID, EMP_ACTIVA)
-	select distinct Empresa_Cuit, Empresa_Nombre, B.DIR_ID, C.RUB_ID, 1 as EMP_ACTIVA
-	from gd_esquema.Maestra A
-	left join ONEFORALL.DIRECCIONES B 
-		ON A.Empresa_Direccion= B.DIR_DIRECCION
-	left join ONEFORALL.RUBROS C 
-		ON a.Rubro_Descripcion = C.RUB_DESCRIPCION
+	select distinct Empresa_Cuit, Empresa_Nombre, D.DIR_ID, R.RUB_ID, 1 as EMP_ACTIVA
+	from gd_esquema.Maestra M
+	left join ONEFORALL.DIRECCIONES D 
+		ON M.Empresa_Direccion= D.DIR_DIRECCION
+	left join ONEFORALL.RUBROS R 
+		ON M.Rubro_Descripcion = R.RUB_DESCRIPCION
 GO
 
 set identity_insert ONEFORALL.RENDICIONES on
 insert into ONEFORALL.RENDICIONES
 (REND_ID, REND_FECHA, REND_EMP_ID, REND_TOTAL_RENDICION, REND_PORCENTAJE_COMISION)
-	select distinct Rendicion_Nro, Rendicion_Fecha, B.EMP_ID,
+	select distinct Rendicion_Nro, Rendicion_Fecha, E.EMP_ID,
 			sum(ItemRendicion_Importe)AS REND_TOTAL_RENDICION, --ANALIZAR SI ES CORRECTO EL SUM 
-			CAST(ROUND((select top 1 ItemRendicion_Importe/Total from gd_esquema.Maestra  m2 where m2.Rendicion_Nro = A.Rendicion_Nro)*100, -1) as int)-- ANALIZAR
-	from gd_esquema.Maestra A
-	LEFT JOIN ONEFORALL.EMPRESAS B
-	ON B.EMP_CUIT = A.Empresa_Cuit AND B.EMP_NOMBRE = A.Empresa_Nombre
-	where A.Rendicion_Nro is not null
-	group by Rendicion_Nro, Rendicion_Fecha,B.EMP_ID
+			CAST(ROUND((select top 1 ItemRendicion_Importe/Total from gd_esquema.Maestra  m2 where m2.Rendicion_Nro = M.Rendicion_Nro)*100, -1) as int)-- ANALIZAR
+	from gd_esquema.Maestra M
+	LEFT JOIN ONEFORALL.EMPRESAS E
+	ON E.EMP_CUIT = M.Empresa_Cuit AND E.EMP_NOMBRE = M.Empresa_Nombre
+	where M.Rendicion_Nro is not null
+	group by Rendicion_Nro, Rendicion_Fecha,E.EMP_ID
 	order by 1
 GO
 set identity_insert ONEFORALL.RENDICIONES off
+
+insert into ONEFORALL.USUARIOS
+(USER_USUARIO, USER_PASSWORD, USER_ACTIVO, USER_INTENTOS)
+values('admin', 'w23e', 1, 0)
+
+set identity_insert ONEFORALL.PAGOS on
+insert into ONEFORALL.PAGOS
+(PAGO_ID, PAGO_FECHA_PAGO, PAGO_CLIE_ID, PAGO_USER_ID, PAGO_FORMA_PAGO, PAGO_SUC_ID, PAGO_TOTAL)
+	select distinct Pago_nro, Pago_Fecha,  c.CLIE_ID, u.USER_ID, FormaPagoDescripcion, s.SUC_ID, Total
+	from gd_esquema.Maestra M
+	join ONEFORALL.CLIENTES C on M.[Cliente-Dni] = c.CLIE_DNI
+	join ONEFORALL.SUCURSALES S on M.Sucursal_Nombre = S.SUC_NOMBRE
+	join ONEFORALL.USUARIOS U on 1 = 1
+GO
+set identity_insert ONEFORALL.PAGOS off
