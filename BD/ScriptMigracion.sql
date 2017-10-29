@@ -128,7 +128,7 @@ insert into ONEFORALL.FACTURAS
 	select distinct Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, MAX(Rendicion_Nro), MAX(Pago_nro), Factura_Total
 	from gd_esquema.Maestra M 
 	join ONEFORALL.CLIENTES C on M.[Cliente-Dni] = C.CLIE_DNI
-	GROUP BY Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID
+	GROUP BY Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, Factura_Total
 	ORDER BY 1 ASC
 SET IDENTITY_INSERT ONEFORALL.FACTURAS OFF
 GO
