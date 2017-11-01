@@ -36,7 +36,7 @@ namespace PagoAgilFrba
             cnx.Close();
         }
         /*Ejecuta un query que no devuleve datos(UPDATE, INSERT, DELETE, etc)*/
-        public void ejecutarNoQuery()
+        public void ejecutar()
         {
             this.abrirConexion();
             comandear();
@@ -47,7 +47,7 @@ namespace PagoAgilFrba
         /*Ejecuta un query que devuelva datos(SELECT)*/
         /*Despues de ejecutar este metodo y terminar de usar el Reader*/
         /*SIEMPRE utilizar cerrarConexion */
-        public void ejecutarQuery()
+        public void leer()
         {
             this.abrirConexion();
             comandear();

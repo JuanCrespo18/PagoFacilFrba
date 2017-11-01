@@ -16,7 +16,7 @@ namespace PagoAgilFrba.AbmRol
             Conexion con = new Conexion();
             con.query = "SELECT ROL_NOMBRE FROM ONEFORALL.ROLES";
             
-            con.ejecutarQuery();
+            con.leer();
             while (con.leerReader())
             {
                 cboRoles.Items.Add(con.lector.GetString(0));

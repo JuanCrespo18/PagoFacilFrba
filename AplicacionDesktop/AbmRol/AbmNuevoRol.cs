@@ -31,7 +31,7 @@ namespace PagoAgilFrba.AbmRol
             Conexion con = new Conexion();
             Conexion con2 = new Conexion();
             con.query = "SELECT FUNC_DESCRIPCION FROM ONEFORALL.FUNCIONALIDADES";
-            con.ejecutarQuery();
+            con.leer();
             int i = 0;
             while (con.leerReader())
             {
@@ -43,7 +43,7 @@ namespace PagoAgilFrba.AbmRol
                                 "AND F.FUNC_DESCRIPCION = '" + funcionalidad + "' " +
                                 "JOIN ONEFORALL.ROLES R ON RF.ROLX_ID = R.ROL_ID " +
                                 "WHERE R.ROL_NOMBRE = '" + text + "'";
-                con2.ejecutarQuery();
+                con2.leer();
                 if (con2.leerReader())
                 {
                     chlbFunc.SetItemChecked(i, true);
