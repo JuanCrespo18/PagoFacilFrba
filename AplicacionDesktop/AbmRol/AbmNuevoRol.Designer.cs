@@ -115,6 +115,7 @@
             this.cmdAceptar.TabIndex = 28;
             this.cmdAceptar.Text = "Aceptar";
             this.cmdAceptar.UseVisualStyleBackColor = true;
+            this.cmdAceptar.Click += new System.EventHandler(this.cmdAceptar_Click);
             // 
             // chlbFunc
             // 

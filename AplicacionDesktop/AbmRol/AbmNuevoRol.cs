@@ -25,8 +25,10 @@ namespace PagoAgilFrba.AbmRol
             this.abmListadoRol = abmListadoRol;
         }
 
-        public void CargarRol(string text)
+        public void CargarRol(string nombreRol)
         {
+            txtRol.Text = nombreRol;
+            txtRol.ReadOnly = true;
             string funcionalidad;
             Conexion con = new Conexion();
             Conexion con2 = new Conexion();
@@ -38,11 +40,11 @@ namespace PagoAgilFrba.AbmRol
                 funcionalidad = con.lector.GetString(0);
                 chlbFunc.Items.Add(funcionalidad);
 
-                con2.query = "SELECT 1 FROM ONEFORALL.ROL_X_FUNCIONALIDAD RF " +
+                con2.query = string.Format("SELECT 1 FROM ONEFORALL.ROL_X_FUNCIONALIDAD RF " +
                                 "JOIN ONEFORALL.FUNCIONALIDADES F ON F.FUNC_ID = RF.FUNCX_ID " +
-                                "AND F.FUNC_DESCRIPCION = '" + funcionalidad + "' " +
+                                "AND F.FUNC_DESCRIPCION = '{0}' " +
                                 "JOIN ONEFORALL.ROLES R ON RF.ROLX_ID = R.ROL_ID " +
-                                "WHERE R.ROL_NOMBRE = '" + text + "'";
+                                "WHERE R.ROL_NOMBRE = '{1}'", funcionalidad, nombreRol);
                 con2.leer();
                 if (con2.leerReader())
                 {
@@ -52,6 +54,23 @@ namespace PagoAgilFrba.AbmRol
                 i++;
             }
             con.cerrarConexion();
+
+            Conexion con3 = new Conexion()
+            {
+                query = string.Format("SELECT ROL_ACTIVO FROM ONEFORALL.ROLES WHERE ROL_NOMBRE = '{0}'", nombreRol)
+            };
+            con3.leer();
+            while(con3.leerReader())
+            {
+                bool habilitado = con3.lector.GetBoolean(0);
+                chkHabilitado.Checked = habilitado;
+            }
+            con3.cerrarConexion();
+        }
+
+        private void cmdAceptar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
