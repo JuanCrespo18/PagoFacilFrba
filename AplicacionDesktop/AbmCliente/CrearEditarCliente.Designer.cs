@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpFecNac = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtDirCodPostal = new System.Windows.Forms.TextBox();
@@ -36,20 +38,14 @@
             this.txtDirDepto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDirPiso = new System.Windows.Forms.TextBox();
-            this.txtDirPais = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtDirLoc = new System.Windows.Forms.TextBox();
+            this.txtDirLocalidad = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDirCalle = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.txtDirDireccion = new System.Windows.Forms.TextBox();
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.cmdLimpiar = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.cmdAceptar = new System.Windows.Forms.Button();
-            this.dtpFecNac = new System.Windows.Forms.DateTimePicker();
-            this.txtPais = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.TextBox();
@@ -66,15 +62,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpFecNac);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.chkActivo);
             this.groupBox1.Controls.Add(this.cmdLimpiar);
             this.groupBox1.Controls.Add(this.cmdCancelar);
             this.groupBox1.Controls.Add(this.cmdAceptar);
-            this.groupBox1.Controls.Add(this.dtpFecNac);
-            this.groupBox1.Controls.Add(this.txtPais);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtDni);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtMail);
@@ -88,10 +82,31 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(396, 529);
+            this.groupBox1.Size = new System.Drawing.Size(396, 466);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
+            // 
+            // dtpFecNac
+            // 
+            this.dtpFecNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecNac.Location = new System.Drawing.Point(163, 162);
+            this.dtpFecNac.MaxDate = new System.DateTime(2017, 11, 2, 15, 9, 46, 645);
+            this.dtpFecNac.Name = "dtpFecNac";
+            this.dtpFecNac.Size = new System.Drawing.Size(211, 23);
+            this.dtpFecNac.TabIndex = 41;
+            this.dtpFecNac.Value = new System.DateTime(1995, 1, 1, 7, 20, 0, 0);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(7, 164);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(141, 17);
+            this.label12.TabIndex = 42;
+            this.label12.Text = "Fecha de Nacimiento";
             // 
             // groupBox2
             // 
@@ -101,16 +116,14 @@
             this.groupBox2.Controls.Add(this.txtDirDepto);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtDirPiso);
-            this.groupBox2.Controls.Add(this.txtDirPais);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtDirLoc);
+            this.groupBox2.Controls.Add(this.txtDirLocalidad);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtDirCalle);
-            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtDirDireccion);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(10, 159);
+            this.groupBox2.Location = new System.Drawing.Point(6, 191);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(374, 202);
+            this.groupBox2.Size = new System.Drawing.Size(374, 177);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Direccion";
@@ -169,14 +182,6 @@
             this.txtDirPiso.Size = new System.Drawing.Size(211, 23);
             this.txtDirPiso.TabIndex = 23;
             // 
-            // txtDirPais
-            // 
-            this.txtDirPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirPais.Location = new System.Drawing.Point(153, 165);
-            this.txtDirPais.Name = "txtDirPais";
-            this.txtDirPais.Size = new System.Drawing.Size(211, 23);
-            this.txtDirPais.TabIndex = 10;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -189,11 +194,11 @@
             // 
             // txtDirLoc
             // 
-            this.txtDirLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirLoc.Location = new System.Drawing.Point(153, 137);
-            this.txtDirLoc.Name = "txtDirLoc";
-            this.txtDirLoc.Size = new System.Drawing.Size(211, 23);
-            this.txtDirLoc.TabIndex = 9;
+            this.txtDirLocalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDirLocalidad.Location = new System.Drawing.Point(153, 137);
+            this.txtDirLocalidad.Name = "txtDirLoc";
+            this.txtDirLocalidad.Size = new System.Drawing.Size(211, 23);
+            this.txtDirLocalidad.TabIndex = 9;
             // 
             // label7
             // 
@@ -207,27 +212,17 @@
             // 
             // txtDirCalle
             // 
-            this.txtDirCalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirCalle.Location = new System.Drawing.Point(153, 21);
-            this.txtDirCalle.Name = "txtDirCalle";
-            this.txtDirCalle.Size = new System.Drawing.Size(211, 23);
-            this.txtDirCalle.TabIndex = 7;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(20, 171);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 17);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "País";
+            this.txtDirDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDirDireccion.Location = new System.Drawing.Point(153, 21);
+            this.txtDirDireccion.Name = "txtDirCalle";
+            this.txtDirDireccion.Size = new System.Drawing.Size(211, 23);
+            this.txtDirDireccion.TabIndex = 7;
             // 
             // chkActivo
             // 
             this.chkActivo.AutoSize = true;
             this.chkActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkActivo.Location = new System.Drawing.Point(239, 443);
+            this.chkActivo.Location = new System.Drawing.Point(235, 375);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(90, 21);
             this.chkActivo.TabIndex = 36;
@@ -238,74 +233,37 @@
             // 
             this.cmdLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmdLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdLimpiar.Location = new System.Drawing.Point(139, 470);
+            this.cmdLimpiar.Location = new System.Drawing.Point(139, 402);
             this.cmdLimpiar.Name = "cmdLimpiar";
             this.cmdLimpiar.Size = new System.Drawing.Size(108, 44);
             this.cmdLimpiar.TabIndex = 39;
             this.cmdLimpiar.Text = "Limpiar";
             this.cmdLimpiar.UseVisualStyleBackColor = true;
-            this.cmdLimpiar.Click += new System.EventHandler(this.btnLim_Click);
+            this.cmdLimpiar.Click += new System.EventHandler(this.cmdLimpiar_Click);
             // 
             // cmdCancelar
             // 
             this.cmdCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCancelar.Location = new System.Drawing.Point(25, 470);
+            this.cmdCancelar.Location = new System.Drawing.Point(25, 402);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(108, 44);
             this.cmdCancelar.TabIndex = 38;
             this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // cmdAceptar
             // 
             this.cmdAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmdAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAceptar.Location = new System.Drawing.Point(253, 470);
+            this.cmdAceptar.Location = new System.Drawing.Point(253, 402);
             this.cmdAceptar.Name = "cmdAceptar";
             this.cmdAceptar.Size = new System.Drawing.Size(108, 44);
             this.cmdAceptar.TabIndex = 37;
             this.cmdAceptar.Text = "Aceptar";
             this.cmdAceptar.UseVisualStyleBackColor = true;
-            // 
-            // dtpFecNac
-            // 
-            this.dtpFecNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecNac.Location = new System.Drawing.Point(163, 396);
-            this.dtpFecNac.MaxDate = System.DateTime.Now;
-            this.dtpFecNac.Name = "dtpFecNac";
-            this.dtpFecNac.Size = new System.Drawing.Size(211, 23);
-            this.dtpFecNac.TabIndex = 35;
-            this.dtpFecNac.Value = new System.DateTime(1995, 1, 1, 7, 20, 0, 0);
-            // 
-            // txtPais
-            // 
-            this.txtPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPais.Location = new System.Drawing.Point(163, 367);
-            this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(211, 23);
-            this.txtPais.TabIndex = 34;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(7, 370);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 17);
-            this.label11.TabIndex = 41;
-            this.label11.Text = "Nacionalidad";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(7, 398);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(141, 17);
-            this.label12.TabIndex = 40;
-            this.label12.Text = "Fecha de Nacimiento";
+            this.cmdAceptar.Click += new System.EventHandler(this.cmdAceptar_Click);
             // 
             // txtDni
             // 
@@ -406,7 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 529);
+            this.ClientSize = new System.Drawing.Size(396, 466);
             this.Controls.Add(this.groupBox1);
             this.Name = "CrearEditarCliente";
             this.Text = "CrearEditarCliente";
@@ -428,20 +386,14 @@
         private System.Windows.Forms.TextBox txtDirDepto;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDirPiso;
-        private System.Windows.Forms.TextBox txtDirPais;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDirLoc;
+        private System.Windows.Forms.TextBox txtDirLocalidad;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtDirCalle;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtDirDireccion;
         private System.Windows.Forms.CheckBox chkActivo;
         private System.Windows.Forms.Button cmdLimpiar;
         private System.Windows.Forms.Button cmdCancelar;
         private System.Windows.Forms.Button cmdAceptar;
-        private System.Windows.Forms.DateTimePicker dtpFecNac;
-        private System.Windows.Forms.TextBox txtPais;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtMail;
@@ -452,5 +404,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtpFecNac;
+        private System.Windows.Forms.Label label12;
     }
 }

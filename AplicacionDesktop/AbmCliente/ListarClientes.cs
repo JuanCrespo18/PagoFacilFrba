@@ -24,6 +24,11 @@ namespace PagoAgilFrba.AbmCliente
 
         private void cmdBuscar_Click(object sender, EventArgs e)
         {
+            BuscarClientes();
+        }
+
+        private void BuscarClientes()
+        {
             dgvClientes.Rows.Clear();
 
             string query = "SELECT * FROM ONEFORALL.CLIENTES WHERE 1 = 1";
@@ -49,6 +54,9 @@ namespace PagoAgilFrba.AbmCliente
             }
             else
             {
+                dgvClientes.Rows.Add(new Object[] {con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2),
+                                   con.lector.GetDateTime(3), con.lector.GetString(5), con.lector.GetString(6), con.lector.GetBoolean(7)});
+
                 while (con.leerReader())
                 {
                     dgvClientes.Rows.Add(new Object[] {con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2),
@@ -84,13 +92,18 @@ namespace PagoAgilFrba.AbmCliente
         {
             if (cmdEditar.Text == "Agregar")
             {
-                _crearEditarCliente = new CrearEditarCliente(cmdEditar.Text[0]);
+                _crearEditarCliente = new CrearEditarCliente(this, cmdEditar.Text[0]);
             }
             else
-                _crearEditarCliente = CrearEditarCliente.Crear(cmdEditar.Text[0], dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString());
+                _crearEditarCliente = CrearEditarCliente.Crear(this, cmdEditar.Text[0], dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString());
 
             _crearEditarCliente.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        public void Actualizar()
+        {
+            BuscarClientes();
         }
     }
 }
