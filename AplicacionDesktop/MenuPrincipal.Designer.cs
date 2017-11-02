@@ -72,6 +72,7 @@
             this.cmdClientes.TabIndex = 5;
             this.cmdClientes.Text = "CLIENTES";
             this.cmdClientes.UseVisualStyleBackColor = true;
+            this.cmdClientes.Click += new System.EventHandler(this.cmdClientes_Click);
             // 
             // cmdEmpresas
             // 

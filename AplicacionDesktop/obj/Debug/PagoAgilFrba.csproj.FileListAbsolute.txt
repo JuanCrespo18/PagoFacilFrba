@@ -6,7 +6,9 @@ C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionD
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\bin\Debug\PagoAgilFrba.pdb
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.exe
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.pdb
-C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmRol.AbmListadoRol.resources
-C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmRol.AbmNuevoRol.resources
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\bin\Debug\PagoAgilFrba.exe.config
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
+C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmCliente.ListarClientes.resources
+C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmRol.ListarRoles.resources
+C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmRol.CrearEditarRol.resources
+C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmCliente.CrearEditarCliente.resources

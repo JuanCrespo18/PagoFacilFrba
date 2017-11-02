@@ -22,5 +22,11 @@ namespace PagoAgilFrba
             new AbmRol.ListarRoles(this).Show();
             this.Hide();
         }
+
+        private void cmdClientes_Click(object sender, EventArgs e)
+        {
+            new AbmCliente.ListarClientes(this).Show();
+            this.Hide();
+        }
     }
 }

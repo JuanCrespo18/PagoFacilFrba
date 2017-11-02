@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbmCliente\CrearEditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\CrearEditarCliente.Designer.cs">
+      <DependentUpon>CrearEditarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmCliente\ListarClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     <Compile Include="Rendicion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AbmCliente\CrearEditarCliente.resx">
+      <DependentUpon>CrearEditarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\ListarClientes.resx">
       <DependentUpon>ListarClientes.cs</DependentUpon>
     </EmbeddedResource>
