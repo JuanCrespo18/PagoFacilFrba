@@ -54,17 +54,17 @@ GO
 
 
 insert into ONEFORALL.DIRECCIONES
-(DIR_DIRECCION, DIR_CODIGO_POSTAL)
-	select distinct Cliente_Direccion, Cliente_Codigo_Postal
+(DIR_DIRECCION, DIR_CODIGO_POSTAL, DIR_LOCALIDAD)
+	select distinct Cliente_Direccion, Cliente_Codigo_Postal,  'CABA'
 	from gd_esquema.Maestra
 
 insert into ONEFORALL.DIRECCIONES
-select distinct Empresa_Direccion,1702 as CP  from gd_esquema.Maestra
+select distinct Empresa_Direccion,1702 as CP, NULL, NULL, 'CABA' from gd_esquema.Maestra
 GO
 
 insert into ONEFORALL.DIRECCIONES
-(DIR_DIRECCION, DIR_CODIGO_POSTAL)
-	select distinct Sucursal_Dirección, Sucursal_Codigo_Postal
+(DIR_DIRECCION, DIR_CODIGO_POSTAL, DIR_LOCALIDAD)
+	select distinct Sucursal_Dirección, Sucursal_Codigo_Postal, 'CABA'
 	from gd_esquema.Maestra
 	where Sucursal_Codigo_Postal is not null
 GO
