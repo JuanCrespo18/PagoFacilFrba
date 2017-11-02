@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace PagoAgilFrba
 {
     public class Conexion
     {
-        private string connectionString = "Data Source=JUAN-HP\\SQLSERVER2017;Initial Catalog=GD2C2017;Persist Security Info=True;User ID=gd;Password=gestiondedatos";
+        private string connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
         public string query = "";
         public SqlCommand command;
         public SqlConnection cnx;
@@ -18,7 +19,6 @@ namespace PagoAgilFrba
 
         public Conexion()
         {
-            //"Data Source=localhost\\SQLSERVER2008;Initial Catalog=SQLAZO;User ID=gd;Password=gd2014";
             this.cnx = new SqlConnection(this.connectionString);
         }
 

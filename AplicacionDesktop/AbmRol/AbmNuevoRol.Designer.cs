@@ -104,6 +104,7 @@
             this.cmdCancelar.TabIndex = 29;
             this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // cmdAceptar
             // 
@@ -126,6 +127,7 @@
             this.chlbFunc.Name = "chlbFunc";
             this.chlbFunc.Size = new System.Drawing.Size(215, 238);
             this.chlbFunc.TabIndex = 26;
+            this.chlbFunc.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chlbFunc_ItemCheck);
             // 
             // AbmNuevoRol
             // 
