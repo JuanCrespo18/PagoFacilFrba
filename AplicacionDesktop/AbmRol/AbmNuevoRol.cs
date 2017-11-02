@@ -79,7 +79,7 @@ namespace PagoAgilFrba.AbmRol
             while(con3.leerReader())
             {
                 _habilitado = con3.lector.GetBoolean(0);
-                chkHabilitado.Checked = _habilitado;
+                chkActivo.Checked = _habilitado;
             }
             con3.cerrarConexion();
         }
@@ -94,7 +94,7 @@ namespace PagoAgilFrba.AbmRol
 
                     var con = new Conexion()
                     {
-                        query = string.Format("INSERT INTO ONEFORALL.ROLES VALUES ('{0}', {1})", txtRol.Text, Convert.ToInt32(chkHabilitado.Checked))
+                        query = string.Format("INSERT INTO ONEFORALL.ROLES VALUES ('{0}', {1})", txtRol.Text, Convert.ToInt32(chkActivo.Checked))
                     };
                     con.ejecutar();
                     con.cerrarConexion();
@@ -161,20 +161,30 @@ namespace PagoAgilFrba.AbmRol
                     _funcionalidadesQuitadas.ForEach(x => _funcionalidades.Remove(x));
                 }
 
-                if (_habilitado != chkHabilitado.Checked)
+                if (_habilitado != chkActivo.Checked)
                 {
                     var con = new Conexion()
                     {
-                        query = string.Format("UPDATE ONEFORALL.ROLES SET ROL_ACTIVO = {0} WHERE ROL_ID = {1}", Convert.ToInt32(chkHabilitado.Checked), _idRol)
+                        query = string.Format("UPDATE ONEFORALL.ROLES SET ROL_ACTIVO = {0} WHERE ROL_ID = {1}", Convert.ToInt32(chkActivo.Checked), _idRol)
                     };
                     con.ejecutar();
                     con.cerrarConexion();
+
+                    if (!chkActivo.Checked)
+                    {
+                        con = new Conexion()
+                        {
+                            query = string.Format("DELETE FROM ONEFORALL.USUARIO_X_ROL WHERE ROL_ID = {0}", _idRol)
+                        };
+                    con.ejecutar();
+                    con.cerrarConexion();
+                    }
                 }
                 if (_evento == 'A')
                 {
                     MessageBox.Show("Rol creado correctamente", "Crear Rol", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (_habilitado == chkHabilitado.Checked && _funcionalidadesQuitadas.Count == 0 && _funcionalidadesNuevas.Count == 0)
+                else if (_habilitado == chkActivo.Checked && _funcionalidadesQuitadas.Count == 0 && _funcionalidadesNuevas.Count == 0)
                     MessageBox.Show("No se realizaron cambios", "Modificar Rol", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Rol modificado correctamente", "Modificar Rol", MessageBoxButtons.OK, MessageBoxIcon.Information);

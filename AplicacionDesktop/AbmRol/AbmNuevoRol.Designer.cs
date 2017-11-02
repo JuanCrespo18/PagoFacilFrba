@@ -30,7 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chkHabilitado = new System.Windows.Forms.CheckBox();
+            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.txtRol = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmdCancelar = new System.Windows.Forms.Button();
@@ -42,7 +42,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.chkHabilitado);
+            this.groupBox1.Controls.Add(this.chkActivo);
             this.groupBox1.Controls.Add(this.txtRol);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmdCancelar);
@@ -67,14 +67,14 @@
             // 
             // chkHabilitado
             // 
-            this.chkHabilitado.AutoSize = true;
-            this.chkHabilitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkHabilitado.Location = new System.Drawing.Point(118, 351);
-            this.chkHabilitado.Name = "chkHabilitado";
-            this.chkHabilitado.Size = new System.Drawing.Size(90, 21);
-            this.chkHabilitado.TabIndex = 27;
-            this.chkHabilitado.Text = "Habilitado";
-            this.chkHabilitado.UseVisualStyleBackColor = true;
+            this.chkActivo.AutoSize = true;
+            this.chkActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkActivo.Location = new System.Drawing.Point(126, 351);
+            this.chkActivo.Name = "chkHabilitado";
+            this.chkActivo.Size = new System.Drawing.Size(65, 21);
+            this.chkActivo.TabIndex = 27;
+            this.chkActivo.Text = "Activo";
+            this.chkActivo.UseVisualStyleBackColor = true;
             // 
             // txtRol
             // 
@@ -147,7 +147,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox chkHabilitado;
+        private System.Windows.Forms.CheckBox chkActivo;
         private System.Windows.Forms.TextBox txtRol;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cmdCancelar;
