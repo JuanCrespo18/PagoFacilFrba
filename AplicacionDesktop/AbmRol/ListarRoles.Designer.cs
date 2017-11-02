@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmRol
 {
-    partial class AbmListadoRol
+    partial class ListarRoles
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,14 @@
             this.cmdModificarRol = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cboRoles = new System.Windows.Forms.ComboBox();
+            this.cmdMenu = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.cmdMenu);
             this.panel1.Controls.Add(this.cmdNuevoRol);
             this.panel1.Controls.Add(this.cmdCancelar);
             this.panel1.Controls.Add(this.cmdModificarRol);
@@ -48,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(352, 234);
+            this.panel1.Size = new System.Drawing.Size(352, 298);
             this.panel1.TabIndex = 0;
             // 
             // cmdNuevoRol
@@ -107,11 +109,23 @@
             this.cboRoles.TabIndex = 5;
             this.cboRoles.SelectedIndexChanged += new System.EventHandler(this.cboRoles_SelectedIndexChanged);
             // 
+            // cmdMenu
+            // 
+            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdMenu.Location = new System.Drawing.Point(221, 252);
+            this.cmdMenu.Name = "cmdMenu";
+            this.cmdMenu.Size = new System.Drawing.Size(119, 34);
+            this.cmdMenu.TabIndex = 33;
+            this.cmdMenu.Text = "Menu Principal";
+            this.cmdMenu.UseVisualStyleBackColor = true;
+            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
+            // 
             // AbmListadoRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 234);
+            this.ClientSize = new System.Drawing.Size(352, 298);
             this.Controls.Add(this.panel1);
             this.Name = "AbmListadoRol";
             this.Text = "Roles";
@@ -129,5 +143,6 @@
         private System.Windows.Forms.Button cmdCancelar;
         private System.Windows.Forms.Button cmdModificarRol;
         private System.Windows.Forms.Button cmdNuevoRol;
+        private System.Windows.Forms.Button cmdMenu;
     }
 }

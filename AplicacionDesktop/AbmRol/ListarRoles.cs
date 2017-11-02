@@ -4,15 +4,17 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmRol
 {
-    public partial class AbmListadoRol : Form
+    public partial class ListarRoles : Form
     {
-        private AbmNuevoRol abmNuevoRol;
+        private CrearEditarRol abmNuevoRol;
         private int _idRolSeleccionado;
+        private MenuPrincipal _menuPrincipal;
         
-        public AbmListadoRol()
+        public ListarRoles(MenuPrincipal menuPrincipal)
         {
             InitializeComponent();
             CargarRoles();
+            _menuPrincipal = menuPrincipal;
         }
 
         public void CargarRoles()
@@ -50,7 +52,7 @@ namespace PagoAgilFrba.AbmRol
 
         private void cmdModificar_Click(object sender, EventArgs e)
         {
-            this.abmNuevoRol = new AbmNuevoRol(this);
+            this.abmNuevoRol = new CrearEditarRol(this);
             abmNuevoRol.CargarRol(cboRoles.Text, _idRolSeleccionado);
             abmNuevoRol.Show();
             this.Hide();
@@ -58,7 +60,7 @@ namespace PagoAgilFrba.AbmRol
 
         private void cmdNuevoRol_Click(object sender, EventArgs e)
         {
-            this.abmNuevoRol = new AbmNuevoRol(this);
+            this.abmNuevoRol = new CrearEditarRol(this);
             abmNuevoRol.CargarRol("", 0);
             abmNuevoRol.Show();
             this.Hide();
@@ -70,6 +72,12 @@ namespace PagoAgilFrba.AbmRol
             {
                 throw new Exception("Ese rol ya existe");
             }
+        }
+
+        private void cmdMenu_Click(object sender, EventArgs e)
+        {
+            _menuPrincipal.Show();
+            this.Close();
         }
     }
 }

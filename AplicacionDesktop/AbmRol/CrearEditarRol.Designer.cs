@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmRol
 {
-    partial class AbmNuevoRol
+    partial class CrearEditarRol
     {
         /// <summary>
         /// Required designer variable.

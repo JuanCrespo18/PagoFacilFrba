@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmRol
 {
-    public partial class AbmNuevoRol : Form
+    public partial class CrearEditarRol : Form
     {
-        private AbmListadoRol _abmListadoRol;
+        private ListarRoles _abmListadoRol;
         private List<string> _funcionalidades = new List<string>();
         private List<string> _funcionalidadesNuevas = new List<string>();
         private List<string> _funcionalidadesQuitadas = new List<string>();
@@ -20,12 +20,12 @@ namespace PagoAgilFrba.AbmRol
         private bool _habilitado;
         private char _evento;
 
-        public AbmNuevoRol()
+        public CrearEditarRol()
         {
             InitializeComponent();
         }
 
-        public AbmNuevoRol(AbmListadoRol abmListadoRol)
+        public CrearEditarRol(ListarRoles abmListadoRol)
         {
             InitializeComponent();
             this._abmListadoRol = abmListadoRol;
