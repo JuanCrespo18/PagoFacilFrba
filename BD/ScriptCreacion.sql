@@ -1,8 +1,4 @@
 USE [GD2C2017]
-GO
-/****** Object:  Schema [gd_esquema]    Script Date: 04/15/2012 01:58:54 ******/
-CREATE SCHEMA [ONEFORALL] AUTHORIZATION [gd]
-GO
 
 ----------------------------------------------------------------------------------------
 -----------------------------------BORRAR TABLAS----------------------------------------
@@ -160,6 +156,7 @@ CREATE TABLE [ONEFORALL].[CLIENTES](
 	[CLIE_DIR_ID] INT NOT NULL CONSTRAINT FK_CLIE_DIR_ID REFERENCES [ONEFORALL].[DIRECCIONES] ,
 	[CLIE_DNI] CHAR(8) NOT NULL,
 	[CLIE_MAIL] NVARCHAR(255) NOT NULL,
+	[CLIE_ACTIVO] BIT NOT NULL
 )
 GO	
 

@@ -85,8 +85,8 @@ insert into ONEFORALL.SUCURSALES
 GO
 
 insert into ONEFORALL.CLIENTES
-(CLIE_DNI, CLIE_APELLIDO, CLIE_NOMBRE, CLIE_FECHA_NACIMIENTO, CLIE_MAIL, CLIE_DIR_ID)
-	select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre], CAST([Cliente-Fecha_Nac] as DATE), Cliente_Mail,D.DIR_ID
+(CLIE_DNI, CLIE_APELLIDO, CLIE_NOMBRE, CLIE_FECHA_NACIMIENTO, CLIE_MAIL, CLIE_DIR_ID, CLIE_ACTIVO)
+	select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre], CAST([Cliente-Fecha_Nac] as DATE), Cliente_Mail,D.DIR_ID, 1
 	from gd_esquema.Maestra M
 	left join ONEFORALL.DIRECCIONES D 
 		ON M.Cliente_Direccion= D.DIR_DIRECCION
