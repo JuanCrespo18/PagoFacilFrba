@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
 {
-    public partial class CrearEditarCliente : Form
+    public partial class AltaCliente : Form
     {
         private char _evento;
         private int _idCliente;
         private ListarClientes _listarClientes;
 
-        public static CrearEditarCliente Crear(ListarClientes listarClientes, char evento, string idCliente)
+        public static AltaCliente Crear(ListarClientes listarClientes, char evento, string idCliente)
         {
-            var abm =  new CrearEditarCliente(listarClientes, evento)
+            var abm =  new AltaCliente(listarClientes, evento)
             {
                 _idCliente = Convert.ToInt32(idCliente)
             };
@@ -26,7 +26,7 @@ namespace PagoAgilFrba.AbmCliente
             return abm;
         }
 
-        public CrearEditarCliente(ListarClientes listarClientes, char evento)
+        public AltaCliente(ListarClientes listarClientes, char evento)
         {
             InitializeComponent();
             _evento = evento;

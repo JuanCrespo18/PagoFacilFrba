@@ -13,13 +13,22 @@ namespace PagoAgilFrba.AbmCliente
     public partial class ListarClientes : Form
     {
         private MenuPrincipal _menuPrincipal;
-        private CrearEditarCliente _crearEditarCliente;
+        private AltaCliente _crearEditarCliente;
+        private AbmFactura.AltaFactura _altaFactura;
 
         public ListarClientes(MenuPrincipal menuPrincipal)
         {
             InitializeComponent();
             _menuPrincipal = menuPrincipal;
             cmdEditar.Text = "Agregar";
+        }
+
+        public ListarClientes(AbmFactura.AltaFactura altaFactura)
+        {
+            InitializeComponent();
+            _altaFactura = altaFactura;
+            cmdEditar.Text = "Seleccionar";
+            cmdMenu.Hide();
         }
 
         private void cmdBuscar_Click(object sender, EventArgs e)
@@ -64,7 +73,9 @@ namespace PagoAgilFrba.AbmCliente
 
                 }
                 dgvClientes.Sort(dgvClientes.Columns[0], ListSortDirection.Ascending);
-                cmdEditar.Text = "Editar";
+
+                if (cmdEditar.Text != "Seleccionar")
+                    cmdEditar.Text = "Editar";
             }
         }
 
@@ -85,20 +96,28 @@ namespace PagoAgilFrba.AbmCliente
 
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            cmdEditar.Text = "Editar";
+            if (cmdEditar.Text != "Seleccionar")
+                cmdEditar.Text = "Editar";
         }
 
         private void cmdEditar_Click(object sender, EventArgs e)
         {
-            if (cmdEditar.Text == "Agregar")
+            if (cmdEditar.Text != "Seleccionar")
             {
-                _crearEditarCliente = new CrearEditarCliente(this, cmdEditar.Text[0]);
+                if (cmdEditar.Text == "Agregar")
+                    _crearEditarCliente = new AltaCliente(this, cmdEditar.Text[0]);
+                else
+                    _crearEditarCliente = AltaCliente.Crear(this, cmdEditar.Text[0], dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString());
+
+                _crearEditarCliente.Show();
+                this.Hide();
             }
             else
-                _crearEditarCliente = CrearEditarCliente.Crear(this, cmdEditar.Text[0], dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString());
-
-            _crearEditarCliente.Show();
-            this.Hide();
+            {
+                _altaFactura.CargarCliente(dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString(), dgvClientes.SelectedRows[0].Cells["Nombre"].Value.ToString() + " " + dgvClientes.SelectedRows[0].Cells["Apellido"].Value.ToString());
+                _altaFactura.Show();
+                this.Close();
+            }
         }
 
         public void Actualizar()

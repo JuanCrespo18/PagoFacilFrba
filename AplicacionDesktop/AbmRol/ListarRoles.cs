@@ -6,7 +6,7 @@ namespace PagoAgilFrba.AbmRol
 {
     public partial class ListarRoles : Form
     {
-        private CrearEditarRol abmNuevoRol;
+        private AltaRol abmNuevoRol;
         private int _idRolSeleccionado;
         private MenuPrincipal _menuPrincipal;
         
@@ -52,7 +52,7 @@ namespace PagoAgilFrba.AbmRol
 
         private void cmdModificar_Click(object sender, EventArgs e)
         {
-            this.abmNuevoRol = new CrearEditarRol(this);
+            this.abmNuevoRol = new AltaRol(this);
             abmNuevoRol.CargarRol(cboRoles.Text, _idRolSeleccionado);
             abmNuevoRol.Show();
             this.Hide();
@@ -60,7 +60,7 @@ namespace PagoAgilFrba.AbmRol
 
         private void cmdNuevoRol_Click(object sender, EventArgs e)
         {
-            this.abmNuevoRol = new CrearEditarRol(this);
+            this.abmNuevoRol = new AltaRol(this);
             abmNuevoRol.CargarRol("", 0);
             abmNuevoRol.Show();
             this.Hide();

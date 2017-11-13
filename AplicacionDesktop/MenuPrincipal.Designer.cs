@@ -30,10 +30,10 @@
         {
             this.cmdRoles = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmdClientes = new System.Windows.Forms.Button();
-            this.cmdEmpresas = new System.Windows.Forms.Button();
-            this.cmdSucursales = new System.Windows.Forms.Button();
             this.cmdFacturas = new System.Windows.Forms.Button();
+            this.cmdSucursales = new System.Windows.Forms.Button();
+            this.cmdEmpresas = new System.Windows.Forms.Button();
+            this.cmdClientes = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,26 +63,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "EDICION";
             // 
-            // cmdClientes
+            // cmdFacturas
             // 
-            this.cmdClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdClientes.Location = new System.Drawing.Point(176, 19);
-            this.cmdClientes.Name = "cmdClientes";
-            this.cmdClientes.Size = new System.Drawing.Size(150, 47);
-            this.cmdClientes.TabIndex = 5;
-            this.cmdClientes.Text = "CLIENTES";
-            this.cmdClientes.UseVisualStyleBackColor = true;
-            this.cmdClientes.Click += new System.EventHandler(this.cmdClientes_Click);
-            // 
-            // cmdEmpresas
-            // 
-            this.cmdEmpresas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEmpresas.Location = new System.Drawing.Point(20, 72);
-            this.cmdEmpresas.Name = "cmdEmpresas";
-            this.cmdEmpresas.Size = new System.Drawing.Size(150, 47);
-            this.cmdEmpresas.TabIndex = 6;
-            this.cmdEmpresas.Text = "EMPRESAS";
-            this.cmdEmpresas.UseVisualStyleBackColor = true;
+            this.cmdFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdFacturas.Location = new System.Drawing.Point(99, 125);
+            this.cmdFacturas.Name = "cmdFacturas";
+            this.cmdFacturas.Size = new System.Drawing.Size(150, 47);
+            this.cmdFacturas.TabIndex = 8;
+            this.cmdFacturas.Text = "FACTURAS";
+            this.cmdFacturas.UseVisualStyleBackColor = true;
+            this.cmdFacturas.Click += new System.EventHandler(this.cmdFacturas_Click);
             // 
             // cmdSucursales
             // 
@@ -94,15 +84,26 @@
             this.cmdSucursales.Text = "SUCURSALES";
             this.cmdSucursales.UseVisualStyleBackColor = true;
             // 
-            // cmdFacturas
+            // cmdEmpresas
             // 
-            this.cmdFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdFacturas.Location = new System.Drawing.Point(99, 125);
-            this.cmdFacturas.Name = "cmdFacturas";
-            this.cmdFacturas.Size = new System.Drawing.Size(150, 47);
-            this.cmdFacturas.TabIndex = 8;
-            this.cmdFacturas.Text = "FACTURAS";
-            this.cmdFacturas.UseVisualStyleBackColor = true;
+            this.cmdEmpresas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEmpresas.Location = new System.Drawing.Point(20, 72);
+            this.cmdEmpresas.Name = "cmdEmpresas";
+            this.cmdEmpresas.Size = new System.Drawing.Size(150, 47);
+            this.cmdEmpresas.TabIndex = 6;
+            this.cmdEmpresas.Text = "EMPRESAS";
+            this.cmdEmpresas.UseVisualStyleBackColor = true;
+            // 
+            // cmdClientes
+            // 
+            this.cmdClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdClientes.Location = new System.Drawing.Point(176, 19);
+            this.cmdClientes.Name = "cmdClientes";
+            this.cmdClientes.Size = new System.Drawing.Size(150, 47);
+            this.cmdClientes.TabIndex = 5;
+            this.cmdClientes.Text = "CLIENTES";
+            this.cmdClientes.UseVisualStyleBackColor = true;
+            this.cmdClientes.Click += new System.EventHandler(this.cmdClientes_Click);
             // 
             // MenuPrincipal
             // 

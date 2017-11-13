@@ -10,5 +10,6 @@ C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionD
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmCliente.ListarClientes.resources
 C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmRol.ListarRoles.resources
-C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmRol.CrearEditarRol.resources
-C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmCliente.CrearEditarCliente.resources
+C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmCliente.AltaCliente.resources
+C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmFactura.AltaFactura.resources
+C:\Users\juanm\OneDrive\Documentos\UTN\Gestion de datos\PagoAgilFrba\AplicacionDesktop\obj\Debug\PagoAgilFrba.AbmRol.AltaRol.resources

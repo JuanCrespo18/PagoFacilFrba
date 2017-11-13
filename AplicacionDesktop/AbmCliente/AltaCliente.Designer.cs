@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmCliente
 {
-    partial class CrearEditarCliente
+    partial class AltaCliente
     {
         /// <summary>
         /// Required designer variable.

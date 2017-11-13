@@ -28,5 +28,11 @@ namespace PagoAgilFrba
             new AbmCliente.ListarClientes(this).Show();
             this.Hide();
         }
+
+        private void cmdFacturas_Click(object sender, EventArgs e)
+        {
+            new AbmFactura.AltaFactura(this).Show();
+            this.Hide();
+        }
     }
 }
