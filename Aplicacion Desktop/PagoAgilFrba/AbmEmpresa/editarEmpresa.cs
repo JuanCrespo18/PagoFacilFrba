@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.AbmSucursal
+namespace PagoAgilFrba.AbmEmpresa
 {
-    public partial class Form1 : Form
+    public partial class editarEmpresa : Form
     {
-        public Form1()
+        public editarEmpresa()
         {
             InitializeComponent();
         }

@@ -1,1 +1,22 @@
 \\VBOXSVR\PagoAgil2C2017\src\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\bin\Debug\PagoAgilFrba.pdb
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.agregarEmpresa.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.editarEmpresa.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmRol.AgregarRolForm.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmRol.EliminarRolForm.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmRol.ModificarRolForm.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmRol.Form1.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmUsuario.RegistrarUsuario.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Menu.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Login.CambiarContraseñaForm.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Login.ElegirRolForm.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Login.LoginForm.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Properties.Resources.resources
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.CoreCompileInputs.cache
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
+C:\Users\aldo_\Desktop\tp gestion de datos\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.filtrarEmpresa.resources
