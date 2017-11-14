@@ -85,7 +85,8 @@ namespace PagoAgilFrba.AbmCliente
             txtApellido.Clear();
             txtDni.Clear();
             txtNombre.Clear();
-            cmdEditar.Text = "Agregar";
+            if(cmdEditar.Text != "Seleccionar")
+                cmdEditar.Text = "Agregar";
         }
 
         private void cmdMenu_Click(object sender, EventArgs e)
@@ -114,9 +115,12 @@ namespace PagoAgilFrba.AbmCliente
             }
             else
             {
-                _altaFactura.CargarCliente(dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString(), dgvClientes.SelectedRows[0].Cells["Nombre"].Value.ToString() + " " + dgvClientes.SelectedRows[0].Cells["Apellido"].Value.ToString());
-                _altaFactura.Show();
-                this.Close();
+                if (dgvClientes.SelectedRows.Count > 0)
+                {
+                    _altaFactura.CargarCliente(dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString(), dgvClientes.SelectedRows[0].Cells["Nombre"].Value.ToString() + " " + dgvClientes.SelectedRows[0].Cells["Apellido"].Value.ToString());
+                    _altaFactura.Show();
+                    this.Close();
+                }
             }
         }
 

@@ -18,6 +18,7 @@ namespace PagoAgilFrba.AbmFactura
         public AltaFactura(MenuPrincipal menuPrincipal)
         {
             InitializeComponent();
+            CargarEmpresas();
             this._menuPrincipal = menuPrincipal;
         }
 
@@ -46,6 +47,17 @@ namespace PagoAgilFrba.AbmFactura
             }
             con.cerrarConexion();
 
+        }
+
+        private void cmdLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCliente.Text = string.Empty;
+            txtNumeroFactura.Text = string.Empty;
+            txtTotal.Text = string.Empty;
+            cboEmpresas.ResetText();
+            dtpAlta.ResetText();
+            dtpVto.ResetText();
+            dgvItems.Rows.Clear();
         }
     }
 }

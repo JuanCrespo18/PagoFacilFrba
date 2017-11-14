@@ -29,30 +29,33 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvItems = new System.Windows.Forms.DataGridView();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dtpVto = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpAlta = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNumeroFactura = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboEmpresas = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cmdBuscarCliente = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboEmpresas = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNumeroFactura = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtpAlta = new System.Windows.Forms.DateTimePicker();
-            this.dtpVto = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmdLimpiar = new System.Windows.Forms.Button();
+            this.cmdAceptar = new System.Windows.Forms.Button();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvClientes);
+            this.groupBox1.Controls.Add(this.cmdAceptar);
+            this.groupBox1.Controls.Add(this.cmdLimpiar);
+            this.groupBox1.Controls.Add(this.dgvItems);
             this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dtpVto);
@@ -73,6 +76,103 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
+            // 
+            // dgvItems
+            // 
+            this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Cantidad,
+            this.Monto});
+            this.dgvItems.Location = new System.Drawing.Point(25, 290);
+            this.dgvItems.MultiSelect = false;
+            this.dgvItems.Name = "dgvItems";
+            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvItems.Size = new System.Drawing.Size(338, 109);
+            this.dgvItems.TabIndex = 35;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(126, 250);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(237, 20);
+            this.txtTotal.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(89, 253);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Total";
+            // 
+            // dtpVto
+            // 
+            this.dtpVto.Location = new System.Drawing.Point(126, 206);
+            this.dtpVto.Name = "dtpVto";
+            this.dtpVto.Size = new System.Drawing.Size(237, 20);
+            this.dtpVto.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 206);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Fecha Vencimiento";
+            // 
+            // dtpAlta
+            // 
+            this.dtpAlta.Location = new System.Drawing.Point(126, 161);
+            this.dtpAlta.Name = "dtpAlta";
+            this.dtpAlta.Size = new System.Drawing.Size(237, 20);
+            this.dtpAlta.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(62, 161);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Fecha Alta";
+            // 
+            // txtNumeroFactura
+            // 
+            this.txtNumeroFactura.Location = new System.Drawing.Point(126, 115);
+            this.txtNumeroFactura.Name = "txtNumeroFactura";
+            this.txtNumeroFactura.Size = new System.Drawing.Size(237, 20);
+            this.txtNumeroFactura.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 118);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Numero de Factura";
+            // 
+            // cboEmpresas
+            // 
+            this.cboEmpresas.FormattingEnabled = true;
+            this.cboEmpresas.Location = new System.Drawing.Point(126, 73);
+            this.cboEmpresas.Name = "cboEmpresas";
+            this.cboEmpresas.Size = new System.Drawing.Size(237, 21);
+            this.cboEmpresas.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(72, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Empresa";
             // 
             // cmdBuscarCliente
             // 
@@ -101,127 +201,40 @@
             this.txtCliente.Size = new System.Drawing.Size(156, 20);
             this.txtCliente.TabIndex = 0;
             // 
-            // label2
+            // cmdLimpiar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(72, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Empresa";
+            this.cmdLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLimpiar.Location = new System.Drawing.Point(25, 430);
+            this.cmdLimpiar.Name = "cmdLimpiar";
+            this.cmdLimpiar.Size = new System.Drawing.Size(156, 53);
+            this.cmdLimpiar.TabIndex = 36;
+            this.cmdLimpiar.Text = "Limpiar";
+            this.cmdLimpiar.UseVisualStyleBackColor = true;
+            this.cmdLimpiar.Click += new System.EventHandler(this.cmdLimpiar_Click);
             // 
-            // comboBox1
+            // cmdAceptar
             // 
-            this.cboEmpresas.FormattingEnabled = true;
-            this.cboEmpresas.Location = new System.Drawing.Point(126, 73);
-            this.cboEmpresas.Name = "comboBox1";
-            this.cboEmpresas.Size = new System.Drawing.Size(237, 21);
-            this.cboEmpresas.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 118);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Numero de Factura";
-            // 
-            // txtNumeroFactura
-            // 
-            this.txtNumeroFactura.Location = new System.Drawing.Point(126, 115);
-            this.txtNumeroFactura.Name = "txtNumeroFactura";
-            this.txtNumeroFactura.Size = new System.Drawing.Size(237, 20);
-            this.txtNumeroFactura.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(62, 161);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Fecha Alta";
-            // 
-            // dtpAlta
-            // 
-            this.dtpAlta.Location = new System.Drawing.Point(126, 161);
-            this.dtpAlta.Name = "dtpAlta";
-            this.dtpAlta.Size = new System.Drawing.Size(237, 20);
-            this.dtpAlta.TabIndex = 8;
-            // 
-            // dtpVto
-            // 
-            this.dtpVto.Location = new System.Drawing.Point(126, 206);
-            this.dtpVto.Name = "dtpVto";
-            this.dtpVto.Size = new System.Drawing.Size(237, 20);
-            this.dtpVto.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 206);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Fecha Vencimiento";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Location = new System.Drawing.Point(126, 250);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(237, 20);
-            this.txtTotal.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(89, 253);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Total";
-            // 
-            // dgvClientes
-            // 
-            this.dgvClientes.AllowUserToAddRows = false;
-            this.dgvClientes.AllowUserToDeleteRows = false;
-            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Cantidad,
-            this.Monto});
-            this.dgvClientes.Location = new System.Drawing.Point(25, 290);
-            this.dgvClientes.MultiSelect = false;
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.ReadOnly = true;
-            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(338, 109);
-            this.dgvClientes.TabIndex = 35;
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
+            this.cmdAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdAceptar.Location = new System.Drawing.Point(207, 430);
+            this.cmdAceptar.Name = "cmdAceptar";
+            this.cmdAceptar.Size = new System.Drawing.Size(156, 53);
+            this.cmdAceptar.TabIndex = 37;
+            this.cmdAceptar.Text = "Aceptar";
+            this.cmdAceptar.UseVisualStyleBackColor = true;
             // 
             // Cantidad
             // 
             this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
             // 
             // Monto
             // 
+            this.Monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Monto.HeaderText = "Monto";
             this.Monto.Name = "Monto";
-            this.Monto.ReadOnly = true;
-            this.Monto.Width = 62;
             // 
             // AltaFactura
             // 
@@ -233,11 +246,9 @@
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.ResumeLayout(false);
 
-
-            CargarEmpresas();
         }
 
         #endregion
@@ -256,8 +267,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboEmpresas;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridView dgvItems;
+        private System.Windows.Forms.Button cmdAceptar;
+        private System.Windows.Forms.Button cmdLimpiar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
     }
