@@ -164,7 +164,6 @@ namespace PagoAgilFrba.AbmCliente
                     txtDirLocalidad.Text)
                 };
                 con2.ejecutar();
-                con2.cerrarConexion();
 
                 con2.query = ConsultaDireccion();
                 con2.leer();
@@ -210,7 +209,6 @@ namespace PagoAgilFrba.AbmCliente
                 _idCliente)
             };
             con.ejecutar();
-            con.cerrarConexion();
         }
 
         private void AgregarCliente(int direccionId)
@@ -224,7 +222,6 @@ namespace PagoAgilFrba.AbmCliente
                 query = insert
             };
             con.ejecutar();
-            con.cerrarConexion();
         }
     }
 }
