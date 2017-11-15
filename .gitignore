@@ -4,6 +4,12 @@
 ### Git ###
 *.orig
 
+AplicacionDesktop/bin/
+
+AplicacionDesktop/obj/
+
+AplicacionDesktop/.vs/
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -322,6 +328,4 @@ __pycache__/
 # should be stored in the .pubxml.user file.
 
 # End of https://www.gitignore.io/api/git,windows,visualstudio
-AplicacionDesktop/bin/
 
-AplicacionDesktop/obj/
