@@ -141,11 +141,12 @@ set identity_insert ONEFORALL.PAGOS off
 GO
 
 insert into ONEFORALL.FACTURAS
-(FACT_ID, FACT_ALTA, FACT_VENCIMIENTO, FACT_CLIE_ID, FACT_REND_ID, FACT_PAGO_ID, FACT_TOTAL)
-	select distinct Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, MAX(Rendicion_Nro), MAX(Pago_nro), Factura_Total
+(FACT_ID, FACT_ALTA, FACT_VENCIMIENTO, FACT_CLIE_ID, FACT_REND_ID, FACT_PAGO_ID, FACT_TOTAL, FACT_EMPR_ID)
+	select distinct Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, MAX(Rendicion_Nro), MAX(Pago_nro), Factura_Total, E.EMP_ID
 	from gd_esquema.Maestra M 
 	join ONEFORALL.CLIENTES C on M.[Cliente-Dni] = C.CLIE_DNI
-	GROUP BY Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, Factura_Total
+	join ONEFORALL.EMPRESAS E ON M.Empresa_Cuit = E.EMP_CUIT AND M.Empresa_Nombre = E.EMP_NOMBRE
+	GROUP BY Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, Factura_Total, e.EMP_ID
 	ORDER BY 1 ASC
 GO
 
