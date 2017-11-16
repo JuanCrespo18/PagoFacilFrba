@@ -141,8 +141,8 @@ set identity_insert ONEFORALL.PAGOS off
 GO
 
 insert into ONEFORALL.FACTURAS
-(FACT_ID, FACT_ALTA, FACT_VENCIMIENTO, FACT_CLIE_ID, FACT_REND_ID, FACT_PAGO_ID, FACT_TOTAL, FACT_EMP_ID)
-	select distinct Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, MAX(Rendicion_Nro), MAX(Pago_nro), Factura_Total, E.EMP_ID
+(FACT_ID, FACT_ALTA, FACT_VENCIMIENTO, FACT_CLIE_ID, FACT_REND_ID, FACT_PAGO_ID, FACT_TOTAL, FACT_EMP_ID, FACT_ACTIVA)
+	select distinct Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, MAX(Rendicion_Nro), MAX(Pago_nro), Factura_Total, E.EMP_ID, 1
 	from gd_esquema.Maestra M 
 	join ONEFORALL.CLIENTES C on M.[Cliente-Dni] = C.CLIE_DNI
 	join ONEFORALL.EMPRESAS E ON M.Empresa_Cuit = E.EMP_CUIT AND M.Empresa_Nombre = E.EMP_NOMBRE
