@@ -51,22 +51,23 @@ namespace PagoAgilFrba.AbmFactura
 
         private void cmdLimpiar_Click(object sender, EventArgs e)
         {
-            txtCliente.Clear();
-            cboEmpresas.SelectedIndex = -1;
-            cmdEditar.Text = "Agregar";
+            Limpiar();
         }
 
         private void cmdBuscar_Click(object sender, EventArgs e)
         {
             dgvFacturas.Rows.Clear();
 
-            string query = "SELECT * FROM ONEFORALL.VistaListarFacturas WHERE FACT_REND_ID IS NULL AND FACT_PAGO_ID IS NULL ";
+            string query = "SELECT * FROM ONEFORALL.VistaListarFacturas WHERE 1 = 1 ";
 
             if (!string.IsNullOrEmpty(txtCliente.Text))
                 query += string.Format("AND FACT_CLIE = '{0}'", txtCliente.Text);
 
             if (cboEmpresas.SelectedIndex != -1)
                 query += string.Format("AND FACT_EMP = '{0}'", cboEmpresas.SelectedItem.ToString());
+
+            if (!string.IsNullOrEmpty(txtNumeroFactura.Text))
+                query += string.Format("AND FACT_ID = {0}", txtNumeroFactura.Text);
 
             var con = new Conexion()
             {
@@ -81,13 +82,18 @@ namespace PagoAgilFrba.AbmFactura
             else
             {
                 dgvFacturas.Rows.Add(new Object[] {con.lector.GetDecimal(0), con.lector.GetString(1), con.lector.GetString(2),
-                                   con.lector.GetDateTime(3), con.lector.GetDateTime(4), con.lector.GetDecimal(7)});
+                                   con.lector.GetDateTime(3), con.lector.GetDateTime(4), con.lector.GetDecimal(7),
+                                    !con.lector.IsDBNull(6),
+                                    !con.lector.IsDBNull(5),
+                                    con.lector.GetBoolean(8)});
 
                 while (con.leerReader())
                 {
                     dgvFacturas.Rows.Add(new Object[] {con.lector.GetDecimal(0), con.lector.GetString(1), con.lector.GetString(2),
-                                   con.lector.GetDateTime(3), con.lector.GetDateTime(4), con.lector.GetDecimal(7)});
-
+                                   con.lector.GetDateTime(3), con.lector.GetDateTime(4), con.lector.GetDecimal(7),
+                                    !con.lector.IsDBNull(6),
+                                    !con.lector.IsDBNull(5),
+                                    con.lector.GetBoolean(8)});
                 }
                 dgvFacturas.Sort(dgvFacturas.Columns[0], ListSortDirection.Ascending);
 
@@ -99,13 +105,42 @@ namespace PagoAgilFrba.AbmFactura
 
         private void cmdEditar_Click(object sender, EventArgs e)
         {
-            if (cmdEditar.Text == "Agregar")
-                _altaFactura = new AltaFactura(this, 'A');
-            else
-                _altaFactura = AltaFactura.Crear(this, 'E', dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
+            try
+            {
+                if (cmdEditar.Text == "Agregar")
+                    _altaFactura = new AltaFactura(this, 'A');
+                else
+                {
+                    if (Convert.ToBoolean(dgvFacturas.SelectedRows[0].Cells["Pago"].Value))
+                        throw new Exception("Esa pagada ya se encuentra pagada, no se puede editar");
 
-            _altaFactura.Show();
-            this.Hide();
+                    _altaFactura = AltaFactura.Crear(this, 'E', dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
+                }
+
+                _altaFactura.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Listar Facturas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtNumeroFactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        internal void Limpiar()
+        {
+            txtCliente.Clear();
+            cboEmpresas.SelectedIndex = -1;
+            txtNumeroFactura.Clear();
+            cmdEditar.Text = "Agregar";
+            dgvFacturas.Rows.Clear();
         }
     }
 }

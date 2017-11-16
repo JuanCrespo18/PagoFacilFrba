@@ -30,12 +30,6 @@
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmdLimpiar = new System.Windows.Forms.Button();
             this.cmdMenu = new System.Windows.Forms.Button();
             this.cmdEditar = new System.Windows.Forms.Button();
@@ -47,6 +41,17 @@
             this.cmdBuscarCliente = new System.Windows.Forms.Button();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtNumeroFactura = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pago = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Rendicion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Activa = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -81,7 +86,10 @@
             this.Empresa,
             this.Vto,
             this.Alta,
-            this.Total});
+            this.Total,
+            this.Pago,
+            this.Rendicion,
+            this.Activa});
             this.dgvFacturas.Location = new System.Drawing.Point(24, 19);
             this.dgvFacturas.MultiSelect = false;
             this.dgvFacturas.Name = "dgvFacturas";
@@ -89,48 +97,6 @@
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturas.Size = new System.Drawing.Size(825, 255);
             this.dgvFacturas.TabIndex = 34;
-            // 
-            // Numero
-            // 
-            this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // Empresa
-            // 
-            this.Empresa.HeaderText = "Empresa";
-            this.Empresa.Name = "Empresa";
-            this.Empresa.ReadOnly = true;
-            this.Empresa.Width = 73;
-            // 
-            // Vto
-            // 
-            this.Vto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Vto.HeaderText = "FechaVto";
-            this.Vto.Name = "Vto";
-            this.Vto.ReadOnly = true;
-            // 
-            // Alta
-            // 
-            this.Alta.HeaderText = "FechaAlta";
-            this.Alta.Name = "Alta";
-            this.Alta.ReadOnly = true;
-            this.Alta.Width = 80;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 56;
             // 
             // cmdLimpiar
             // 
@@ -192,14 +158,16 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtNumeroFactura);
+            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.cboEmpresas);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cmdBuscarCliente);
             this.groupBox3.Controls.Add(this.txtCliente);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(277, 19);
+            this.groupBox3.Location = new System.Drawing.Point(157, 19);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(328, 79);
+            this.groupBox3.Size = new System.Drawing.Size(574, 79);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filtros";
@@ -250,6 +218,93 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Cliente";
             // 
+            // txtNumeroFactura
+            // 
+            this.txtNumeroFactura.Location = new System.Drawing.Point(410, 30);
+            this.txtNumeroFactura.Name = "txtNumeroFactura";
+            this.txtNumeroFactura.Size = new System.Drawing.Size(143, 20);
+            this.txtNumeroFactura.TabIndex = 23;
+            this.txtNumeroFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroFactura_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(346, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 17);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Numero";
+            // 
+            // Numero
+            // 
+            this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            this.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Empresa
+            // 
+            this.Empresa.HeaderText = "Empresa";
+            this.Empresa.Name = "Empresa";
+            this.Empresa.ReadOnly = true;
+            this.Empresa.Width = 73;
+            // 
+            // Vto
+            // 
+            this.Vto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Vto.HeaderText = "FechaVto";
+            this.Vto.Name = "Vto";
+            this.Vto.ReadOnly = true;
+            // 
+            // Alta
+            // 
+            this.Alta.HeaderText = "FechaAlta";
+            this.Alta.Name = "Alta";
+            this.Alta.ReadOnly = true;
+            this.Alta.Width = 80;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 56;
+            // 
+            // Pago
+            // 
+            this.Pago.HeaderText = "Pagada";
+            this.Pago.Name = "Pago";
+            this.Pago.ReadOnly = true;
+            this.Pago.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pago.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Pago.Width = 69;
+            // 
+            // Rendicion
+            // 
+            this.Rendicion.HeaderText = "Rendida";
+            this.Rendicion.Name = "Rendicion";
+            this.Rendicion.ReadOnly = true;
+            this.Rendicion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Rendicion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Rendicion.Width = 72;
+            // 
+            // Activa
+            // 
+            this.Activa.HeaderText = "Activa";
+            this.Activa.Name = "Activa";
+            this.Activa.ReadOnly = true;
+            this.Activa.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Activa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Activa.Width = 62;
+            // 
             // ListarFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,13 +336,18 @@
         private System.Windows.Forms.Button cmdBuscarCliente;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboEmpresas;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNumeroFactura;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Empresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.ComboBox cboEmpresas;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Pago;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Rendicion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Activa;
     }
 }
