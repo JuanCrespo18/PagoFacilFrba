@@ -67,6 +67,10 @@ IF OBJECT_ID ( '[ONEFORALL].[ROLES]', 'U' ) IS NOT NULL
 	DROP TABLE [ONEFORALL].[ROLES]
 GO
 
+IF OBJECT_ID ( '[ONEFORALL].[VISTALISTARFACTURAS]', 'V' ) IS NOT NULL
+	DROP VIEW [ONEFORALL].VISTALISTARFACTURAS
+GO
+
 ----------------------------------------------------------------------------------------
 -----------------------------------FUNCIONALIDADES--------------------------------------
 ----------------------------------------------------------------------------------------
