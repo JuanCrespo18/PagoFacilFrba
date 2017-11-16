@@ -13,8 +13,9 @@ namespace PagoAgilFrba.AbmCliente
     public partial class ListarClientes : Form
     {
         private MenuPrincipal _menuPrincipal;
-        private AltaCliente _crearEditarCliente;
+        private AltaCliente _altaCliente;
         private AbmFactura.AltaFactura _altaFactura;
+        private AbmFactura.ListarFacturas _listarFacturas;
 
         public ListarClientes(MenuPrincipal menuPrincipal)
         {
@@ -27,6 +28,14 @@ namespace PagoAgilFrba.AbmCliente
         {
             InitializeComponent();
             _altaFactura = altaFactura;
+            cmdEditar.Text = "Seleccionar";
+            cmdMenu.Hide();
+        }
+
+        public ListarClientes(AbmFactura.ListarFacturas listarFacturas)
+        {
+            InitializeComponent();
+            _listarFacturas = listarFacturas;
             cmdEditar.Text = "Seleccionar";
             cmdMenu.Hide();
         }
@@ -77,6 +86,7 @@ namespace PagoAgilFrba.AbmCliente
                 if (cmdEditar.Text != "Seleccionar")
                     cmdEditar.Text = "Editar";
             }
+            con.cerrarConexion();
         }
 
         private void cmdLimpiar_Click(object sender, EventArgs e)
@@ -106,19 +116,27 @@ namespace PagoAgilFrba.AbmCliente
             if (cmdEditar.Text != "Seleccionar")
             {
                 if (cmdEditar.Text == "Agregar")
-                    _crearEditarCliente = new AltaCliente(this, cmdEditar.Text[0]);
+                    _altaCliente = new AltaCliente(this, cmdEditar.Text[0]);
                 else
-                    _crearEditarCliente = AltaCliente.Crear(this, cmdEditar.Text[0], dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString());
+                    _altaCliente = AltaCliente.Crear(this, cmdEditar.Text[0], dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString());
 
-                _crearEditarCliente.Show();
+                _altaCliente.Show();
                 this.Hide();
             }
             else
             {
                 if (dgvClientes.SelectedRows.Count > 0)
                 {
-                    _altaFactura.CargarCliente(dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString(), dgvClientes.SelectedRows[0].Cells["Nombre"].Value.ToString() + " " + dgvClientes.SelectedRows[0].Cells["Apellido"].Value.ToString());
-                    _altaFactura.Show();
+                    if(_altaFactura != null)
+                    {
+                        _altaFactura.CargarCliente(dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString(), dgvClientes.SelectedRows[0].Cells["Nombre"].Value.ToString() + " " + dgvClientes.SelectedRows[0].Cells["Apellido"].Value.ToString());
+                        _altaFactura.Show();
+                    }
+                    else
+                    {
+                        _listarFacturas.CargarCliente(dgvClientes.SelectedRows[0].Cells["Id"].Value.ToString(), dgvClientes.SelectedRows[0].Cells["Nombre"].Value.ToString() + " " + dgvClientes.SelectedRows[0].Cells["Apellido"].Value.ToString());
+                        _listarFacturas.Show();
+                    }
                     this.Close();
                 }
             }

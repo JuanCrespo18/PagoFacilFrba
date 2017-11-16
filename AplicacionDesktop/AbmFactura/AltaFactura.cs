@@ -13,13 +13,68 @@ namespace PagoAgilFrba.AbmFactura
     public partial class AltaFactura : Form
     {
         private string _idCliente;
-        private MenuPrincipal _menuPrincipal;
+        private ListarFacturas _listarFacturas;
+        private char _evento;
+        private string _numeroFactura;
 
-        public AltaFactura(MenuPrincipal menuPrincipal)
+        public AltaFactura(ListarFacturas listarFacturas, char evento)
         {
             InitializeComponent();
             CargarEmpresas();
-            this._menuPrincipal = menuPrincipal;
+            _listarFacturas = listarFacturas;
+            _evento = evento;
+        }
+
+        public static AltaFactura Crear(ListarFacturas listarFacturas, char evento, string numeroFactura)
+        {
+            var abm = new AltaFactura(listarFacturas, evento)
+            {
+                _numeroFactura = numeroFactura
+            };
+            abm.CargarFactura();
+            return abm;
+        }
+
+        private void CargarFactura()
+        {
+            var con = new Conexion()
+            {
+                query = string.Format("SELECT * FROM ONEFORALL.VISTALISTARFACTURAS WHERE FACT_ID = {0}", _numeroFactura)
+            };
+            con.leer();
+            con.leerReader();
+
+            txtNumeroFactura.Text = _numeroFactura;
+            txtCliente.Text = con.lector.GetString(1);
+            string empresa = con.lector.GetString(2);
+            dtpVto.Value = con.lector.GetDateTime(3);
+            dtpAlta.Value = con.lector.GetDateTime(4);
+            txtTotal.Text = con.lector.GetDecimal(7).ToString();
+
+            cboEmpresas.SelectedIndex = cboEmpresas.Items.IndexOf(empresa);
+            txtNumeroFactura.ReadOnly = true;
+
+            con.cerrarConexion();
+
+            con.query = string.Format("SELECT FACT_CLIE_ID FROM ONEFORALL.FACTURAS WHERE FACT_ID = {0}", _numeroFactura);
+            con.leer();
+            con.leerReader();
+            _idCliente = con.lector.GetInt32(0).ToString();
+            con.cerrarConexion();
+
+            dgvItems.Rows.Clear();
+            con.query = string.Format("SELECT ITEM_CANTIDAD, ITEM_MONTO FROM ONEFORALL.ITEMS WHERE ITEM_FACT_ID = {0}", _numeroFactura);
+            con.leer();
+            if (con.leerReader())
+            { 
+                dgvItems.Rows.Add(new Object[] {con.lector.GetDecimal(0), con.lector.GetDecimal(1)});
+
+                while (con.leerReader())
+                {
+                    dgvItems.Rows.Add(new Object[] { con.lector.GetDecimal(0), con.lector.GetDecimal(1) });
+                }
+            }
+            con.cerrarConexion();
         }
 
         private void cmdBuscarCliente_Click(object sender, EventArgs e)
@@ -51,13 +106,18 @@ namespace PagoAgilFrba.AbmFactura
 
         private void cmdLimpiar_Click(object sender, EventArgs e)
         {
-            txtCliente.Text = string.Empty;
-            txtNumeroFactura.Text = string.Empty;
-            txtTotal.Text = string.Empty;
-            cboEmpresas.ResetText();
-            dtpAlta.ResetText();
-            dtpVto.ResetText();
-            dgvItems.Rows.Clear();
+            if (_evento == 'A')
+            {
+                txtCliente.Text = string.Empty;
+                txtNumeroFactura.Text = string.Empty;
+                txtTotal.Text = string.Empty;
+                cboEmpresas.ResetText();
+                dtpAlta.ResetText();
+                dtpVto.ResetText();
+                dgvItems.Rows.Clear();
+            }
+            else
+                CargarFactura();
         }
 
         private void cmdAceptar_Click(object sender, EventArgs e)
@@ -66,18 +126,33 @@ namespace PagoAgilFrba.AbmFactura
             {
                 Validaciones();
 
-                var con = new Conexion();
-
-                con.query = string.Format("INSERT INTO ONEFORALL.FACTURAS VALUES ({0}, {1}, '{2}', '{3}', NULL, NULL, {4})",
-                    txtNumeroFactura.Text, _idCliente, dtpVto.Value.ToString("yyyy-MM-dd HH:mm:ss"), dtpAlta.Value.ToString("yyyy-MM-dd HH:mm:ss"), txtTotal.Text);
-                con.ejecutar();
-
-                for (int i = 0; i < dgvItems.RowCount - 1; i++)
+                if(_evento == 'A')
                 {
-                    int cantidad = Convert.ToInt32(dgvItems.Rows[i].Cells["Cantidad"].Value);
-                    int monto = Convert.ToInt32(dgvItems.Rows[i].Cells["Monto"].Value);
-                    con.query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", txtNumeroFactura.Text, cantidad, monto);
+                    var con = new Conexion();
+
+                    con.query = string.Format("SELECT EMP_ID FROM ONEFORALL.EMPRESAS WHERE EMP_NOMBRE = '{0}'", cboEmpresas.SelectedItem.ToString());
+                    con.leer();
+                    con.leerReader();
+                    int empresa = con.lector.GetInt32(0);
+                    con.cerrarConexion();
+
+                    con.query = string.Format("INSERT INTO ONEFORALL.FACTURAS VALUES ({0}, {1}, {2}, '{3}', '{4}', NULL, NULL, {5})",
+                        txtNumeroFactura.Text, _idCliente, empresa,
+                        dtpVto.Value.ToString("yyyy-MM-dd HH:mm:ss"), dtpAlta.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                        txtTotal.Text);
                     con.ejecutar();
+
+                    for (int i = 0; i < dgvItems.RowCount - 1; i++)
+                    {
+                        int cantidad = Convert.ToInt32(dgvItems.Rows[i].Cells["Cantidad"].Value);
+                        int monto = Convert.ToInt32(dgvItems.Rows[i].Cells["Monto"].Value);
+                        con.query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", txtNumeroFactura.Text, cantidad, monto);
+                        con.ejecutar();
+                    }
+                }
+                else
+                {
+                    throw new NotImplementedException();
                 }
 
             }

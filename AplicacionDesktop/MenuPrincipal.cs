@@ -31,7 +31,7 @@ namespace PagoAgilFrba
 
         private void cmdFacturas_Click(object sender, EventArgs e)
         {
-            new AbmFactura.AltaFactura(this).Show();
+            new AbmFactura.ListarFacturas(this).Show();
             this.Hide();
         }
     }
