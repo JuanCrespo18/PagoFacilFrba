@@ -14,6 +14,8 @@ namespace PagoAgilFrba.AbmFactura
     {
         private MenuPrincipal _menuPrincipal;
         private AltaFactura _altaFactura;
+        private RegistroPago.RegistroPago _registroPago;
+        private char _evento;
 
         public ListarFacturas(MenuPrincipal menuPrincipal)
         {
@@ -21,6 +23,16 @@ namespace PagoAgilFrba.AbmFactura
             CargarEmpresas();
             _menuPrincipal = menuPrincipal;
             cmdEditar.Text = "Agregar";
+            _evento = 'E';
+        }
+
+        public ListarFacturas(RegistroPago.RegistroPago registroPago)
+        {
+            InitializeComponent();
+            CargarEmpresas();
+            _registroPago = registroPago;
+            _evento = 'P';
+            cmdEditar.Text = "Seleccionar";
         }
 
         private void cmdBuscarCliente_Click(object sender, EventArgs e)
@@ -69,6 +81,9 @@ namespace PagoAgilFrba.AbmFactura
             if (!string.IsNullOrEmpty(txtNumeroFactura.Text))
                 query += string.Format("AND FACT_ID = {0}", txtNumeroFactura.Text);
 
+            if (_evento == 'P')
+                query += "AND FACT_REND_ID IS NULL AND FACT_PAGO_ID IS NULL AND FACT_ACTIVA = 1 AND EMP_ACTIVA = 1";
+
             var con = new Conexion()
             {
                 query = query
@@ -107,18 +122,29 @@ namespace PagoAgilFrba.AbmFactura
         {
             try
             {
-                if (cmdEditar.Text == "Agregar")
-                    _altaFactura = new AltaFactura(this, 'A');
+                if(_evento == 'E')
+                {
+                    if (cmdEditar.Text == "Agregar")
+                        _altaFactura = new AltaFactura(this, 'A');
+                    else
+                    {
+                        if (Convert.ToBoolean(dgvFacturas.SelectedRows[0].Cells["Pago"].Value))
+                            throw new Exception("Esa pagada ya se encuentra pagada, no se puede editar");
+
+                        _altaFactura = AltaFactura.Crear(this, 'E', dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
+                    }
+                    _altaFactura.Show();
+                    this.Hide();
+                }
                 else
                 {
-                    if (Convert.ToBoolean(dgvFacturas.SelectedRows[0].Cells["Pago"].Value))
-                        throw new Exception("Esa pagada ya se encuentra pagada, no se puede editar");
+                    if (dgvFacturas.SelectedRows.Count == 0)
+                        throw new Exception("Seleccione una factura en la grilla");
 
-                    _altaFactura = AltaFactura.Crear(this, 'E', dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
+                    _registroPago.CargarFactura(dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
+                    _registroPago.Show();
+                    this.Close();
                 }
-
-                _altaFactura.Show();
-                this.Hide();
             }
             catch (Exception ex)
             {
@@ -134,13 +160,19 @@ namespace PagoAgilFrba.AbmFactura
             }
         }
 
-        internal void Limpiar()
+        public void Limpiar()
         {
             txtCliente.Clear();
             cboEmpresas.SelectedIndex = -1;
             txtNumeroFactura.Clear();
             cmdEditar.Text = "Agregar";
             dgvFacturas.Rows.Clear();
+        }
+
+        private void cmdMenu_Click(object sender, EventArgs e)
+        {
+            _menuPrincipal.Show();
+            this.Close();
         }
     }
 }

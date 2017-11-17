@@ -66,7 +66,7 @@ namespace PagoAgilFrba.AbmRol
             this.Hide();
         }
 
-        internal void ValidarRolNuevo(string rolNuevo)
+        public void ValidarRolNuevo(string rolNuevo)
         {
             if(cboRoles.Items.Contains(rolNuevo))
             {
