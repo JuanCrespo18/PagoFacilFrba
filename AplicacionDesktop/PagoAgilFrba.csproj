@@ -57,11 +57,23 @@
     <Compile Include="AbmCliente\ListarClientes.Designer.cs">
       <DependentUpon>ListarClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmEmpresa\Form1.cs">
+    <Compile Include="AbmEmpresa\agregarEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmEmpresa\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmEmpresa\agregarEmpresa.designer.cs">
+      <DependentUpon>agregarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\editarEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\editarEmpresa.designer.cs">
+      <DependentUpon>editarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\filtrarEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\filtrarEmpresa.designer.cs">
+      <DependentUpon>filtrarEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmFactura\AltaFactura.cs">
       <SubType>Form</SubType>
@@ -93,11 +105,23 @@
     <Compile Include="AbmRol\AltaRol.Designer.cs">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\Form1.cs">
+    <Compile Include="AbmSucursal\agregarSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmSucursal\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmSucursal\agregarSucursal.Designer.cs">
+      <DependentUpon>agregarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\EditarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\EditarSucursal.Designer.cs">
+      <DependentUpon>EditarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\filtrarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\filtrarSucursal.Designer.cs">
+      <DependentUpon>filtrarSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Form1.cs">
@@ -138,6 +162,15 @@
     <EmbeddedResource Include="AbmCliente\ListarClientes.resx">
       <DependentUpon>ListarClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\agregarEmpresa.resx">
+      <DependentUpon>agregarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\editarEmpresa.resx">
+      <DependentUpon>editarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\filtrarEmpresa.resx">
+      <DependentUpon>filtrarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\AltaFactura.resx">
       <DependentUpon>AltaFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +185,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\agregarSucursal.resx">
+      <DependentUpon>agregarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\EditarSucursal.resx">
+      <DependentUpon>EditarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\filtrarSucursal.resx">
+      <DependentUpon>filtrarSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
