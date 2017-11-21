@@ -34,5 +34,9 @@ namespace PagoAgilFrba
             new AbmFactura.ListarFacturas(this).Show();
             this.Hide();
         }
+
+        private void cmdSucursales_Click(object sender, EventArgs e) {
+            new AbmSucursal.MenuSucursales(this).Show();
+        }
     }
 }

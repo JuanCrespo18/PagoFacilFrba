@@ -83,6 +83,7 @@
             this.cmdSucursales.TabIndex = 7;
             this.cmdSucursales.Text = "SUCURSALES";
             this.cmdSucursales.UseVisualStyleBackColor = true;
+            this.cmdSucursales.Click += new System.EventHandler(this.cmdSucursales_Click);
             // 
             // cmdEmpresas
             // 
