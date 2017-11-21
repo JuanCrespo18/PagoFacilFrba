@@ -8,22 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.AbmSucursal
+namespace PagoAgilFrba.AbmEmpresa
 {
-    public partial class agregarSucursal : Form
+    public partial class agregarEmpresa : Form
     {
-        MenuSucursales menuSucursal;
-
-        public agregarSucursal(MenuSucursales menu)
+        MenuEmpresas menuEmpresas;
+        public agregarEmpresa(MenuEmpresas menu)
         {
             InitializeComponent();
-            menuSucursal = menu;
+            menuEmpresas = menu;
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            menuSucursal.Show();
+            menuEmpresas.Show();
             this.Hide();
         }
-
     }
 }

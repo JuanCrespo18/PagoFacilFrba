@@ -8,31 +8,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.AbmSucursal
+namespace PagoAgilFrba.AbmEmpresa
 {
-    public partial class MenuSucursales : Form
+    public partial class MenuEmpresas : Form
     {
-        private MenuPrincipal menuPrincipal;
+        MenuPrincipal menuPrincipal;
 
-        public MenuSucursales(MenuPrincipal menu)
+        public MenuEmpresas(MenuPrincipal menu)
         {
             InitializeComponent();
             menuPrincipal = menu;
         }
 
-        private void btnMenuPral_Click(object sender, EventArgs e)
+        private void MenuEmpresas_Load(object sender, EventArgs e)
         {
-            this.Hide();
-            menuPrincipal.Show();
-        }
-        private void btnBuscarEditar_Click(object sender, EventArgs e)
-        {
-            new AbmSucursal.filtrarSucursal(this).Show();
-            this.Hide();
+
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            new AbmSucursal.agregarSucursal(this).Show();
+            new AbmEmpresa.agregarEmpresa(this).Show();
+            this.Hide();
+        }
+        private void btnBuscarEditar_Click(object sender, EventArgs e)
+        {
+            new AbmEmpresa.filtrarEmpresa(this).Show();
+            this.Hide();
+        }
+
+        private void btnMenuPral_Click(object sender, EventArgs e)
+        {
+            menuPrincipal.Show();
             this.Hide();
         }
     }

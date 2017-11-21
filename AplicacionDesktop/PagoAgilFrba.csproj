@@ -57,6 +57,30 @@
     <Compile Include="AbmCliente\ListarClientes.Designer.cs">
       <DependentUpon>ListarClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmEmpresa\agregarEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\agregarEmpresa.Designer.cs">
+      <DependentUpon>agregarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\editarEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\editarEmpresa.Designer.cs">
+      <DependentUpon>editarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\filtrarEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\filtrarEmpresa.Designer.cs">
+      <DependentUpon>filtrarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\MenuEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\MenuEmpresas.Designer.cs">
+      <DependentUpon>MenuEmpresas.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmFactura\AltaFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +174,18 @@
     <EmbeddedResource Include="AbmCliente\ListarClientes.resx">
       <DependentUpon>ListarClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\agregarEmpresa.resx">
+      <DependentUpon>agregarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\editarEmpresa.resx">
+      <DependentUpon>editarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\filtrarEmpresa.resx">
+      <DependentUpon>filtrarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\MenuEmpresas.resx">
+      <DependentUpon>MenuEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\AltaFactura.resx">
       <DependentUpon>AltaFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,9 +236,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AbmEmpresa\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
