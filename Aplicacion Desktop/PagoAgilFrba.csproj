@@ -99,6 +99,24 @@
       <DependentUpon>Rol.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AbmSucursal\agregarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\agregarSucursal.Designer.cs">
+      <DependentUpon>agregarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\editarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\editarSucursal.Designer.cs">
+      <DependentUpon>editarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\filtrarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\filtrarSucursal.Designer.cs">
+      <DependentUpon>filtrarSucursal.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmUsuario\RegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +193,15 @@
     <EmbeddedResource Include="AbmRol\Rol.resx">
       <DependentUpon>Rol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\agregarSucursal.resx">
+      <DependentUpon>agregarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\EditarSucursal.resx">
+      <DependentUpon>editarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\filtrarSucursal.resx">
+      <DependentUpon>filtrarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmUsuario\RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,9 +250,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AbmSucursal\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

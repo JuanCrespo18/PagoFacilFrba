@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class editarSucursal : Form
+    public partial class filtrarSucursal : Form
     {
-        public editarSucursal()
+        public filtrarSucursal()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
