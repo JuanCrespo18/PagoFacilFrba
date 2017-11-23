@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.GrupoFiltros = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.codPostal = new System.Windows.Forms.TextBox();
+            this.nombre = new System.Windows.Forms.TextBox();
+            this.direccion = new System.Windows.Forms.TextBox();
             this.nombreSucursal = new System.Windows.Forms.Label();
             this.cpSucursal = new System.Windows.Forms.Label();
             this.dirSucursal = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.bntBuscar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.listaSucursales = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.GrupoFiltros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaSucursales)).BeginInit();
             this.SuspendLayout();
             // 
             // GrupoFiltros
             // 
-            this.GrupoFiltros.Controls.Add(this.textBox5);
-            this.GrupoFiltros.Controls.Add(this.textBox2);
-            this.GrupoFiltros.Controls.Add(this.textBox1);
+            this.GrupoFiltros.Controls.Add(this.codPostal);
+            this.GrupoFiltros.Controls.Add(this.nombre);
+            this.GrupoFiltros.Controls.Add(this.direccion);
             this.GrupoFiltros.Controls.Add(this.nombreSucursal);
             this.GrupoFiltros.Controls.Add(this.cpSucursal);
             this.GrupoFiltros.Controls.Add(this.dirSucursal);
@@ -59,26 +59,26 @@
             this.GrupoFiltros.TabStop = false;
             this.GrupoFiltros.Text = "Filtro Sucursales";
             // 
-            // textBox5
+            // codPostal
             // 
-            this.textBox5.Location = new System.Drawing.Point(127, 85);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(79, 20);
-            this.textBox5.TabIndex = 4;
+            this.codPostal.Location = new System.Drawing.Point(127, 85);
+            this.codPostal.Name = "codPostal";
+            this.codPostal.Size = new System.Drawing.Size(79, 20);
+            this.codPostal.TabIndex = 4;
             // 
-            // textBox2
+            // nombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(127, 23);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(400, 20);
-            this.textBox2.TabIndex = 1;
+            this.nombre.Location = new System.Drawing.Point(127, 23);
+            this.nombre.Name = "nombre";
+            this.nombre.Size = new System.Drawing.Size(400, 20);
+            this.nombre.TabIndex = 1;
             // 
-            // textBox1
+            // direccion
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 20);
-            this.textBox1.TabIndex = 0;
+            this.direccion.Location = new System.Drawing.Point(127, 53);
+            this.direccion.Name = "direccion";
+            this.direccion.Size = new System.Drawing.Size(400, 20);
+            this.direccion.TabIndex = 0;
             // 
             // nombreSucursal
             // 
@@ -118,6 +118,7 @@
             this.btnLimpiar.TabIndex = 9;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // bntBuscar
             // 
@@ -127,14 +128,15 @@
             this.bntBuscar.TabIndex = 10;
             this.bntBuscar.Text = "Buscar";
             this.bntBuscar.UseVisualStyleBackColor = true;
+            this.bntBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dataGridView1
+            // listaSucursales
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 205);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(533, 202);
-            this.dataGridView1.TabIndex = 11;
+            this.listaSucursales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaSucursales.Location = new System.Drawing.Point(12, 205);
+            this.listaSucursales.Name = "listaSucursales";
+            this.listaSucursales.Size = new System.Drawing.Size(533, 202);
+            this.listaSucursales.TabIndex = 11;
             // 
             // btnCancelar
             // 
@@ -163,7 +165,7 @@
             this.ClientSize = new System.Drawing.Size(558, 449);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.listaSucursales);
             this.Controls.Add(this.bntBuscar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.GrupoFiltros);
@@ -171,7 +173,7 @@
             this.Text = "filtrarSucursal";
             this.GrupoFiltros.ResumeLayout(false);
             this.GrupoFiltros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaSucursales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,15 +182,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox GrupoFiltros;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox codPostal;
+        private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.TextBox direccion;
         private System.Windows.Forms.Label nombreSucursal;
         private System.Windows.Forms.Label cpSucursal;
         private System.Windows.Forms.Label dirSucursal;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button bntBuscar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView listaSucursales;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label1;
     }
