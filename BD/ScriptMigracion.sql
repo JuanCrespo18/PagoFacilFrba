@@ -92,8 +92,8 @@ insert into ONEFORALL.CLIENTES
 GO
  
 insert into ONEFORALL.EMPRESAS
-(EMP_CUIT, EMP_NOMBRE, EMP_DIR_ID, EMP_RUB_ID, EMP_ACTIVA)
-	select distinct Empresa_Cuit, Empresa_Nombre, D.DIR_ID, R.RUB_ID, 1 as EMP_ACTIVA
+(EMP_CUIT, EMP_NOMBRE, EMP_DIR_ID, EMP_RUB_ID, EMP_ACTIVA, EMP_FECHA_RENDICION)
+	select distinct Empresa_Cuit, Empresa_Nombre, D.DIR_ID, R.RUB_ID, 1, 10 as EMP_ACTIVA
 	from gd_esquema.Maestra M
 	left join ONEFORALL.DIRECCIONES D 
 		ON M.Empresa_Direccion= D.DIR_DIRECCION
