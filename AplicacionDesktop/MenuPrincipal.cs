@@ -40,5 +40,11 @@ namespace PagoAgilFrba
             new RegistroPago.RegistroPago(this).Show();
             this.Hide();
         }
+
+        private void cmdRendir_Click(object sender, EventArgs e)
+        {
+            new Rendicion.Rendicion(this).Show();
+            this.Hide();
+        }
     }
 }

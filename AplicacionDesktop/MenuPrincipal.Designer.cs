@@ -36,6 +36,7 @@
             this.cmdClientes = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmdPagarFacturas = new System.Windows.Forms.Button();
+            this.cmdRendir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -110,6 +111,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmdRendir);
             this.groupBox2.Controls.Add(this.cmdPagarFacturas);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Location = new System.Drawing.Point(0, 197);
@@ -129,6 +131,17 @@
             this.cmdPagarFacturas.Text = "PAGAR FACTURAS";
             this.cmdPagarFacturas.UseVisualStyleBackColor = true;
             this.cmdPagarFacturas.Click += new System.EventHandler(this.cmdPagarFacturas_Click);
+            // 
+            // cmdRendir
+            // 
+            this.cmdRendir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdRendir.Location = new System.Drawing.Point(168, 19);
+            this.cmdRendir.Name = "cmdRendir";
+            this.cmdRendir.Size = new System.Drawing.Size(150, 47);
+            this.cmdRendir.TabIndex = 10;
+            this.cmdRendir.Text = "RENDIR FACTURAS";
+            this.cmdRendir.UseVisualStyleBackColor = true;
+            this.cmdRendir.Click += new System.EventHandler(this.cmdRendir_Click);
             // 
             // MenuPrincipal
             // 
@@ -155,5 +168,6 @@
         private System.Windows.Forms.Button cmdClientes;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button cmdPagarFacturas;
+        private System.Windows.Forms.Button cmdRendir;
     }
 }
