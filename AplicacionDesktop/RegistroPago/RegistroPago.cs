@@ -92,10 +92,11 @@ namespace PagoAgilFrba.RegistroPago
                         factura.Cells["Total"].Value.ToString().Replace(',', '.'),
                         cboMetodosPago.SelectedItem.ToString(),
                         idCliente,
-                        1, //Buscar usuario desde login.
-                        1); //Buscar sucursal desde login.
+                        1, //TODO: Buscar usuario desde login.
+                        1); //TODO: Buscar sucursal desde login.
                     con.ejecutar();
                 }
+                MessageBox.Show("Pago realizado con éxito", "Devolver facturas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

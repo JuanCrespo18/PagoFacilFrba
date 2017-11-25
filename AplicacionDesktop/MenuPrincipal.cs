@@ -46,5 +46,11 @@ namespace PagoAgilFrba
             new Rendicion.Rendicion(this).Show();
             this.Hide();
         }
+
+        private void cmdDevoluciones_Click(object sender, EventArgs e)
+        {
+            new Devoluciones.Devoluciones(this).Show();
+            this.Hide();
+        }
     }
 }

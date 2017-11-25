@@ -15,7 +15,9 @@ namespace PagoAgilFrba.AbmFactura
         private MenuPrincipal _menuPrincipal;
         private AltaFactura _altaFactura;
         private RegistroPago.RegistroPago _registroPago;
+        private Devoluciones.Devoluciones _devoluciones;
         private char _evento;
+        private char _tipoDev;
 
         public ListarFacturas(MenuPrincipal menuPrincipal)
         {
@@ -32,6 +34,16 @@ namespace PagoAgilFrba.AbmFactura
             CargarEmpresas();
             _registroPago = registroPago;
             _evento = 'P';
+            cmdEditar.Text = "Seleccionar";
+        }
+
+        public ListarFacturas(Devoluciones.Devoluciones devoluciones, char tipoDev)
+        {
+            InitializeComponent();
+            CargarEmpresas();
+            _devoluciones = devoluciones;
+            _evento = 'D';
+            _tipoDev = tipoDev;
             cmdEditar.Text = "Seleccionar";
         }
 
@@ -83,6 +95,14 @@ namespace PagoAgilFrba.AbmFactura
 
             if (_evento == 'P')
                 query += "AND FACT_REND_ID IS NULL AND FACT_PAGO_ID IS NULL AND FACT_ACTIVA = 1 AND EMP_ACTIVA = 1";
+
+            if(_evento == 'D')
+            {
+                if (_tipoDev == 'P')
+                    query += "AND FACT_REND_ID IS NULL AND FACT_PAGO_ID IS NOT NULL";
+                else
+                    query += "AND FACT_REND_ID IS NOT NULL";
+            }
 
             var con = new Conexion()
             {
@@ -136,14 +156,22 @@ namespace PagoAgilFrba.AbmFactura
                     _altaFactura.Show();
                     this.Hide();
                 }
-                else
+                else 
                 {
                     if (dgvFacturas.SelectedRows.Count == 0)
                         throw new Exception("Seleccione una factura en la grilla");
-
-                    _registroPago.CargarFactura(dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
-                    _registroPago.Show();
-                    this.Close();
+                    if (_evento == 'P')
+                    {
+                        _registroPago.CargarFactura(dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
+                        _registroPago.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        _devoluciones.CargarFactura(dgvFacturas.SelectedRows[0].Cells["Numero"].Value.ToString());
+                        _devoluciones.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
