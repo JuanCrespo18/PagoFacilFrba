@@ -4,71 +4,71 @@ USE [GD2C2017]
 -----------------------------------BORRAR TABLAS----------------------------------------
 ----------------------------------------------------------------------------------------
 IF OBJECT_ID ( '[ONEFORALL].[DEVOLUCIONES]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[DEVOLUCIONES]
+	DROP TABLE [ONEFORALL].[DEVOLUCIONES]						------Borra Tabla [DEVOLUCIONES]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[ITEMS]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[ITEMS]
+	DROP TABLE [ONEFORALL].[ITEMS]								------Borra Tabla [ITEMS]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[FACTURAS]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[FACTURAS]
+	DROP TABLE [ONEFORALL].[FACTURAS]							------Borra Tabla [FACTURAS]
 GO
 	
 IF OBJECT_ID ( '[ONEFORALL].[PAGOS]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[PAGOS]
+	DROP TABLE [ONEFORALL].[PAGOS]								------Borra Tabla [PAGOS]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[RENDICIONES]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[RENDICIONES]
+	DROP TABLE [ONEFORALL].[RENDICIONES]						------Borra Tabla [RENDICIONES]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[EMPRESAS]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[EMPRESAS]
+	DROP TABLE [ONEFORALL].[EMPRESAS]						------Borra Tabla [EMPRESAS]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[USUARIO_X_SUCURSAL]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[USUARIO_X_SUCURSAL]
+	DROP TABLE [ONEFORALL].[USUARIO_X_SUCURSAL]				------Borra Tabla [USUARIO_X_SUCURSAL]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[SUCURSALES]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[SUCURSALES]
+	DROP TABLE [ONEFORALL].[SUCURSALES]						------Borra Tabla [SUCURSALES]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[CLIENTES]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[CLIENTES]
+	DROP TABLE [ONEFORALL].[CLIENTES]						------Borra Tabla [CLIENTES]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[RUBROS]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[RUBROS]
+	DROP TABLE [ONEFORALL].[RUBROS]							------Borra Tabla [RUBROS]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[DIRECCIONES]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[DIRECCIONES]
+	DROP TABLE [ONEFORALL].[DIRECCIONES]					------Borra Tabla [DIRECCIONES]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[USUARIO_X_ROL]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[USUARIO_X_ROL]
+	DROP TABLE [ONEFORALL].[USUARIO_X_ROL]					------Borra Tabla [USUARIO_X_ROL]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[USUARIOS]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[USUARIOS]
+	DROP TABLE [ONEFORALL].[USUARIOS]						------Borra Tabla [USUARIOS]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[ROL_X_FUNCIONALIDAD]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[ROL_X_FUNCIONALIDAD]
+	DROP TABLE [ONEFORALL].[ROL_X_FUNCIONALIDAD]			------Borra Tabla [ROL_X_FUNCIONALIDAD]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[FUNCIONALIDADES]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[FUNCIONALIDADES]
+	DROP TABLE [ONEFORALL].[FUNCIONALIDADES]				------Borra Tabla [FUNCIONALIDADES]
 GO
 
 IF OBJECT_ID ( '[ONEFORALL].[ROLES]', 'U' ) IS NOT NULL
-	DROP TABLE [ONEFORALL].[ROLES]
+	DROP TABLE [ONEFORALL].[ROLES]							------Borra Tabla [ROLES]
 GO
 
 ----------------------------------------------------------------------------------------
------------------------------------FUNCIONALIDADES--------------------------------------
+------------------------CREO TABLA FUNCIONALIDADES--------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[FUNCIONALIDADES](
 	[FUNC_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [FUNC_PRIMARY] PRIMARY KEY,
@@ -77,7 +77,7 @@ CREATE TABLE [ONEFORALL].[FUNCIONALIDADES](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------ROLES------------------------------------------------
+--------------------------------CREO TABLA ROLES----------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[ROLES](
 	[ROL_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [ROL_PRIMARY] PRIMARY KEY,
@@ -87,7 +87,7 @@ CREATE TABLE [ONEFORALL].[ROLES](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------ROL_X_FUNCIONALIDAD----------------------------------
+------------------------CREO TABLA ROL_X_FUNCIONALIDAD----------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[ROL_X_FUNCIONALIDAD](
 	[FUNCX_ID] INT NOT NULL CONSTRAINT [FK_RXF_FUNCX_ID] REFERENCES [ONEFORALL].[FUNCIONALIDADES],
@@ -101,7 +101,7 @@ CREATE TABLE [ONEFORALL].[ROL_X_FUNCIONALIDAD](
 GO
 
 ----------------------------------------------------------------------------------------
------------------------------------RUBROS-----------------------------------------------
+----------------------------------CREO TABLA RUBROS-------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[RUBROS](
 	[RUB_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [RUB_PRIMARY] PRIMARY KEY,
@@ -110,7 +110,7 @@ CREATE TABLE [ONEFORALL].[RUBROS](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------DIRECCIONES--------------------------------------------
+-------------------------------CREO TABLA DIRECCIONES-----------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[DIRECCIONES](
 	[DIR_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [DIR_PRIMARY] PRIMARY KEY,
@@ -123,7 +123,7 @@ CREATE TABLE [ONEFORALL].[DIRECCIONES](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------USUARIOS---------------------------------------------
+--------------------------------CREO TABLA USUARIOS-------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[USUARIOS](
 	[USER_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [USER_PRIMARY] PRIMARY KEY,
@@ -135,7 +135,7 @@ CREATE TABLE [ONEFORALL].[USUARIOS](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------USUARIO_X_ROL----------------------------------------
+-----------------------------CREO TABLA USUARIO_X_ROL-----------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[USUARIO_X_ROL](
 	[USERX_ID] INT NOT NULL CONSTRAINT [FK_UXR_USERX_ID] REFERENCES [ONEFORALL].[USUARIOS],
@@ -149,7 +149,7 @@ CREATE TABLE [ONEFORALL].[USUARIO_X_ROL](
 GO
 
 ----------------------------------------------------------------------------------------
------------------------------------CLIENTES---------------------------------------------
+------------------------------CREO TABLA CLIENTES---------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[CLIENTES](
 	[CLIE_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [CLIE_PRIMARY] PRIMARY KEY,
@@ -165,7 +165,7 @@ CREATE TABLE [ONEFORALL].[CLIENTES](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------SUCURSALES-------------------------------------------
+-----------------------------CREO TABLA SUCURSALES--------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[SUCURSALES](
 	[SUC_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [SUC_PRIMARY] PRIMARY KEY,
@@ -175,7 +175,7 @@ CREATE TABLE [ONEFORALL].[SUCURSALES](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------USUARIO_X_SUCURSAL-----------------------------------
+----------------------------CREO TABLA USUARIO_X_SUCURSAL-------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[USUARIO_X_SUCURSAL](
 	[USERX_ID] INT NOT NULL CONSTRAINT [FK_UXS_USERX_ID] REFERENCES [ONEFORALL].[USUARIOS],
@@ -189,7 +189,7 @@ CREATE TABLE [ONEFORALL].[USUARIO_X_SUCURSAL](
 GO
 
 ----------------------------------------------------------------------------------------
------------------------------------EMPRESAS---------------------------------------------
+-----------------------------CREO TABLA EMPRESAS----------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[EMPRESAS](
 	[EMP_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [EMP_PRIMARY] PRIMARY KEY,
@@ -202,7 +202,7 @@ CREATE TABLE [ONEFORALL].[EMPRESAS](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------RENDICIONES------------------------------------------
+-----------------------------CREO TABLA RENDICIONES-------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[RENDICIONES](
 	[REND_ID] NUMERIC(18,0) IDENTITY(1,1) NOT NULL CONSTRAINT [REND_PRIMARY] PRIMARY KEY,
@@ -214,7 +214,7 @@ CREATE TABLE [ONEFORALL].[RENDICIONES](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------PAGOS------------------------------------------------
+--------------------------------CREO TABLA PAGOS----------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[PAGOS](
 	[PAGO_ID] NUMERIC(18,0) IDENTITY(1,1) NOT NULL CONSTRAINT [PAGO_PRIMARY] PRIMARY KEY,
@@ -228,7 +228,7 @@ CREATE TABLE [ONEFORALL].[PAGOS](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------FACTURAS---------------------------------------------
+-------------------------------CREO TABLA FACTURAS--------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[FACTURAS](
 	[FACT_ID] NUMERIC(18,0) NOT NULL CONSTRAINT [FACT_PRIMARY] PRIMARY KEY,
@@ -244,7 +244,7 @@ CREATE TABLE [ONEFORALL].[FACTURAS](
 GO	
 
 ----------------------------------------------------------------------------------------
------------------------------------ITEMS------------------------------------------------
+-----------------------------------CREO TABLA ITEMS-------------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[ITEMS](
 	[ITEM_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [ITEM_PRIMARY] PRIMARY KEY,
@@ -255,7 +255,7 @@ CREATE TABLE [ONEFORALL].[ITEMS](
 GO
 
 ----------------------------------------------------------------------------------------
------------------------------------DEVOLUCIONES-----------------------------------------
+---------------------------------CREO TABLA DEVOLUCIONES--------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[DEVOLUCIONES](
 	[DEV_FACT_ID] NUMERIC(18,0) IDENTITY(1,1) NOT NULL CONSTRAINT [DEV_PRIMARY] PRIMARY KEY CONSTRAINT FK_DEV_FACT_ID REFERENCES [ONEFORALL].[FACTURAS],
@@ -267,14 +267,19 @@ CREATE TABLE [ONEFORALL].[DEVOLUCIONES](
 GO	
 
 ----------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------
+-----------------------------------FIN CREACION TABLAS----------------------------------
 ----------------------------------------------------------------------------------------
 
-
+----------------------------------------------------------------------------------------
+---------------------------------Borro VISTALISTARFACTURAS si existe--------------------
+----------------------------------------------------------------------------------------
 IF OBJECT_ID ( '[ONEFORALL].[VISTALISTARFACTURAS]', 'V' ) IS NOT NULL
 	DROP VIEW [ONEFORALL].VISTALISTARFACTURAS
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CREO VISTA VISTALISTARFACTURAS ------------------------
+----------------------------------------------------------------------------------------
 CREATE VIEW [ONEFORALL].[VISTALISTARFACTURAS]
 AS
 SELECT        ONEFORALL.FACTURAS.FACT_ID, ONEFORALL.CLIENTES.CLIE_NOMBRE + N' ' + ONEFORALL.CLIENTES.CLIE_APELLIDO AS FACT_CLIE, ONEFORALL.EMPRESAS.EMP_NOMBRE AS FACT_EMP, 
@@ -284,10 +289,16 @@ FROM            ONEFORALL.CLIENTES INNER JOIN
                          ONEFORALL.EMPRESAS ON ONEFORALL.FACTURAS.FACT_EMP_ID = ONEFORALL.EMPRESAS.EMP_ID
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------Borro VW_SUCURSALES si existe--------------------------
+----------------------------------------------------------------------------------------
 IF OBJECT_ID ( '[ONEFORALL].[VW_SUCURSALES]', 'V' ) IS NOT NULL
-	DROP VIEW [ONEFORALL].VISTALISTARFACTURAS
+	DROP VIEW [ONEFORALL].VW_SUCURSALES
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CREO VISTA [VW_SUCURSALES] ----------------------------
+----------------------------------------------------------------------------------------
 CREATE VIEW [ONEFORALL].[VW_SUCURSALES] 
 	AS 
 	SELECT s.SUC_NOMBRE AS NOMBRE,d.DIR_DIRECCION AS DIRECCION,d.DIR_CODIGO_POSTAL AS CP,d.DIR_LOCALIDAD AS LOCALIDAD
@@ -295,68 +306,76 @@ CREATE VIEW [ONEFORALL].[VW_SUCURSALES]
 	ON s.SUC_DIR_ID = d.DIR_ID
 go
 
-DELETE FROM ONEFORALL.ROL_X_FUNCIONALIDAD
+DELETE FROM ONEFORALL.ROL_X_FUNCIONALIDAD	----VACIO TABLA ROL_X_FUNCIONALIDAD
 GO
-DELETE FROM ONEFORALL.FUNCIONALIDADES
+DELETE FROM ONEFORALL.FUNCIONALIDADES		----VACIO TABLA FUNCIONALIDADES
 GO
-DELETE FROM ONEFORALL.USUARIO_X_ROL
+DELETE FROM ONEFORALL.USUARIO_X_ROL			----VACIO TABLA USUARIO_X_ROL
 GO
-DELETE FROM ONEFORALL.ROLES
+DELETE FROM ONEFORALL.ROLES					----VACIO TABLA ROLES
 GO
-DELETE FROM ONEFORALL.ITEMS
+DELETE FROM ONEFORALL.ITEMS					----VACIO TABLA ITEMS
 GO
-DELETE FROM ONEFORALL.FACTURAS
+DELETE FROM ONEFORALL.FACTURAS				----VACIO TABLA FACTURAS
 GO
-delete from ONEFORALL.PAGOS
+delete from ONEFORALL.PAGOS					----VACIO TABLA PAGOS
 GO
-delete from ONEFORALL.USUARIOS
+delete from ONEFORALL.USUARIOS				----VACIO TABLA USUARIOS
 GO
-delete from ONEFORALL.Rendiciones 
+delete from ONEFORALL.Rendiciones			----VACIO TABLA Rendiciones
 GO
-delete from ONEFORALL.EMPRESAS 
+delete from ONEFORALL.EMPRESAS				----VACIO TABLA EMPRESAS
 GO
-delete from ONEFORALL.CLIENTES 
+delete from ONEFORALL.CLIENTES				----VACIO TABLA CLIENTES
 GO
-delete from ONEFORALL.SUCURSALES 
+delete from ONEFORALL.SUCURSALES			----VACIO TABLA SUCURSALES
 GO
-delete from ONEFORALL.RUBROS 
+delete from ONEFORALL.RUBROS				----VACIO TABLA RUBROS
 GO
-delete from ONEFORALL.DIRECCIONES 
+delete from ONEFORALL.DIRECCIONES			----VACIO TABLA DIRECCIONES
 GO
 
-DBCC CHECKIDENT('ONEFORALL.FUNCIONALIDADES', RESEED, 0);
+DBCC CHECKIDENT('ONEFORALL.FUNCIONALIDADES', RESEED,1);		----RESETEA IDENTITY FUNCIONALIDADES
 GO
-DBCC CHECKIDENT('ONEFORALL.ROLES', RESEED, 0);
+DBCC CHECKIDENT('ONEFORALL.ROLES', RESEED,1);				----RESETEA IDENTITY ROLES
 GO
-DBCC CHECKIDENT('ONEFORALL.ITEMS', RESEED, 0);
+DBCC CHECKIDENT('ONEFORALL.ITEMS', RESEED,1);				----RESETEA IDENTITY ITEMS
 GO
-DBCC CHECKIDENT ('ONEFORALL.PAGOS', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.PAGOS', RESEED,1);				----RESETEA IDENTITY PAGOS
 GO
-DBCC CHECKIDENT ('ONEFORALL.USUARIOS', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.USUARIOS', RESEED,1);			----RESETEA IDENTITY USUARIOS
 GO
-DBCC CHECKIDENT ('ONEFORALL.RENDICIONES', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.RENDICIONES', RESEED,1);		----RESETEA IDENTITY RENDICIONES
 GO	
-DBCC CHECKIDENT ('ONEFORALL.EMPRESAS', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.EMPRESAS', RESEED,1);			----RESETEA IDENTITY EMPRESAS
 GO
-DBCC CHECKIDENT ('ONEFORALL.CLIENTES', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.CLIENTES', RESEED,1);			----RESETEA IDENTITY CLIENTES
 GO
-DBCC CHECKIDENT ('ONEFORALL.SUCURSALES', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.SUCURSALES', RESEED,1);			----RESETEA IDENTITY SUCURSALES
 GO
-DBCC CHECKIDENT ('ONEFORALL.RUBROS', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.RUBROS', RESEED,1);				----RESETEA IDENTITY RUBROS
 GO
-DBCC CHECKIDENT ('ONEFORALL.DIRECCIONES', RESEED, 0);
+DBCC CHECKIDENT ('ONEFORALL.DIRECCIONES', RESEED,1);		----RESETEA IDENTITY DIRECCIONES
 GO
 
-
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [DIRECCIONES]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.DIRECCIONES
 (DIR_DIRECCION, DIR_CODIGO_POSTAL, DIR_LOCALIDAD)
 	select distinct Cliente_Direccion, Cliente_Codigo_Postal,  'CABA'
 	from gd_esquema.Maestra
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [DIRECCIONES]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.DIRECCIONES
 select distinct Empresa_Direccion,1702 as CP, NULL, NULL, 'CABA' from gd_esquema.Maestra
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [DIRECCIONES]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.DIRECCIONES
 (DIR_DIRECCION, DIR_CODIGO_POSTAL, DIR_LOCALIDAD)
 	select distinct Sucursal_Dirección, Sucursal_Codigo_Postal, 'CABA'
@@ -364,12 +383,18 @@ insert into ONEFORALL.DIRECCIONES
 	where Sucursal_Codigo_Postal is not null
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [RUBROS]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.RUBROS
 (RUB_DESCRIPCION)
 	select distinct Rubro_descripcion
 	from gd_esquema.Maestra
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [SUCURSALES]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.SUCURSALES
 (SUC_NOMBRE, SUC_DIR_ID)
 	select distinct Sucursal_Nombre, D.DIR_ID
@@ -379,6 +404,9 @@ insert into ONEFORALL.SUCURSALES
 	where Sucursal_Nombre is not null
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [CLIENTES]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.CLIENTES
 (CLIE_DNI, CLIE_APELLIDO, CLIE_NOMBRE, CLIE_FECHA_NACIMIENTO, CLIE_MAIL, CLIE_DIR_ID, CLIE_ACTIVO)
 	select distinct [Cliente-Dni], [Cliente-Apellido], [Cliente-Nombre], CAST([Cliente-Fecha_Nac] as DATE), Cliente_Mail,D.DIR_ID, 1
@@ -387,7 +415,10 @@ insert into ONEFORALL.CLIENTES
 		ON M.Cliente_Direccion= D.DIR_DIRECCION
 		AND D.DIR_CODIGO_POSTAL = M.Cliente_Codigo_Postal
 GO
- 
+
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [EMPRESAS]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.EMPRESAS
 (EMP_CUIT, EMP_NOMBRE, EMP_DIR_ID, EMP_RUB_ID, EMP_ACTIVA)
 	select distinct Empresa_Cuit, Empresa_Nombre, D.DIR_ID, R.RUB_ID, 1 as EMP_ACTIVA
@@ -398,6 +429,9 @@ insert into ONEFORALL.EMPRESAS
 		ON M.Rubro_Descripcion = R.RUB_DESCRIPCION
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [RENDICIONES]------------------------------
+----------------------------------------------------------------------------------------
 set identity_insert ONEFORALL.RENDICIONES on
 insert into ONEFORALL.RENDICIONES
 (REND_ID, REND_FECHA, REND_EMP_ID, REND_TOTAL_RENDICION, REND_PORCENTAJE_COMISION)
@@ -413,19 +447,31 @@ insert into ONEFORALL.RENDICIONES
 set identity_insert ONEFORALL.RENDICIONES off
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [USUARIOS]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.USUARIOS
 (USER_USUARIO, USER_PASSWORD, USER_ACTIVO, USER_INTENTOS)
 values('admin', 'w23e', 1, 0)
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [ROLES]------------------------------
+----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.ROLES
 (ROL_NOMBRE, ROL_ACTIVO)
 VALUES ('Administrador', 1), ('Cobrador', 1)
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [USUARIO_X_ROL]------------------------------
+----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.USUARIO_X_ROL
 (USERX_ID, ROLX_ID)
-VALUES (0,0)
+VALUES (1,1)
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [PAGOS]------------------------------
+----------------------------------------------------------------------------------------
 set identity_insert ONEFORALL.PAGOS on
 insert into ONEFORALL.PAGOS
 (PAGO_ID, PAGO_FECHA_PAGO, PAGO_CLIE_ID, PAGO_USER_ID, PAGO_FORMA_PAGO, PAGO_SUC_ID, PAGO_TOTAL)
@@ -437,6 +483,9 @@ insert into ONEFORALL.PAGOS
 set identity_insert ONEFORALL.PAGOS off
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [FACTURAS]------------------------------
+----------------------------------------------------------------------------------------
 insert into ONEFORALL.FACTURAS
 (FACT_ID, FACT_ALTA, FACT_VENCIMIENTO, FACT_CLIE_ID, FACT_REND_ID, FACT_PAGO_ID, FACT_TOTAL, FACT_EMP_ID, FACT_ACTIVA)
 	select distinct Nro_Factura, Factura_Fecha, Factura_Fecha_Vencimiento, C.CLIE_ID, MAX(Rendicion_Nro), MAX(Pago_nro), Factura_Total, E.EMP_ID, 1
@@ -447,16 +496,25 @@ insert into ONEFORALL.FACTURAS
 	ORDER BY 1 ASC
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [ITEMS]------------------------------
+----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.ITEMS
 (ITEM_FACT_ID, ITEM_CANTIDAD, ITEM_MONTO)
 	SELECT DISTINCT Nro_Factura, ItemFactura_Cantidad, ItemFactura_Monto FROM gd_esquema.Maestra
 	ORDER BY 1 ASC
 GO
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [FUNCIONALIDADES]------------------------------
+----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.FUNCIONALIDADES
 (FUNC_DESCRIPCION)
 VALUES ('Administrar'), ('Cobrar')
 
+----------------------------------------------------------------------------------------
+---------------------------------CARGO TABLA [ROL_X_FUNCIONALIDAD]------------------------------
+----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.ROL_X_FUNCIONALIDAD
 (ROLX_ID, FUNCX_ID)
-VALUES (0,0), (1,1)
+VALUES (1,1), (2,2)
