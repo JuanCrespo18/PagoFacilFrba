@@ -53,7 +53,7 @@ namespace PagoAgilFrba.Rendicion
                 "INNER JOIN ONEFORALL.PAGOS P ON F.FACT_PAGO_ID = P.PAGO_ID " +
                 "INNER JOIN ONEFORALL.EMPRESAS E ON E.EMP_ID = {2}" +
                 "WHERE FACT_REND_ID IS NULL AND " +
-                "PAGO_FECHA_PAGO > '{1}'", cboEmpresas.SelectedItem.ToString(), "2017-04-01" /*string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day)*/, _idEmpresa);
+                "PAGO_FECHA_PAGO > '{1}'", cboEmpresas.SelectedItem.ToString(), string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day), _idEmpresa);
             con.leer();
             if (!con.leerReader())
             {
@@ -76,25 +76,41 @@ namespace PagoAgilFrba.Rendicion
 
         private void cmdRendir_Click(object sender, EventArgs e)
         {
-            var con = new Conexion();
-
-            foreach (DataGridViewRow factura in dgvFacturas.Rows)
+            try
             {
-                con.query = string.Format("INSERT INTO ONEFORALL.RENDICIONES VALUES ({0}, {1}, {2}, '{3}')",
-                    _idEmpresa,
-                    ((decimal)factura.Cells["Total"].Value * _porcentajeComision / 100).ToString().Replace(',', '.'),
-                    _porcentajeComision,
-                    DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                con.ejecutar();
+                var con = new Conexion();
 
-                con.query = string.Format("UPDATE ONEFORALL.FACTURAS SET FACT_REND_ID = (SELECT MAX(REND_ID) FROM ONEFORALL.RENDICIONES) " +
-                    "WHERE FACT_ID = {0}", factura.Cells["Numero"].Value.ToString());
-                con.ejecutar();
+                con.query = string.Format("SELECT EMP_FECHA_RENDICION FROM ONEFORALL.EMPRESAS WHERE EMP_ID = {0}", _idEmpresa);
+                con.leer();
+                con.leerReader();
+                int fechaRendicion = con.lector.GetInt32(0);
+                con.cerrarConexion();
+
+                if (fechaRendicion != DateTime.Now.Day)
+                    throw new Exception(string.Format("La empresa seleccionada tiene configurado el día {0} del mes para hacer las rendiciones.", fechaRendicion));
+
+                foreach (DataGridViewRow factura in dgvFacturas.Rows)
+                {
+                    con.query = string.Format("INSERT INTO ONEFORALL.RENDICIONES VALUES ({0}, {1}, {2}, '{3}')",
+                        _idEmpresa,
+                        ((decimal)factura.Cells["Total"].Value * _porcentajeComision / 100).ToString().Replace(',', '.'),
+                        _porcentajeComision,
+                        DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    con.ejecutar();
+
+                    con.query = string.Format("UPDATE ONEFORALL.FACTURAS SET FACT_REND_ID = (SELECT MAX(REND_ID) FROM ONEFORALL.RENDICIONES) " +
+                        "WHERE FACT_ID = {0}", factura.Cells["Numero"].Value.ToString());
+                    con.ejecutar();
+                }
+
+                cboEmpresas.SelectedIndex = -1;
+                dgvFacturas.Rows.Clear();
+                _idEmpresa = 0;
             }
-
-            cboEmpresas.SelectedIndex = -1;
-            dgvFacturas.Rows.Clear();
-            _idEmpresa = 0;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cmdMenu_Click(object sender, EventArgs e)
