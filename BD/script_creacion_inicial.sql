@@ -370,7 +370,7 @@ GO
 ----------------------------------------------------------------------------------------
 insert into ONEFORALL.SUCURSALES
 (SUC_NOMBRE, SUC_DIR_ID,SUC_HABILITADA)
-	select distinct Sucursal_Nombre, D.DIR_ID,0
+	select distinct Sucursal_Nombre, D.DIR_ID,1
 	from gd_esquema.Maestra M 
 	left join ONEFORALL.DIRECCIONES D 
 		ON M.Sucursal_Dirección= D.DIR_DIRECCION
