@@ -34,6 +34,8 @@
             this.pisoSucursal = new System.Windows.Forms.Label();
             this.dptoSucursal = new System.Windows.Forms.Label();
             this.GrupoDatos = new System.Windows.Forms.GroupBox();
+            this.campoLocalidad = new System.Windows.Forms.TextBox();
+            this.localidad = new System.Windows.Forms.Label();
             this.codPostal = new System.Windows.Forms.TextBox();
             this.piso = new System.Windows.Forms.TextBox();
             this.departamento = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.localidad = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.GrupoDatos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +99,7 @@
             // 
             // GrupoDatos
             // 
-            this.GrupoDatos.Controls.Add(this.textBox1);
+            this.GrupoDatos.Controls.Add(this.campoLocalidad);
             this.GrupoDatos.Controls.Add(this.localidad);
             this.GrupoDatos.Controls.Add(this.codPostal);
             this.GrupoDatos.Controls.Add(this.piso);
@@ -117,6 +117,24 @@
             this.GrupoDatos.TabIndex = 7;
             this.GrupoDatos.TabStop = false;
             this.GrupoDatos.Text = "Datos Sucursal";
+            // 
+            // campoLocalidad
+            // 
+            this.campoLocalidad.Location = new System.Drawing.Point(127, 118);
+            this.campoLocalidad.Name = "campoLocalidad";
+            this.campoLocalidad.Size = new System.Drawing.Size(400, 20);
+            this.campoLocalidad.TabIndex = 7;
+            this.campoLocalidad.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // localidad
+            // 
+            this.localidad.AutoSize = true;
+            this.localidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.localidad.Location = new System.Drawing.Point(15, 121);
+            this.localidad.Name = "localidad";
+            this.localidad.Size = new System.Drawing.Size(76, 16);
+            this.localidad.TabIndex = 6;
+            this.localidad.Text = "Localidad *";
             // 
             // codPostal
             // 
@@ -171,6 +189,7 @@
             this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label1
             // 
@@ -180,23 +199,6 @@
             this.label1.Size = new System.Drawing.Size(120, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Campos obligatorios ( * )";
-            // 
-            // localidad
-            // 
-            this.localidad.AutoSize = true;
-            this.localidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.localidad.Location = new System.Drawing.Point(15, 121);
-            this.localidad.Name = "localidad";
-            this.localidad.Size = new System.Drawing.Size(76, 16);
-            this.localidad.TabIndex = 6;
-            this.localidad.Text = "Localidad *";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(127, 118);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 20);
-            this.textBox1.TabIndex = 7;
             // 
             // agregarSucursal
             // 
@@ -231,7 +233,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox campoLocalidad;
         private System.Windows.Forms.Label localidad;
     }
 }

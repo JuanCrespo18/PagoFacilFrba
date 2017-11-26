@@ -32,43 +32,47 @@
             this.bntCancelar = new System.Windows.Forms.Button();
             this.checkHabilitado = new System.Windows.Forms.CheckBox();
             this.GrupoDatos = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.codPostal = new System.Windows.Forms.TextBox();
+            this.piso = new System.Windows.Forms.TextBox();
+            this.departamento = new System.Windows.Forms.TextBox();
+            this.nombre = new System.Windows.Forms.TextBox();
             this.dptoSucursal = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.direccion = new System.Windows.Forms.TextBox();
             this.pisoSucursal = new System.Windows.Forms.Label();
             this.nombreSucursal = new System.Windows.Forms.Label();
             this.cpSucursal = new System.Windows.Forms.Label();
             this.dirSucursal = new System.Windows.Forms.Label();
+            this.localidad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.GrupoDatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAceptar
             // 
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.btnAceptar.Location = new System.Drawing.Point(445, 158);
+            this.btnAceptar.Location = new System.Drawing.Point(445, 187);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(100, 33);
             this.btnAceptar.TabIndex = 5;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // bntCancelar
             // 
             this.bntCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCancelar.Location = new System.Drawing.Point(302, 158);
+            this.bntCancelar.Location = new System.Drawing.Point(306, 187);
             this.bntCancelar.Name = "bntCancelar";
             this.bntCancelar.Size = new System.Drawing.Size(104, 33);
             this.bntCancelar.TabIndex = 6;
             this.bntCancelar.Text = "Cancelar";
             this.bntCancelar.UseVisualStyleBackColor = true;
+            this.bntCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // checkHabilitado
             // 
             this.checkHabilitado.AutoSize = true;
-            this.checkHabilitado.Location = new System.Drawing.Point(12, 149);
+            this.checkHabilitado.Location = new System.Drawing.Point(13, 172);
             this.checkHabilitado.Name = "checkHabilitado";
             this.checkHabilitado.Size = new System.Drawing.Size(71, 17);
             this.checkHabilitado.TabIndex = 7;
@@ -77,50 +81,52 @@
             // 
             // GrupoDatos
             // 
-            this.GrupoDatos.Controls.Add(this.textBox5);
-            this.GrupoDatos.Controls.Add(this.textBox4);
-            this.GrupoDatos.Controls.Add(this.textBox3);
-            this.GrupoDatos.Controls.Add(this.textBox2);
+            this.GrupoDatos.Controls.Add(this.label1);
+            this.GrupoDatos.Controls.Add(this.localidad);
+            this.GrupoDatos.Controls.Add(this.codPostal);
+            this.GrupoDatos.Controls.Add(this.piso);
+            this.GrupoDatos.Controls.Add(this.departamento);
+            this.GrupoDatos.Controls.Add(this.nombre);
             this.GrupoDatos.Controls.Add(this.dptoSucursal);
-            this.GrupoDatos.Controls.Add(this.textBox1);
+            this.GrupoDatos.Controls.Add(this.direccion);
             this.GrupoDatos.Controls.Add(this.pisoSucursal);
             this.GrupoDatos.Controls.Add(this.nombreSucursal);
             this.GrupoDatos.Controls.Add(this.cpSucursal);
             this.GrupoDatos.Controls.Add(this.dirSucursal);
             this.GrupoDatos.Location = new System.Drawing.Point(12, 12);
             this.GrupoDatos.Name = "GrupoDatos";
-            this.GrupoDatos.Size = new System.Drawing.Size(533, 131);
+            this.GrupoDatos.Size = new System.Drawing.Size(533, 154);
             this.GrupoDatos.TabIndex = 8;
             this.GrupoDatos.TabStop = false;
             this.GrupoDatos.Text = "Datos Sucursal";
             // 
-            // textBox5
+            // codPostal
             // 
-            this.textBox5.Location = new System.Drawing.Point(127, 85);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(79, 20);
-            this.textBox5.TabIndex = 4;
+            this.codPostal.Location = new System.Drawing.Point(127, 85);
+            this.codPostal.Name = "codPostal";
+            this.codPostal.Size = new System.Drawing.Size(79, 20);
+            this.codPostal.TabIndex = 4;
             // 
-            // textBox4
+            // piso
             // 
-            this.textBox4.Location = new System.Drawing.Point(265, 85);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(79, 20);
-            this.textBox4.TabIndex = 3;
+            this.piso.Location = new System.Drawing.Point(265, 85);
+            this.piso.Name = "piso";
+            this.piso.Size = new System.Drawing.Size(79, 20);
+            this.piso.TabIndex = 3;
             // 
-            // textBox3
+            // departamento
             // 
-            this.textBox3.Location = new System.Drawing.Point(455, 85);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(72, 20);
-            this.textBox3.TabIndex = 2;
+            this.departamento.Location = new System.Drawing.Point(455, 85);
+            this.departamento.Name = "departamento";
+            this.departamento.Size = new System.Drawing.Size(72, 20);
+            this.departamento.TabIndex = 2;
             // 
-            // textBox2
+            // nombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(127, 23);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(400, 20);
-            this.textBox2.TabIndex = 1;
+            this.nombre.Location = new System.Drawing.Point(127, 23);
+            this.nombre.Name = "nombre";
+            this.nombre.Size = new System.Drawing.Size(400, 20);
+            this.nombre.TabIndex = 1;
             // 
             // dptoSucursal
             // 
@@ -132,12 +138,12 @@
             this.dptoSucursal.TabIndex = 5;
             this.dptoSucursal.Text = "Departamento";
             // 
-            // textBox1
+            // direccion
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 20);
-            this.textBox1.TabIndex = 0;
+            this.direccion.Location = new System.Drawing.Point(127, 53);
+            this.direccion.Name = "direccion";
+            this.direccion.Size = new System.Drawing.Size(400, 20);
+            this.direccion.TabIndex = 0;
             // 
             // pisoSucursal
             // 
@@ -179,11 +185,28 @@
             this.dirSucursal.TabIndex = 2;
             this.dirSucursal.Text = "Direccion";
             // 
+            // localidad
+            // 
+            this.localidad.Location = new System.Drawing.Point(127, 117);
+            this.localidad.Name = "localidad";
+            this.localidad.Size = new System.Drawing.Size(400, 20);
+            this.localidad.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 118);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 16);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Localidad";
+            // 
             // editarSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 201);
+            this.ClientSize = new System.Drawing.Size(557, 232);
             this.Controls.Add(this.GrupoDatos);
             this.Controls.Add(this.checkHabilitado);
             this.Controls.Add(this.bntCancelar);
@@ -203,15 +226,17 @@
         private System.Windows.Forms.Button bntCancelar;
         private System.Windows.Forms.CheckBox checkHabilitado;
         private System.Windows.Forms.GroupBox GrupoDatos;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox codPostal;
+        private System.Windows.Forms.TextBox piso;
+        private System.Windows.Forms.TextBox departamento;
+        private System.Windows.Forms.TextBox nombre;
         private System.Windows.Forms.Label dptoSucursal;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox direccion;
         private System.Windows.Forms.Label pisoSucursal;
         private System.Windows.Forms.Label nombreSucursal;
         private System.Windows.Forms.Label cpSucursal;
         private System.Windows.Forms.Label dirSucursal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox localidad;
     }
 }

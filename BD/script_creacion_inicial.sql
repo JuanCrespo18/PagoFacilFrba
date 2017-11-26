@@ -1,5 +1,5 @@
 USE [GD2C2017]
-
+go
 ----------------------------------------------------------------------------------------
 -----------------------------------BORRAR TABLAS----------------------------------------
 ----------------------------------------------------------------------------------------
@@ -171,6 +171,7 @@ CREATE TABLE [ONEFORALL].[SUCURSALES](
 	[SUC_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [SUC_PRIMARY] PRIMARY KEY,
 	[SUC_DIR_ID] INT NOT NULL CONSTRAINT FK_SUC_DIR_ID REFERENCES [ONEFORALL].[DIRECCIONES],
 	[SUC_NOMBRE] NVARCHAR(45) NOT NULL
+	[SUC_HABILITADA] BIT NOT NULL
 )
 GO	
 
@@ -301,7 +302,7 @@ GO
 ----------------------------------------------------------------------------------------
 CREATE VIEW [ONEFORALL].[VW_SUCURSALES] 
 	AS 
-	SELECT s.SUC_NOMBRE AS NOMBRE,d.DIR_DIRECCION AS DIRECCION,d.DIR_CODIGO_POSTAL AS CP,d.DIR_LOCALIDAD AS LOCALIDAD
+	SELECT s.SUC_ID as ID, s.SUC_NOMBRE AS NOMBRE,d.DIR_DIRECCION AS DIRECCION,d.DIR_CODIGO_POSTAL AS CP, d.DIR_PISO AS PISO, d.DIR_DEPARTAMENTO AS DEPARTAMENTO,d.DIR_LOCALIDAD AS LOCALIDAD
 	FROM ONEFORALL.SUCURSALES s join ONEFORALL.DIRECCIONES d 
 	ON s.SUC_DIR_ID = d.DIR_ID
 go
