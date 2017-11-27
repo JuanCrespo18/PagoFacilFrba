@@ -31,6 +31,9 @@
             this.dgvReporte = new System.Windows.Forms.DataGridView();
             this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReporte)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,12 +48,12 @@
             this.dgvReporte.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Empresa,
             this.Porcentaje});
-            this.dgvReporte.Location = new System.Drawing.Point(27, 32);
+            this.dgvReporte.Location = new System.Drawing.Point(17, 91);
             this.dgvReporte.MultiSelect = false;
             this.dgvReporte.Name = "dgvReporte";
             this.dgvReporte.ReadOnly = true;
             this.dgvReporte.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReporte.Size = new System.Drawing.Size(204, 255);
+            this.dgvReporte.Size = new System.Drawing.Size(205, 167);
             this.dgvReporte.TabIndex = 35;
             this.dgvReporte.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReporte_1);
             // 
@@ -68,17 +71,53 @@
             this.Porcentaje.ReadOnly = true;
             this.Porcentaje.Width = 83;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(196, 24);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Porcentaje de facturas";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(200, 24);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "cobradas por empresa";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(93, 264);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(129, 32);
+            this.btnCancelar.TabIndex = 38;
+            this.btnCancelar.Text = "Atras";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // Reporte1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(243, 341);
+            this.ClientSize = new System.Drawing.Size(237, 329);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvReporte);
             this.Name = "Reporte1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Reporte1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReporte)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -87,5 +126,8 @@
         private System.Windows.Forms.DataGridView dgvReporte;
         private System.Windows.Forms.DataGridViewTextBoxColumn Empresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
