@@ -224,7 +224,7 @@ namespace PagoAgilFrba.AbmEmpresa
             return consulta;
         }
         
-        public override string errorCampos()
+        public  string errorCampos()
         {    // Validacion de campos
             String errores = null;
             int asd;
@@ -240,7 +240,7 @@ namespace PagoAgilFrba.AbmEmpresa
             return errores;
         }
 
-        public override void limpiar()
+        public void limpiar()
         {
             razonSocial.Clear();
             cuit.Clear();

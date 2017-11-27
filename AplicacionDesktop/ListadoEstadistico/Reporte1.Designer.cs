@@ -33,7 +33,7 @@
             this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.cmdMenuEstadisticas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReporte)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,22 +93,22 @@
             this.label2.Text = "cobradas por empresa";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // btnCancelar
+            // cmdMenuEstadisticas
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(93, 264);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(129, 32);
-            this.btnCancelar.TabIndex = 38;
-            this.btnCancelar.Text = "Atras";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.cmdMenuEstadisticas.Location = new System.Drawing.Point(12, 264);
+            this.cmdMenuEstadisticas.Name = "cmdMenuEstadisticas";
+            this.cmdMenuEstadisticas.Size = new System.Drawing.Size(136, 42);
+            this.cmdMenuEstadisticas.TabIndex = 39;
+            this.cmdMenuEstadisticas.Text = "Menu Estadisticas";
+            this.cmdMenuEstadisticas.UseVisualStyleBackColor = true;
+            this.cmdMenuEstadisticas.Click += new System.EventHandler(this.cmdMenuEstadisticas_Click);
             // 
             // Reporte1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(237, 329);
-            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.cmdMenuEstadisticas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvReporte);
@@ -128,6 +128,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button cmdMenuEstadisticas;
     }
 }

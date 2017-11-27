@@ -13,43 +13,41 @@ namespace PagoAgilFrba.ListadoEstadistico
 
     public partial class Reporte1 : Form
     {
-        private MenuListadoEstadistico menuListadoEstadistico;
+        private MenuListadoEstadistico _menuListadoEstadistico;
+        private string _anio;
+        private string _trimestre;
 
-        public Reporte1(MenuListadoEstadistico menuEstadistico)
+        public Reporte1(MenuListadoEstadistico menuListadoEstadistico, string anio, string trimestre)
         {
             InitializeComponent();
-            menuListadoEstadistico = menuEstadistico;
-            Correr_Reporte();
-            
+            _menuListadoEstadistico = menuListadoEstadistico;
+            _anio = anio;
+            _trimestre = trimestre;
+            CargarReporte();
         }
 
-        private void Correr_Reporte()
+        private void CargarReporte()
         {
-            dgvReporte.Rows.Clear();
-            string query = "select b.EMP_NOMBRE	,count(FACT_EMP_ID)/(select count(1)from ONEFORALL.FACTURAS)*100 as Porcentaje from ONEFORALL.FACTURAS";
-            query += "join ONEFORALL.EMPRESAS b on FACT_EMP_ID=EMP_ID";
-            query += "group by b.EMP_NOMBRE";
-            var con = new Conexion()
-            {
-                query = query
-            };
+            var con = new Conexion();
+            con.query = string.Format("select b.EMP_NOMBRE, count(FACT_EMP_ID)/(select count(1)from ONEFORALL.FACTURAS a WHERE FACT_PAGO_ID in (Select PAGO_ID from ONEFORALL.PAGOS " +
+                "WHERE YEAR(PAGO_FECHA_PAGO) = {0} and MONTH(PAGO_FECHA_PAGO)/4 = ({1}-1) ))*100 as Porcentaje from ONEFORALL.FACTURAS "+
+                "join ONEFORALL.EMPRESAS b on FACT_EMP_ID=EMP_ID " +
+                "join ONEFORALL.PAGOS c on FACT_PAGO_ID = PAGO_ID "+
+                "WHERE YEAR(PAGO_FECHA_PAGO) = {0} " +
+                "AND MONTH(PAGO_FECHA_PAGO)/4 = ({1} - 1) " +
+                "GROUP BY b.EMP_NOMBRE " +
+                "ORDER BY 2", _anio, _trimestre);
+
             con.leer();
-            //if (!con.leerReader())
-            //{
-            //    MessageBox.Show("La busqueda no produjo ningún resultado", "Fecha no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //}
-            //else
-            //{
-            dgvReporte.Rows.Add(new Object[] { con.lector.GetString(0), con.lector.GetInt32(1) });
 
-            while (con.leerReader())
+            if (con.leerReader())
             {
-                dgvReporte.Rows.Add(new Object[] { con.lector.GetString(0), con.lector.GetInt32(1) });
-
+                dgvReporte.Rows.Add(con.lector.GetString(0), con.lector.GetInt32(1));
+                while (con.leerReader())
+                {
+                    dgvReporte.Rows.Add(con.lector.GetString(0), con.lector.GetInt32(1));
+                }
             }
-            dgvReporte.Sort(dgvReporte.Columns[0], ListSortDirection.Ascending);
-
-            //}
             con.cerrarConexion();
         }
         private void dgvReporte_1(object sender, DataGridViewCellEventArgs e)
@@ -72,10 +70,10 @@ namespace PagoAgilFrba.ListadoEstadistico
 
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void cmdMenuEstadisticas_Click(object sender, EventArgs e)
         {
-            menuListadoEstadistico.Show();
-            this.Hide();
+            _menuListadoEstadistico.Show();
+            this.Close();
         }
 
     }

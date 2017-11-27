@@ -61,7 +61,7 @@ namespace PagoAgilFrba.ListadoEstadistico
 
                 if (list_Reporte.Text == "Porcentaje de facturas cobradas por empresa")
                 {
-                    this.Reporte1 = new Reporte1(this);
+                    this.Reporte1 = new Reporte1(this, textBox_Anio.Text, textBox_Trimestre.Text);
                     Reporte1.Show();
                     this.Hide();
                 }
