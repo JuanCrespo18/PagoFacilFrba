@@ -34,13 +34,18 @@
             this.cmdSucursales = new System.Windows.Forms.Button();
             this.cmdEmpresas = new System.Windows.Forms.Button();
             this.cmdClientes = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmdDevoluciones = new System.Windows.Forms.Button();
+            this.cmdRendir = new System.Windows.Forms.Button();
+            this.cmdPagarFacturas = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdRoles
             // 
             this.cmdRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdRoles.Location = new System.Drawing.Point(20, 19);
+            this.cmdRoles.Location = new System.Drawing.Point(12, 19);
             this.cmdRoles.Name = "cmdRoles";
             this.cmdRoles.Size = new System.Drawing.Size(150, 47);
             this.cmdRoles.TabIndex = 4;
@@ -58,7 +63,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(341, 191);
+            this.groupBox1.Size = new System.Drawing.Size(326, 191);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "EDICION";
@@ -66,7 +71,7 @@
             // cmdFacturas
             // 
             this.cmdFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdFacturas.Location = new System.Drawing.Point(99, 125);
+            this.cmdFacturas.Location = new System.Drawing.Point(93, 125);
             this.cmdFacturas.Name = "cmdFacturas";
             this.cmdFacturas.Size = new System.Drawing.Size(150, 47);
             this.cmdFacturas.TabIndex = 8;
@@ -77,29 +82,25 @@
             // cmdSucursales
             // 
             this.cmdSucursales.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdSucursales.Location = new System.Drawing.Point(176, 72);
+            this.cmdSucursales.Location = new System.Drawing.Point(168, 72);
             this.cmdSucursales.Name = "cmdSucursales";
             this.cmdSucursales.Size = new System.Drawing.Size(150, 47);
-            this.cmdSucursales.TabIndex = 7;
+            this.cmdSucursales.TabIndex = 9;
             this.cmdSucursales.Text = "SUCURSALES";
-            this.cmdSucursales.UseVisualStyleBackColor = true;
-            this.cmdSucursales.Click += new System.EventHandler(this.cmdSucursales_Click);
             // 
             // cmdEmpresas
             // 
             this.cmdEmpresas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEmpresas.Location = new System.Drawing.Point(20, 72);
+            this.cmdEmpresas.Location = new System.Drawing.Point(12, 72);
             this.cmdEmpresas.Name = "cmdEmpresas";
             this.cmdEmpresas.Size = new System.Drawing.Size(150, 47);
-            this.cmdEmpresas.TabIndex = 6;
+            this.cmdEmpresas.TabIndex = 10;
             this.cmdEmpresas.Text = "EMPRESAS";
-            this.cmdEmpresas.UseVisualStyleBackColor = true;
-            this.cmdEmpresas.Click += new System.EventHandler(this.cmdEmpresas_Click);
             // 
             // cmdClientes
             // 
             this.cmdClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdClientes.Location = new System.Drawing.Point(176, 19);
+            this.cmdClientes.Location = new System.Drawing.Point(168, 19);
             this.cmdClientes.Name = "cmdClientes";
             this.cmdClientes.Size = new System.Drawing.Size(150, 47);
             this.cmdClientes.TabIndex = 5;
@@ -107,15 +108,63 @@
             this.cmdClientes.UseVisualStyleBackColor = true;
             this.cmdClientes.Click += new System.EventHandler(this.cmdClientes_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cmdDevoluciones);
+            this.groupBox2.Controls.Add(this.cmdRendir);
+            this.groupBox2.Controls.Add(this.cmdPagarFacturas);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox2.Location = new System.Drawing.Point(0, 197);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(326, 194);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "NEGOCIO";
+            // 
+            // cmdDevoluciones
+            // 
+            this.cmdDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdDevoluciones.Location = new System.Drawing.Point(12, 72);
+            this.cmdDevoluciones.Name = "cmdDevoluciones";
+            this.cmdDevoluciones.Size = new System.Drawing.Size(150, 47);
+            this.cmdDevoluciones.TabIndex = 11;
+            this.cmdDevoluciones.Text = "DEVOLUCIONES";
+            this.cmdDevoluciones.UseVisualStyleBackColor = true;
+            this.cmdDevoluciones.Click += new System.EventHandler(this.cmdDevoluciones_Click);
+            // 
+            // cmdRendir
+            // 
+            this.cmdRendir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdRendir.Location = new System.Drawing.Point(168, 19);
+            this.cmdRendir.Name = "cmdRendir";
+            this.cmdRendir.Size = new System.Drawing.Size(150, 47);
+            this.cmdRendir.TabIndex = 10;
+            this.cmdRendir.Text = "RENDIR FACTURAS";
+            this.cmdRendir.UseVisualStyleBackColor = true;
+            this.cmdRendir.Click += new System.EventHandler(this.cmdRendir_Click);
+            // 
+            // cmdPagarFacturas
+            // 
+            this.cmdPagarFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdPagarFacturas.Location = new System.Drawing.Point(12, 19);
+            this.cmdPagarFacturas.Name = "cmdPagarFacturas";
+            this.cmdPagarFacturas.Size = new System.Drawing.Size(150, 47);
+            this.cmdPagarFacturas.TabIndex = 9;
+            this.cmdPagarFacturas.Text = "PAGAR FACTURAS";
+            this.cmdPagarFacturas.UseVisualStyleBackColor = true;
+            this.cmdPagarFacturas.Click += new System.EventHandler(this.cmdPagarFacturas_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 391);
+            this.ClientSize = new System.Drawing.Size(326, 391);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "MenuPrincipal";
             this.Text = "Menu Principal";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -128,5 +177,9 @@
         private System.Windows.Forms.Button cmdSucursales;
         private System.Windows.Forms.Button cmdEmpresas;
         private System.Windows.Forms.Button cmdClientes;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button cmdPagarFacturas;
+        private System.Windows.Forms.Button cmdRendir;
+        private System.Windows.Forms.Button cmdDevoluciones;
     }
 }

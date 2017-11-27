@@ -120,6 +120,7 @@
             this.cmdMenu.TabIndex = 33;
             this.cmdMenu.Text = "Menu Principal";
             this.cmdMenu.UseVisualStyleBackColor = true;
+            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
             // 
             // cmdEditar
             // 

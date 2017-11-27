@@ -35,14 +35,21 @@ namespace PagoAgilFrba
             this.Hide();
         }
 
-        private void cmdSucursales_Click(object sender, EventArgs e)
+        private void cmdPagarFacturas_Click(object sender, EventArgs e)
         {
-            new AbmSucursal.MenuSucursales(this).Show();
+            new RegistroPago.RegistroPago(this).Show();
             this.Hide();
         }
-        private void cmdEmpresas_Click(object sender, EventArgs e)
+
+        private void cmdRendir_Click(object sender, EventArgs e)
         {
-            new AbmEmpresa.MenuEmpresas(this).Show();
+            new Rendicion.Rendicion(this).Show();
+            this.Hide();
+        }
+
+        private void cmdDevoluciones_Click(object sender, EventArgs e)
+        {
+            new Devoluciones.Devoluciones(this).Show();
             this.Hide();
         }
     }

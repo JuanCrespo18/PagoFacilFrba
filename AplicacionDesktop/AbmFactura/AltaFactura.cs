@@ -40,14 +40,14 @@ namespace PagoAgilFrba.AbmFactura
         private List<string> ObtenerItemsActuales()
         {
             var items = new List<string>();
-            for (int i = 0; i < dgvItems.RowCount - 1; i++)
+            for (int i = 0; i < dgvItems.RowCount; i++)
             {
                 items.Add(dgvItems.Rows[i].Cells["Id"].Value.ToString());
             }
             return items;
         }
 
-        internal void AgregarItem(string cantidad, string monto)
+        public void AgregarItem(string cantidad, string monto)
         {
             var con = new Conexion()
             {
@@ -167,7 +167,7 @@ namespace PagoAgilFrba.AbmFactura
                         total, Convert.ToInt16(chkHabilitada.Checked));
                     con.ejecutar();
 
-                    for (int i = 0; i < dgvItems.RowCount - 1; i++)
+                    for (int i = 0; i < dgvItems.RowCount; i++)
                     {
                         int cantidad = Convert.ToInt32(dgvItems.Rows[i].Cells["Cantidad"].Value);
                         int monto = Convert.ToInt32(dgvItems.Rows[i].Cells["Monto"].Value);
@@ -227,10 +227,10 @@ namespace PagoAgilFrba.AbmFactura
                 throw new Exception("El numero de factura ingresado es incorrecto, recuerde que debe contener solo números");
             }
 
-            if (dgvItems.Rows.Count == 1)
+            if (dgvItems.RowCount == 0)
                 throw new Exception("La factura debe contener al menos un item");
 
-            for (int i = 0; i < dgvItems.Rows.Count - 1; i++)
+            for (int i = 0; i < dgvItems.RowCount; i++)
             {
                 for (int x = 0; x < dgvItems.Rows[i].Cells.Count; x++)
                 {

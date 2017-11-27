@@ -111,31 +111,29 @@
     <Compile Include="AbmRol\AltaRol.Designer.cs">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\agregarSucursal.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="AbmSucursal\agregarSucursal.cs" />
     <Compile Include="AbmSucursal\agregarSucursal.Designer.cs">
       <DependentUpon>agregarSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\editarSucursal.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="AbmSucursal\editarSucursal.cs" />
     <Compile Include="AbmSucursal\editarSucursal.Designer.cs">
       <DependentUpon>editarSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\filtrarSucursal.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="AbmSucursal\filtrarSucursal.cs" />
     <Compile Include="AbmSucursal\filtrarSucursal.Designer.cs">
       <DependentUpon>filtrarSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\MenuSucursales.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="AbmSucursal\MenuSucursales.cs" />
     <Compile Include="AbmSucursal\MenuSucursales.Designer.cs">
       <DependentUpon>MenuSucursales.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Devoluciones\Devoluciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devoluciones\Devoluciones.Designer.cs">
+      <DependentUpon>Devoluciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,17 +154,17 @@
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistroPago\Form1.cs">
+    <Compile Include="RegistroPago\RegistroPago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistroPago\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="RegistroPago\RegistroPago.Designer.cs">
+      <DependentUpon>RegistroPago.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rendicion\Form1.cs">
+    <Compile Include="Rendicion\Rendicion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Rendicion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Rendicion\Rendicion.Designer.cs">
+      <DependentUpon>Rendicion.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AbmCliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
@@ -213,6 +211,9 @@
     <EmbeddedResource Include="AbmSucursal\MenuSucursales.resx">
       <DependentUpon>MenuSucursales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Devoluciones\Devoluciones.resx">
+      <DependentUpon>Devoluciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +226,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistroPago\RegistroPago.resx">
+      <DependentUpon>RegistroPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rendicion\Rendicion.resx">
+      <DependentUpon>Rendicion.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
