@@ -36,6 +36,17 @@ namespace PagoAgilFrba.ListadoEstadistico
         {
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMenuPral_Click(object sender, EventArgs e)
+        {
+            menuPrincipal.Show();
+            this.Hide();
+        }
     }
 
 }
