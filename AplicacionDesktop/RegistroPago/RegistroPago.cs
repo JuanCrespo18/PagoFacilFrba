@@ -92,7 +92,7 @@ namespace PagoAgilFrba.RegistroPago
                         factura.Cells["Total"].Value.ToString().Replace(',', '.'),
                         cboMetodosPago.SelectedItem.ToString(),
                         idCliente,
-                        1, //TODO: Buscar usuario desde login.
+                        SesionUsuario.user.id, //TODO: Buscar usuario desde login.
                         1); //TODO: Buscar sucursal desde login.
                     con.ejecutar();
                 }

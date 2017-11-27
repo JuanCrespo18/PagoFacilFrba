@@ -1,4 +1,5 @@
-﻿namespace PagoAgilFrba.AbmEmpresa
+﻿
+namespace PagoAgilFrba.AbmEmpresa
 {
     partial class agregarEmpresa
     {
@@ -6,11 +7,14 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+      
 
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// 
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,6 +24,7 @@
             base.Dispose(disposing);
         }
 
+        
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -235,6 +240,7 @@
             this.btnLimpiar.TabIndex = 17;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+
             // 
             // dirEmpresa
             // 
@@ -290,6 +296,8 @@
 
         #endregion
 
+
+      
         private System.Windows.Forms.GroupBox datosEmpresa;
         private System.Windows.Forms.ComboBox rubro;
         private System.Windows.Forms.TextBox razonSocial;
@@ -312,5 +320,9 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox dirEmpresa;
         private System.Windows.Forms.Button btnCancelar;
+
+
+
+
     }
 }
