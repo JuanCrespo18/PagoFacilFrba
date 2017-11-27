@@ -30,6 +30,7 @@
         {
             this.cmdRoles = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.cmdFacturas = new System.Windows.Forms.Button();
             this.cmdSucursales = new System.Windows.Forms.Button();
             this.cmdEmpresas = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.cmdFacturas);
             this.groupBox1.Controls.Add(this.cmdSucursales);
             this.groupBox1.Controls.Add(this.cmdEmpresas);
@@ -63,10 +65,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "EDICION";
             // 
+            // button1
+            // 
+            this.button1.AccessibleName = "";
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(176, 125);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 47);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "ESTADISTICAS";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // cmdFacturas
             // 
             this.cmdFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdFacturas.Location = new System.Drawing.Point(99, 125);
+            this.cmdFacturas.Location = new System.Drawing.Point(20, 125);
             this.cmdFacturas.Name = "cmdFacturas";
             this.cmdFacturas.Size = new System.Drawing.Size(150, 47);
             this.cmdFacturas.TabIndex = 8;
@@ -128,5 +142,6 @@
         private System.Windows.Forms.Button cmdSucursales;
         private System.Windows.Forms.Button cmdEmpresas;
         private System.Windows.Forms.Button cmdClientes;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -17,10 +17,12 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
             MenuSucursales = menu;
+            listaSucursales.Columns.Add("id", "id");
             listaSucursales.Columns.Add("", "Nombre");
             listaSucursales.Columns.Add("", "Direccion");
             listaSucursales.Columns.Add("", "Cod Postal");
             listaSucursales.Columns.Add("", "Localidad");
+            listaSucursales.Columns.Add("activa", "Habilitada");
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -55,17 +57,48 @@ namespace PagoAgilFrba.AbmSucursal
                 MessageBox.Show("No se encontro ninguna Sucursal", "Filtro Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else {
-                listaSucursales.Rows.Add(con.lector.GetString(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetString(3));
+                listaSucursales.Rows.Add(con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetString(3), con.lector.GetString(6),con.lector.GetBoolean(7));
                 while (con.leerReader())
                 {
-                    listaSucursales.Rows.Add(con.lector.GetString(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetString(3));
+                    listaSucursales.Rows.Add(con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetString(3), con.lector.GetString(6),con.lector.GetBoolean(7));
                 }
             }
+            CargarColumnaModificacion();
+            listaSucursales.Columns["id"].Visible = false;
+            listaSucursales.Columns["activa"].Visible = false;
+            listaSucursales.AllowUserToAddRows = false;
         }
-        private void btnLimpiar_Click(object sender, EventArgs e) {
+
+        private void CargarColumnaModificacion()
+        {
+            if (listaSucursales.Columns.Contains("Modificar"))
+                listaSucursales.Columns.Remove("Modificar");
+            DataGridViewButtonColumn botonColumnaModificar = new DataGridViewButtonColumn();
+            botonColumnaModificar.Text = "Modificar";
+            botonColumnaModificar.Name = "Modificar";
+            botonColumnaModificar.UseColumnTextForButtonValue = true;
+            listaSucursales.Columns.Add(botonColumnaModificar);
+        }
+
+        private void listaSucursales_celda_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            // Controla que la celda que se clickeo fue la de modificar
+            if (e.ColumnIndex == listaSucursales.Columns["Modificar"].Index && e.RowIndex >= 0)
+            {
+                String idSucursal = listaSucursales.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                new editarSucursal(idSucursal,this).ShowDialog();
+                return;
+            }
+        }
+
+            private void btnLimpiar_Click(object sender, EventArgs e) {
             nombre.Text = "";
             direccion.Text = "";
             codPostal.Text = "";
+        }
+
+        public void refresh() {
+            this.btnBuscar_Click(null,null);
         }
     }
 }

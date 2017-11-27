@@ -137,6 +137,7 @@
             this.listaSucursales.Name = "listaSucursales";
             this.listaSucursales.Size = new System.Drawing.Size(533, 202);
             this.listaSucursales.TabIndex = 11;
+            this.listaSucursales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaSucursales_celda_Click);
             // 
             // btnCancelar
             // 

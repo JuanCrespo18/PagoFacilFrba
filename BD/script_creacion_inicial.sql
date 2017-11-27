@@ -1,5 +1,5 @@
 USE [GD2C2017]
-
+go
 ----------------------------------------------------------------------------------------
 -----------------------------------BORRAR TABLAS----------------------------------------
 ----------------------------------------------------------------------------------------
@@ -170,7 +170,8 @@ GO
 CREATE TABLE [ONEFORALL].[SUCURSALES](
 	[SUC_ID] INT IDENTITY(1,1) NOT NULL CONSTRAINT [SUC_PRIMARY] PRIMARY KEY,
 	[SUC_DIR_ID] INT NOT NULL CONSTRAINT FK_SUC_DIR_ID REFERENCES [ONEFORALL].[DIRECCIONES],
-	[SUC_NOMBRE] NVARCHAR(45) NOT NULL
+	[SUC_NOMBRE] NVARCHAR(45) NOT NULL,
+	[SUC_HABILITADA] BIT NOT NULL
 )
 GO	
 
@@ -301,39 +302,11 @@ GO
 ----------------------------------------------------------------------------------------
 CREATE VIEW [ONEFORALL].[VW_SUCURSALES] 
 	AS 
-	SELECT s.SUC_NOMBRE AS NOMBRE,d.DIR_DIRECCION AS DIRECCION,d.DIR_CODIGO_POSTAL AS CP,d.DIR_LOCALIDAD AS LOCALIDAD
+	SELECT s.SUC_ID as ID, s.SUC_NOMBRE AS NOMBRE,d.DIR_DIRECCION AS DIRECCION,d.DIR_CODIGO_POSTAL AS CP, d.DIR_PISO AS PISO, d.DIR_DEPARTAMENTO AS DEPARTAMENTO,d.DIR_LOCALIDAD AS LOCALIDAD
 	FROM ONEFORALL.SUCURSALES s join ONEFORALL.DIRECCIONES d 
 	ON s.SUC_DIR_ID = d.DIR_ID
 go
 
-DELETE FROM ONEFORALL.ROL_X_FUNCIONALIDAD	----VACIO TABLA ROL_X_FUNCIONALIDAD
-GO
-DELETE FROM ONEFORALL.FUNCIONALIDADES		----VACIO TABLA FUNCIONALIDADES
-GO
-DELETE FROM ONEFORALL.USUARIO_X_ROL			----VACIO TABLA USUARIO_X_ROL
-GO
-DELETE FROM ONEFORALL.ROLES					----VACIO TABLA ROLES
-GO
-DELETE FROM ONEFORALL.ITEMS					----VACIO TABLA ITEMS
-GO
-DELETE FROM ONEFORALL.FACTURAS				----VACIO TABLA FACTURAS
-GO
-delete from ONEFORALL.PAGOS					----VACIO TABLA PAGOS
-GO
-delete from ONEFORALL.USUARIOS				----VACIO TABLA USUARIOS
-GO
-delete from ONEFORALL.Rendiciones			----VACIO TABLA Rendiciones
-GO
-delete from ONEFORALL.EMPRESAS				----VACIO TABLA EMPRESAS
-GO
-delete from ONEFORALL.CLIENTES				----VACIO TABLA CLIENTES
-GO
-delete from ONEFORALL.SUCURSALES			----VACIO TABLA SUCURSALES
-GO
-delete from ONEFORALL.RUBROS				----VACIO TABLA RUBROS
-GO
-delete from ONEFORALL.DIRECCIONES			----VACIO TABLA DIRECCIONES
-GO
 
 DBCC CHECKIDENT('ONEFORALL.FUNCIONALIDADES', RESEED,1);		----RESETEA IDENTITY FUNCIONALIDADES
 GO
@@ -396,8 +369,8 @@ GO
 ---------------------------------CARGO TABLA [SUCURSALES]------------------------------
 ----------------------------------------------------------------------------------------
 insert into ONEFORALL.SUCURSALES
-(SUC_NOMBRE, SUC_DIR_ID)
-	select distinct Sucursal_Nombre, D.DIR_ID
+(SUC_NOMBRE, SUC_DIR_ID,SUC_HABILITADA)
+	select distinct Sucursal_Nombre, D.DIR_ID,1
 	from gd_esquema.Maestra M 
 	left join ONEFORALL.DIRECCIONES D 
 		ON M.Sucursal_Dirección= D.DIR_DIRECCION
@@ -452,7 +425,7 @@ GO
 ----------------------------------------------------------------------------------------
 insert into ONEFORALL.USUARIOS
 (USER_USUARIO, USER_PASSWORD, USER_ACTIVO, USER_INTENTOS)
-values('admin', 'w23e', 1, 0)
+values('admin', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', 1, 0)
 GO
 
 ----------------------------------------------------------------------------------------

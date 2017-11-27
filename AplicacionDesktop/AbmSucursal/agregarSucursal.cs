@@ -31,28 +31,37 @@ namespace PagoAgilFrba.AbmSucursal
             {
                 try
                 {
-                    string insertarDir = "INSERT INTO ONEFORALL.DIRECCIONES VALUES(" + direccion.Text +","+ codPostal.Text;
+                    string insertarDir = "INSERT INTO ONEFORALL.DIRECCIONES VALUES('" + direccion.Text +"','"+ codPostal.Text+"'";
                     string insertarSuc = "INSERT INTO ONEFORALL.SUCURSALES VALUES(";
-
-                    var con = new Conexion();
 
                     if (string.IsNullOrEmpty(piso.Text)) {
                         insertarDir += ", null";
                     }
                     else {
-                        insertarDir += "," + piso.Text;
+                        insertarDir += ", '" + piso.Text+"'";
                     }
                     if (string.IsNullOrEmpty(departamento.Text))
                     {
-                        insertarDir += ",null";
+                        insertarDir += ", null";
                     }
                     else {
-                        insertarDir += "," + departamento.Text;
+                        insertarDir += ", '" + departamento.Text+"'";
                     }
-
-                   
-
-
+                    insertarDir += ", '" + campoLocalidad.Text + "');" ;
+                    var con = new Conexion() { query = insertarDir};
+                    con.ejecutar();
+                    var select = "SELECT DIR_ID FROM ONEFORALL.DIRECCIONES WHERE DIR_CODIGO_POSTAL = '" + codPostal.Text + "'";
+                    con.query = select;
+                    con.leer();
+                    con.leerReader();
+                    var valor = con.lector.GetSqlInt32(0);
+                    con.cerrarConexion();
+                    insertarSuc += "" + valor + ",'" + nombre.Text +"');";
+                    con = new Conexion() { query = insertarSuc };
+                    con.ejecutar();
+                    MessageBox.Show("Se agrego la sucursal correctamente","Agregar Sucursal",MessageBoxButtons.OK);
+                    menuSucursal.Show();
+                    this.Hide();
                 }
                 catch (Exception){
                     MessageBox.Show("Ya existe una sucursal con el mismo Codigo Postal", "Agregar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -65,5 +74,9 @@ namespace PagoAgilFrba.AbmSucursal
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
