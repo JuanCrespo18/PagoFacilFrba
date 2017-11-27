@@ -143,11 +143,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.cs">
+    <Compile Include="ListadoEstadistico\MenuListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ListadoEstadistico\MenuListadoEstadistico.Designer.cs">
+      <DependentUpon>MenuListadoEstadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="Inicio.cs" />
     <Compile Include="MenuPrincipal.cs">
@@ -213,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\MenuSucursales.resx">
       <DependentUpon>MenuSucursales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\MenuListadoEstadistico.resx">
+      <DependentUpon>MenuListadoEstadistico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
