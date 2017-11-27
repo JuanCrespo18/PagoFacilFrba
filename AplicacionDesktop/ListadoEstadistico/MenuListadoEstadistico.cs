@@ -13,6 +13,7 @@ namespace PagoAgilFrba.ListadoEstadistico
     public partial class MenuListadoEstadistico : Form
     {
         private Reporte1 Reporte1;
+        private Reporte2 Reporte2;
         private Reporte3 Reporte3;
         private Reporte4 Reporte4;
 
@@ -64,7 +65,13 @@ namespace PagoAgilFrba.ListadoEstadistico
                     Reporte1.Show();
                     this.Hide();
                 }
-                //if(list_Reporte.Text=="Empresas con mayor monto rendido")
+
+                if(list_Reporte.Text=="Empresas con mayor monto rendido")
+                {
+                    this.Reporte2 = new Reporte2(this, textBox_Anio.Text, textBox_Trimestre.Text);
+                    Reporte2.Show();
+                    this.Hide();
+                }
 
                 if(list_Reporte.Text=="Clientes con mas pagos")
                 {

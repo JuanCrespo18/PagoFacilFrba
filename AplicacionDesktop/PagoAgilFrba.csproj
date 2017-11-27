@@ -162,6 +162,12 @@
     <Compile Include="ListadoEstadistico\Reporte1.Designer.cs">
       <DependentUpon>Reporte1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoEstadistico\Reporte2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoEstadistico\Reporte2.Designer.cs">
+      <DependentUpon>Reporte2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoEstadistico\Reporte3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\Reporte1.resx">
       <DependentUpon>Reporte1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\Reporte2.resx">
+      <DependentUpon>Reporte2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\Reporte3.resx">
       <DependentUpon>Reporte3.cs</DependentUpon>
