@@ -87,6 +87,7 @@
             // 
             // list_Reporte
             // 
+            this.list_Reporte.Cursor = System.Windows.Forms.Cursors.Default;
             this.list_Reporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_Reporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.list_Reporte.FormattingEnabled = true;
@@ -94,7 +95,7 @@
             "Porcentaje de facturas cobradas por empresa",
             "Empresas con mayor monto rendido",
             "Clientes con mas pagos",
-            "Clientes con mayor porcentaje de facturas pagadas (clientes cumplidores)."});
+            "Clientes con mayor porcentaje de facturas pagadas (clientes cumplidores)"});
             this.list_Reporte.Location = new System.Drawing.Point(130, 162);
             this.list_Reporte.Name = "list_Reporte";
             this.list_Reporte.Size = new System.Drawing.Size(568, 24);
@@ -110,6 +111,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Ejecutar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
