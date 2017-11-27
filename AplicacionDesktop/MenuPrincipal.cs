@@ -45,5 +45,11 @@ namespace PagoAgilFrba
             new AbmEmpresa.MenuEmpresas(this).Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new ListadoEstadistico.MenuListadoEstadistico(this).Show();
+            this.Hide();
+        }
     }
 }
