@@ -132,9 +132,13 @@
             // 
             // listaSucursales
             // 
+            this.listaSucursales.AllowUserToAddRows = false;
+            this.listaSucursales.AllowUserToDeleteRows = false;
             this.listaSucursales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaSucursales.Location = new System.Drawing.Point(12, 205);
             this.listaSucursales.Name = "listaSucursales";
+            this.listaSucursales.ReadOnly = true;
+            this.listaSucursales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaSucursales.Size = new System.Drawing.Size(533, 202);
             this.listaSucursales.TabIndex = 11;
             this.listaSucursales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaSucursales_celda_Click);
