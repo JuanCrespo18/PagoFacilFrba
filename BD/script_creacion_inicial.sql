@@ -425,7 +425,7 @@ GO
 ----------------------------------------------------------------------------------------
 insert into ONEFORALL.USUARIOS
 (USER_USUARIO, USER_PASSWORD, USER_ACTIVO, USER_INTENTOS)
-values('admin', 'w23e', 1, 0)
+values('admin', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', 1, 0)
 GO
 
 ----------------------------------------------------------------------------------------
