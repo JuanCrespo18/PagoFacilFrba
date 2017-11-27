@@ -33,7 +33,7 @@ namespace PagoAgilFrba.Login
             }
 
             var con = new Conexion();
-            con.query = "SELECT * FROM ONEFORALL.USUARIOS WHERE USER_USUARIO = '"+ username.Text +"' AND USER_PASSWORD='"+ HashSha256.hashTo256(password.Text) + "' AND USER_ACTIVO = 1 ;" ;
+            con.query = "SELECT * FROM ONEFORALL.USUARIOS WHERE USER_USUARIO = '"+ username.Text +"' AND USER_PASSWORD='"+ password.Text + "' AND USER_ACTIVO = 1 ;" ;
 
             con.leer();
 
@@ -50,8 +50,35 @@ namespace PagoAgilFrba.Login
                 con.ejecutar();
 
                 this.Hide();
-                new MenuPrincipal().ShowDialog();
 
+                con.query = string.Format("SELECT COUNT(*) FROM ONEFORALL.USUARIO_X_ROL WHERE USERX_ID = {0}", SesionUsuario.user.id);
+                con.leer();
+                if(con.leerReader())
+                {
+                    if(con.lector.GetInt32(0) > 1)
+                    {
+                        new ElegirSucursalYRol().Show();
+                    }
+                    else 
+                    {
+                        con.cerrarConexion();
+                        con.query = string.Format("SELECT COUNT(*) FROM ONEFORALL.USUARIO_X_SUCURSAL WHERE USERX_ID = {0}", SesionUsuario.user.id);
+                        con.leer();
+                        if(con.leerReader())
+                        {
+                            if(con.lector.GetInt32(0) > 1)
+                            {
+                                new ElegirSucursalYRol().Show();
+                            }
+                            else
+                            {
+                                SesionUsuario.CargarSucursalYRol();
+                                new MenuPrincipal().ShowDialog();
+                            }
+                        }
+                    }
+                    con.cerrarConexion();
+                }
             }
             else {
 
