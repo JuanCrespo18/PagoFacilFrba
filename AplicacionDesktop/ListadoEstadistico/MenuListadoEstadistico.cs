@@ -13,7 +13,8 @@ namespace PagoAgilFrba.ListadoEstadistico
     public partial class MenuListadoEstadistico : Form
     {
         private Reporte1 Reporte1;
-        
+        private Reporte4 Reporte4;
+
         MenuPrincipal menuPrincipal;
 
         public MenuListadoEstadistico(MenuPrincipal menu)
@@ -51,20 +52,32 @@ namespace PagoAgilFrba.ListadoEstadistico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (list_Reporte.Text == "Porcentaje de facturas cobradas por empresa")
+            try
             {
-                this.Reporte1 = new Reporte1(this);
-                Reporte1.Show();
-                this.Hide();
+                if (string.IsNullOrEmpty(textBox_Anio.Text) || string.IsNullOrEmpty(textBox_Trimestre.Text))
+                    throw new Exception("Debe ingresar año y trimestre");
+
+                if (list_Reporte.Text == "Porcentaje de facturas cobradas por empresa")
+                {
+                    this.Reporte1 = new Reporte1(this);
+                    Reporte1.Show();
+                    this.Hide();
+                }
+                //if(list_Reporte.Text=="Empresas con mayor monto rendido")
+
+                //if(list_Reporte.Text=="Clientes con mas pagos")
+
+                if (list_Reporte.Text == "Clientes con mayor porcentaje de facturas pagadas (clientes cumplidores)")
+                {
+                    this.Reporte4 = new Reporte4(this, textBox_Anio.Text, textBox_Trimestre.Text);
+                    Reporte4.Show();
+                    this.Hide();
+                }
             }
-             //if(list_Reporte.Text=="Empresas con mayor monto rendido")
-
-            //if(list_Reporte.Text=="Clientes con mas pagos")
-
-            //if(list_Reporte.Text=="Clientes con mayor porcentaje de facturas pagadas (clientes cumplidores)")
-                
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Reportes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
     }
-
 }

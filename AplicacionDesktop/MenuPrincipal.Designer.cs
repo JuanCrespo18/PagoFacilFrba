@@ -94,9 +94,8 @@
             this.cmdSucursales.Location = new System.Drawing.Point(176, 72);
             this.cmdSucursales.Name = "cmdSucursales";
             this.cmdSucursales.Size = new System.Drawing.Size(150, 47);
-            this.cmdSucursales.TabIndex = 7;
+            this.cmdSucursales.TabIndex = 10;
             this.cmdSucursales.Text = "SUCURSALES";
-            this.cmdSucursales.UseVisualStyleBackColor = true;
             this.cmdSucursales.Click += new System.EventHandler(this.cmdSucursales_Click);
             // 
             // cmdEmpresas
@@ -105,9 +104,8 @@
             this.cmdEmpresas.Location = new System.Drawing.Point(20, 72);
             this.cmdEmpresas.Name = "cmdEmpresas";
             this.cmdEmpresas.Size = new System.Drawing.Size(150, 47);
-            this.cmdEmpresas.TabIndex = 6;
+            this.cmdEmpresas.TabIndex = 11;
             this.cmdEmpresas.Text = "EMPRESAS";
-            this.cmdEmpresas.UseVisualStyleBackColor = true;
             this.cmdEmpresas.Click += new System.EventHandler(this.cmdEmpresas_Click);
             // 
             // cmdClientes
