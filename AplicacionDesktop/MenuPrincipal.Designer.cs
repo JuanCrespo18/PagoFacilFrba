@@ -35,6 +35,9 @@
             this.cmdSucursales = new System.Windows.Forms.Button();
             this.cmdEmpresas = new System.Windows.Forms.Button();
             this.cmdClientes = new System.Windows.Forms.Button();
+            this.cmdRegistroPago = new System.Windows.Forms.Button();
+            this.cmdRendir = new System.Windows.Forms.Button();
+            this.cmdDevoluciones = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,11 +122,47 @@
             this.cmdClientes.UseVisualStyleBackColor = true;
             this.cmdClientes.Click += new System.EventHandler(this.cmdClientes_Click);
             // 
+            // cmdRegistroPago
+            // 
+            this.cmdRegistroPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdRegistroPago.Location = new System.Drawing.Point(20, 207);
+            this.cmdRegistroPago.Name = "cmdRegistroPago";
+            this.cmdRegistroPago.Size = new System.Drawing.Size(150, 47);
+            this.cmdRegistroPago.TabIndex = 12;
+            this.cmdRegistroPago.Text = "REGISTRAR PAGO";
+            this.cmdRegistroPago.UseVisualStyleBackColor = true;
+            this.cmdRegistroPago.Click += new System.EventHandler(this.cmdRegistroPago_Click);
+            // 
+            // cmdRendir
+            // 
+            this.cmdRendir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdRendir.Location = new System.Drawing.Point(176, 207);
+            this.cmdRendir.Name = "cmdRendir";
+            this.cmdRendir.Size = new System.Drawing.Size(150, 47);
+            this.cmdRendir.TabIndex = 13;
+            this.cmdRendir.Text = "RENDIR FACTURAS";
+            this.cmdRendir.UseVisualStyleBackColor = true;
+            this.cmdRendir.Click += new System.EventHandler(this.cmdRendir_Click_1);
+            // 
+            // cmdDevoluciones
+            // 
+            this.cmdDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdDevoluciones.Location = new System.Drawing.Point(20, 260);
+            this.cmdDevoluciones.Name = "cmdDevoluciones";
+            this.cmdDevoluciones.Size = new System.Drawing.Size(150, 47);
+            this.cmdDevoluciones.TabIndex = 14;
+            this.cmdDevoluciones.Text = "DEVOLUCIONES";
+            this.cmdDevoluciones.UseVisualStyleBackColor = true;
+            this.cmdDevoluciones.Click += new System.EventHandler(this.cmdDevoluciones_Click_1);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 391);
+            this.Controls.Add(this.cmdDevoluciones);
+            this.Controls.Add(this.cmdRendir);
+            this.Controls.Add(this.cmdRegistroPago);
             this.Controls.Add(this.groupBox1);
             this.Name = "MenuPrincipal";
             this.Text = "Menu Principal";
@@ -141,5 +180,8 @@
         private System.Windows.Forms.Button cmdEmpresas;
         private System.Windows.Forms.Button cmdClientes;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdRegistroPago;
+        private System.Windows.Forms.Button cmdRendir;
+        private System.Windows.Forms.Button cmdDevoluciones;
     }
 }
