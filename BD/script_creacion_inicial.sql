@@ -90,14 +90,10 @@ GO
 ------------------------CREO TABLA ROL_X_FUNCIONALIDAD----------------------------------
 ----------------------------------------------------------------------------------------
 CREATE TABLE [ONEFORALL].[ROL_X_FUNCIONALIDAD](
-	[FUNCX_ID] INT NOT NULL CONSTRAINT [FK_RXF_FUNCX_ID] REFERENCES [ONEFORALL].[FUNCIONALIDADES],
-	[ROLX_ID] INT NOT NULL CONSTRAINT [FK_RXF_ROLX_ID] REFERENCES [ONEFORALL].[ROLES],
-	CONSTRAINT [PK_Rol_X_Funcionalidad] PRIMARY KEY CLUSTERED 
-(
-	[FUNCX_ID] ASC,
-	[ROLX_ID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+    [ROL_ID] INTEGER,
+    [FUNC_ID] INTEGER,
+    PRIMARY KEY (ROL_ID, FUNC_ID)
+)
 GO
 
 ----------------------------------------------------------------------------------------
@@ -483,11 +479,40 @@ GO
 ----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.FUNCIONALIDADES
 (FUNC_DESCRIPCION)
-VALUES ('Administrar'), ('Cobrar')
+VALUES  ('Agregar Rol'),
+		('Modificar Rol'), 
+		('Cobrar Facturas'),
+		('Rendir Facturas'),
+		('Modificar Clientes'),
+		('Generar Estadisticas'),
+		('Agregar Sucursal'),
+		('Modificar Sucursales'),
+		('Agregar Empresa'),
+		('Modificar Empresa'),
+		('Realizar Devoluciones'),
+		('Agregar Clientes')
 
 ----------------------------------------------------------------------------------------
 ---------------------------------CARGO TABLA [ROL_X_FUNCIONALIDAD]------------------------------
 ----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.ROL_X_FUNCIONALIDAD
-(ROLX_ID, FUNCX_ID)
-VALUES (1,1), (2,2)
+(ROL_ID, FUNC_ID)
+VALUES 	(1,1),
+		(1,2),
+		(1,3),
+		(1,4),
+		(1,5),
+		(1,6),
+		(1,7),
+		(1,8),
+		(1,9),
+		(1,10),
+		(1,11),
+		(1,12),
+		(2,4),
+		(2,5),
+		(2,12),
+		(2,9),
+		(2,3)
+
+

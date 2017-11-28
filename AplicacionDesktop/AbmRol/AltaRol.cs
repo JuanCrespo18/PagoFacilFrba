@@ -57,9 +57,9 @@ namespace PagoAgilFrba.AbmRol
                 chlbFunc.Items.Add(funcionalidad);
 
                 con2.query = string.Format("SELECT 1 FROM ONEFORALL.ROL_X_FUNCIONALIDAD RF " +
-                                "JOIN ONEFORALL.FUNCIONALIDADES F ON F.FUNC_ID = RF.FUNCX_ID " +
+                                "JOIN ONEFORALL.FUNCIONALIDADES F ON F.FUNC_ID = RF.FUNC_ID " +
                                 "AND F.FUNC_DESCRIPCION = '{0}' " +
-                                "AND RF.ROLX_ID = {1}", funcionalidad, _idRol);
+                                "AND RF.ROL_ID = {1}", funcionalidad, _idRol);
                 con2.leer();
                 if (con2.leerReader())
                 {
@@ -153,7 +153,7 @@ namespace PagoAgilFrba.AbmRol
 
                     con = new Conexion()
                     {
-                        query = string.Format("DELETE FROM ONEFORALL.ROL_X_FUNCIONALIDAD WHERE ROLX_ID = {0} AND FUNCX_ID IN ({1})", _idRol, string.Join(",", idsFuncQuitadas))
+                        query = string.Format("DELETE FROM ONEFORALL.ROL_X_FUNCIONALIDAD WHERE ROL_ID = {0} AND FUNC_ID IN ({1})", _idRol, string.Join(",", idsFuncQuitadas))
                     };
                     con.ejecutar();
                     _funcionalidadesQuitadas.ForEach(x => _funcionalidades.Remove(x));

@@ -43,14 +43,14 @@ namespace PagoAgilFrba.AbmSucursal
                 {
                     piso.Text = con.lector.GetString(4);
                 }
-                catch (System.Exception e) {
+                catch (System.Exception) {
                     piso.Text = "";
                 }
                 try
                 {
                     departamento.Text = con.lector.GetString(5);
                 }
-                catch (System.Exception e)
+                catch (System.Exception)
                 {
                     departamento.Text = "";
                 }
