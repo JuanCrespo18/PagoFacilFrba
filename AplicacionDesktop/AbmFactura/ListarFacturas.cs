@@ -46,6 +46,7 @@ namespace PagoAgilFrba.AbmFactura
             _evento = 'D';
             _tipoDev = tipoDev;
             cmdEditar.Text = "Seleccionar";
+            cmdMenu.Hide();
         }
 
         private void cmdBuscarCliente_Click(object sender, EventArgs e)
