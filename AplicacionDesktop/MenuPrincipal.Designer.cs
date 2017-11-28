@@ -38,6 +38,7 @@
             this.cmdRegistroPago = new System.Windows.Forms.Button();
             this.cmdRendir = new System.Windows.Forms.Button();
             this.cmdDevoluciones = new System.Windows.Forms.Button();
+            this.cmdLogout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -155,11 +156,23 @@
             this.cmdDevoluciones.UseVisualStyleBackColor = true;
             this.cmdDevoluciones.Click += new System.EventHandler(this.cmdDevoluciones_Click_1);
             // 
+            // cmdLogout
+            // 
+            this.cmdLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLogout.Location = new System.Drawing.Point(176, 332);
+            this.cmdLogout.Name = "cmdLogout";
+            this.cmdLogout.Size = new System.Drawing.Size(150, 47);
+            this.cmdLogout.TabIndex = 15;
+            this.cmdLogout.Text = "Cerrar Sesión";
+            this.cmdLogout.UseVisualStyleBackColor = true;
+            this.cmdLogout.Click += new System.EventHandler(this.cmdLogout_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 391);
+            this.Controls.Add(this.cmdLogout);
             this.Controls.Add(this.cmdDevoluciones);
             this.Controls.Add(this.cmdRendir);
             this.Controls.Add(this.cmdRegistroPago);
@@ -183,5 +196,6 @@
         private System.Windows.Forms.Button cmdRegistroPago;
         private System.Windows.Forms.Button cmdRendir;
         private System.Windows.Forms.Button cmdDevoluciones;
+        private System.Windows.Forms.Button cmdLogout;
     }
 }

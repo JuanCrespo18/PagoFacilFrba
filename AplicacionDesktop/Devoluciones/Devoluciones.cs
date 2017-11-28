@@ -13,6 +13,7 @@ namespace PagoAgilFrba.Devoluciones
     public partial class Devoluciones : Form
     {
         private MenuPrincipal _menuPrincipal;
+        private string _rol;
 
         public Devoluciones(MenuPrincipal menuPrincipal)
         {
@@ -24,10 +25,10 @@ namespace PagoAgilFrba.Devoluciones
             con.leer();
             if (con.leerReader())
             {
-                string rol = con.lector.GetString(0);
-                if (rol == "Administrador")
+                _rol = con.lector.GetString(0);
+                if (_rol == "Administrador")
                     rdbRendicion.Enabled = true;
-                else if (rol == "Cobrador")
+                else if (_rol == "Cobrador")
                     rdbPago.Enabled = true;
             }
         }
@@ -106,8 +107,10 @@ namespace PagoAgilFrba.Devoluciones
         private void Limpiar()
         {
             dgvFacturas.Rows.Clear();
-            rdbPago.Enabled = true;
-            rdbRendicion.Enabled = true;
+            if (_rol == "Administrador")
+                rdbRendicion.Enabled = true;
+            else if (_rol == "Cobrador")
+                rdbPago.Enabled = true;
         }
 
         private void cmdQuitar_Click(object sender, EventArgs e)
@@ -118,6 +121,14 @@ namespace PagoAgilFrba.Devoluciones
                     throw new Exception("Seleccione la factura a quitar");
 
                 dgvFacturas.Rows.RemoveAt(dgvFacturas.SelectedRows[0].Index);
+
+                if (dgvFacturas.Rows.Count == 0)
+                {
+                    if (_rol == "Administrador")
+                        rdbRendicion.Enabled = true;
+                    else if (_rol == "Cobrador")
+                        rdbPago.Enabled = true;
+                }
             }
             catch (Exception ex)
             {

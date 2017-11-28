@@ -102,5 +102,11 @@ namespace PagoAgilFrba
             new Devoluciones.Devoluciones(this).Show();
             this.Hide();
         }
+
+        private void cmdLogout_Click(object sender, EventArgs e)
+        {
+            new Login.Login().Show();
+            this.Close();
+        }
     }
 }
