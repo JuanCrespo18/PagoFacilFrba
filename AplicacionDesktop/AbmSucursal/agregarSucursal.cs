@@ -56,7 +56,7 @@ namespace PagoAgilFrba.AbmSucursal
                     con.leerReader();
                     var valor = con.lector.GetSqlInt32(0);
                     con.cerrarConexion();
-                    insertarSuc += "" + valor + ",'" + nombre.Text +"');";
+                    insertarSuc += "" + valor + ",'" + nombre.Text +"', 1);";
                     con = new Conexion() { query = insertarSuc };
                     con.ejecutar();
                     MessageBox.Show("Se agrego la sucursal correctamente","Agregar Sucursal",MessageBoxButtons.OK);
