@@ -49,6 +49,11 @@ namespace PagoAgilFrba.Login
                 con.query = "UPDATE ONEFORALL.USUARIOS SET USER_INTENTOS = 0 WHERE USER_ID =" + SesionUsuario.usuario.id;
                 con.ejecutar();
 
+                //TODO
+                con.query  = "SELECT FUNC_DESCRIPCION FROM ROL";
+
+
+
                 this.Hide();
                 new MenuPrincipal().ShowDialog();
 

@@ -421,7 +421,9 @@ GO
 ----------------------------------------------------------------------------------------
 insert into ONEFORALL.USUARIOS
 (USER_USUARIO, USER_PASSWORD, USER_ACTIVO, USER_INTENTOS)
-values('admin', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', 1, 0)
+values('admin', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', 1, 0),
+-- EL usuario tipo cobrador tendra username: usuario  y contraseña: password
+	  ('usuario', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 1, 0)
 GO
 
 ----------------------------------------------------------------------------------------
@@ -436,7 +438,7 @@ VALUES ('Administrador', 1), ('Cobrador', 1)
 ----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.USUARIO_X_ROL
 (USERX_ID, ROLX_ID)
-VALUES (1,1)
+VALUES (1,1),(1,2),(2,2) 
 
 ----------------------------------------------------------------------------------------
 ---------------------------------CARGO TABLA [PAGOS]------------------------------
