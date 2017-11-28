@@ -18,6 +18,8 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
             menuPrincipal = menu;
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Agregar Sucursal")))
+                btnAgregar.Enabled = false;
         }
 
         private void btnMenuPral_Click(object sender, EventArgs e)
