@@ -49,12 +49,28 @@ namespace PagoAgilFrba.Login
                 con.query = "UPDATE ONEFORALL.USUARIOS SET USER_INTENTOS = 0 WHERE USER_ID =" + SesionUsuario.usuario.id;
                 con.ejecutar();
 
-                //TODO
-                con.query  = "SELECT FUNC_DESCRIPCION FROM ROL";
+                con.query  = "SELECT DISTINCT(fun.FUNC_DESCRIPCION) " +
+                            "FROM ONEFORALL.USUARIOS u JOIN ONEFORALL.USUARIO_X_ROL uxr " +
+                            "on "+ SesionUsuario.usuario.id +" = uxr.USERX_ID " +
+                            "JOIN ONEFORALL.ROLES rol ON rol.ROL_ID = uxr.ROLX_ID " +
+                            "and rol.ROL_ACTIVO = 1 JOIN ONEFORALL.ROL_X_FUNCIONALIDAD rxf " +
+                            "ON rxf.ROL_ID = rol.ROL_ID JOIN ONEFORALL.FUNCIONALIDADES fun " +
+                            "ON fun.FUNC_ID = rxf.FUNC_ID";
+                con.leer();
+                if (!con.leerReader())
+                {
+                    MessageBox.Show("Ocurrio un error inesperado", "Login Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else {
+                    SesionUsuario.usuario.funcionalidades.Add(con.lector.GetString(0));
+                    while (con.leerReader())
+                    {
+                    SesionUsuario.usuario.funcionalidades.Add(con.lector.GetString(0));
+                    }
+                }
+                con.cerrarConexion();
 
-
-
-                this.Hide();
+                    this.Hide();
                 new MenuPrincipal().ShowDialog();
 
             }

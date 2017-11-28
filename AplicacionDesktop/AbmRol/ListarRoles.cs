@@ -15,6 +15,15 @@ namespace PagoAgilFrba.AbmRol
             InitializeComponent();
             CargarRoles();
             _menuPrincipal = menuPrincipal;
+            desactivarBotones();
+        }
+
+        private void desactivarBotones()
+        {
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Rol")))
+                cmdModificarRol.Enabled = false;
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Agregar Rol")))
+                cmdNuevoRol.Enabled = false;
         }
 
         public void CargarRoles()
@@ -48,6 +57,7 @@ namespace PagoAgilFrba.AbmRol
             con.leerReader();
             _idRolSeleccionado = con.lector.GetInt32(0);
             con.cerrarConexion();
+            desactivarBotones();
         }
 
         private void cmdModificar_Click(object sender, EventArgs e)

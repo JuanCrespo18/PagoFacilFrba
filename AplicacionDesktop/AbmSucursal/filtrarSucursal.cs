@@ -63,7 +63,8 @@ namespace PagoAgilFrba.AbmSucursal
                     listaSucursales.Rows.Add(con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetString(3), con.lector.GetString(6),con.lector.GetBoolean(7));
                 }
             }
-            CargarColumnaModificacion();
+            if (SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Sucursales")))
+                CargarColumnaModificacion();
             listaSucursales.Columns["id"].Visible = false;
             listaSucursales.Columns["activa"].Visible = false;
             listaSucursales.AllowUserToAddRows = false;
