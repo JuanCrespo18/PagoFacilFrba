@@ -123,12 +123,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 errorCampos();
                 int direccionId = ObtenerDireccion();
                 int rubroId = ObtenerRubro();
-                if (_evento == 'A')
-                    AgregarEmpresa(direccionId,rubroId);
-                else
-                    //ActualizarEmpresa(direccionId,rubroId);
-
-                //_listarEmpresas.Actualizar();
+                AgregarEmpresa(direccionId,rubroId);
                 _listarEmpresas.Show();
                 this.Close();
             }
@@ -192,7 +187,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 };
                 con2.ejecutar();
 
-                con2.query = ConsultaDireccion();
+                con2.query = ConsultaRubro();
                 con2.leer();
                 con2.leerReader();
                 idRubro = con2.lector.GetInt32(0);
@@ -218,12 +213,12 @@ namespace PagoAgilFrba.AbmEmpresa
         }
         private string ConsultaRubro()
         {
-            string consulta = string.Format("SELECT DIR_ID FROM ONEFORALL.RUBROS " +
+            string consulta = string.Format("SELECT RUB_ID FROM ONEFORALL.RUBROS " +
                 "WHERE RUB_DESCRIPCION = '{0}'",rubro.Text);
 
             return consulta;
         }
-        
+
         public  string errorCampos()
         {    // Validacion de campos
             String errores = null;
