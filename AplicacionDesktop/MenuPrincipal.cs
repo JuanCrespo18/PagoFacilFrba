@@ -28,7 +28,10 @@ namespace PagoAgilFrba
             {
                 cmdRendir.Enabled = false;
             }
-
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Cobrar Facturas")))
+            {
+                cmdRegistroPago.Enabled = false;
+            }
         }
 
         private void cmdRoles_Click_1(object sender, EventArgs e)
