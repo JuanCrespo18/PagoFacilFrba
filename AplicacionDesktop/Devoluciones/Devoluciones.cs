@@ -18,6 +18,18 @@ namespace PagoAgilFrba.Devoluciones
         {
             InitializeComponent();
             _menuPrincipal = menuPrincipal;
+
+            var con = new Conexion();
+            con.query = string.Format("SELECT ROL_NOMBRE FROM ONEFORALL.ROLES WHERE ROL_ID = {0}", SesionUsuario.user.rol);
+            con.leer();
+            if (con.leerReader())
+            {
+                string rol = con.lector.GetString(0);
+                if (rol == "Administrador")
+                    rdbRendicion.Enabled = true;
+                else if (rol == "Cobrador")
+                    rdbPago.Enabled = true;
+            }
         }
 
         private void rdbPago_CheckedChanged(object sender, EventArgs e)
@@ -141,6 +153,12 @@ namespace PagoAgilFrba.Devoluciones
             {
                 MessageBox.Show(ex.Message, "Devolver facturas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cmdMenu_Click(object sender, EventArgs e)
+        {
+            _menuPrincipal.Show();
+            this.Close();
         }
     }
 }

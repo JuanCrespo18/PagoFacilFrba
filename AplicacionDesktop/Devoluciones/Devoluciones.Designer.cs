@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdbPago = new System.Windows.Forms.RadioButton();
-            this.rdbRendicion = new System.Windows.Forms.RadioButton();
+            this.cmdDevolver = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmdLimpiarFacturas = new System.Windows.Forms.Button();
             this.cmdQuitar = new System.Windows.Forms.Button();
@@ -42,59 +40,41 @@
             this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmdDevolver = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbRendicion = new System.Windows.Forms.RadioButton();
+            this.rdbPago = new System.Windows.Forms.RadioButton();
+            this.cmdMenu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmdMenu);
             this.groupBox1.Controls.Add(this.cmdDevolver);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(637, 433);
+            this.groupBox1.Size = new System.Drawing.Size(637, 479);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Facturas";
             // 
-            // groupBox2
+            // cmdDevolver
             // 
-            this.groupBox2.Controls.Add(this.rdbRendicion);
-            this.groupBox2.Controls.Add(this.rdbPago);
-            this.groupBox2.Location = new System.Drawing.Point(246, 19);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(143, 72);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tipo de devolución";
-            // 
-            // rdbPago
-            // 
-            this.rdbPago.AutoSize = true;
-            this.rdbPago.Location = new System.Drawing.Point(6, 30);
-            this.rdbPago.Name = "rdbPago";
-            this.rdbPago.Size = new System.Drawing.Size(50, 17);
-            this.rdbPago.TabIndex = 0;
-            this.rdbPago.TabStop = true;
-            this.rdbPago.Text = "Pago";
-            this.rdbPago.UseVisualStyleBackColor = true;
-            this.rdbPago.CheckedChanged += new System.EventHandler(this.rdbPago_CheckedChanged);
-            // 
-            // rdbRendicion
-            // 
-            this.rdbRendicion.AutoSize = true;
-            this.rdbRendicion.Location = new System.Drawing.Point(62, 30);
-            this.rdbRendicion.Name = "rdbRendicion";
-            this.rdbRendicion.Size = new System.Drawing.Size(73, 17);
-            this.rdbRendicion.TabIndex = 1;
-            this.rdbRendicion.TabStop = true;
-            this.rdbRendicion.Text = "Rendición";
-            this.rdbRendicion.UseVisualStyleBackColor = true;
+            this.cmdDevolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdDevolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdDevolver.Location = new System.Drawing.Point(246, 362);
+            this.cmdDevolver.Name = "cmdDevolver";
+            this.cmdDevolver.Size = new System.Drawing.Size(156, 53);
+            this.cmdDevolver.TabIndex = 33;
+            this.cmdDevolver.Text = "Devolver";
+            this.cmdDevolver.UseVisualStyleBackColor = true;
+            this.cmdDevolver.Click += new System.EventHandler(this.cmdDevolver_Click);
             // 
             // groupBox3
             // 
@@ -197,31 +177,67 @@
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             // 
-            // cmdDevolver
+            // groupBox2
             // 
-            this.cmdDevolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdDevolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdDevolver.Location = new System.Drawing.Point(246, 362);
-            this.cmdDevolver.Name = "cmdDevolver";
-            this.cmdDevolver.Size = new System.Drawing.Size(156, 53);
-            this.cmdDevolver.TabIndex = 33;
-            this.cmdDevolver.Text = "Devolver";
-            this.cmdDevolver.UseVisualStyleBackColor = true;
-            this.cmdDevolver.Click += new System.EventHandler(this.cmdDevolver_Click);
+            this.groupBox2.Controls.Add(this.rdbRendicion);
+            this.groupBox2.Controls.Add(this.rdbPago);
+            this.groupBox2.Location = new System.Drawing.Point(246, 19);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(143, 72);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tipo de devolución";
+            // 
+            // rdbRendicion
+            // 
+            this.rdbRendicion.AutoSize = true;
+            this.rdbRendicion.Enabled = false;
+            this.rdbRendicion.Location = new System.Drawing.Point(62, 30);
+            this.rdbRendicion.Name = "rdbRendicion";
+            this.rdbRendicion.Size = new System.Drawing.Size(73, 17);
+            this.rdbRendicion.TabIndex = 1;
+            this.rdbRendicion.TabStop = true;
+            this.rdbRendicion.Text = "Rendición";
+            this.rdbRendicion.UseVisualStyleBackColor = true;
+            // 
+            // rdbPago
+            // 
+            this.rdbPago.AutoSize = true;
+            this.rdbPago.Enabled = false;
+            this.rdbPago.Location = new System.Drawing.Point(6, 30);
+            this.rdbPago.Name = "rdbPago";
+            this.rdbPago.Size = new System.Drawing.Size(50, 17);
+            this.rdbPago.TabIndex = 0;
+            this.rdbPago.TabStop = true;
+            this.rdbPago.Text = "Pago";
+            this.rdbPago.UseVisualStyleBackColor = true;
+            this.rdbPago.CheckedChanged += new System.EventHandler(this.rdbPago_CheckedChanged);
+            // 
+            // cmdMenu
+            // 
+            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdMenu.Location = new System.Drawing.Point(502, 436);
+            this.cmdMenu.Name = "cmdMenu";
+            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
+            this.cmdMenu.TabIndex = 35;
+            this.cmdMenu.Text = "Menu Principal";
+            this.cmdMenu.UseVisualStyleBackColor = true;
+            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
             // 
             // Devoluciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 433);
+            this.ClientSize = new System.Drawing.Size(637, 479);
             this.Controls.Add(this.groupBox1);
             this.Name = "Devoluciones";
             this.Text = "Devoluciones";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -243,5 +259,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.Button cmdDevolver;
+        private System.Windows.Forms.Button cmdMenu;
     }
 }
