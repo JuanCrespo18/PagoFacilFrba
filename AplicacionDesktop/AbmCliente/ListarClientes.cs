@@ -22,6 +22,7 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
             _menuPrincipal = menuPrincipal;
             cmdEditar.Text = "Agregar";
+            cmdCancelar.Hide();
         }
 
         public ListarClientes(AbmFactura.AltaFactura altaFactura)
@@ -30,6 +31,7 @@ namespace PagoAgilFrba.AbmCliente
             _altaFactura = altaFactura;
             cmdEditar.Text = "Seleccionar";
             cmdMenu.Hide();
+            cmdCancelar.Show();
         }
 
         public ListarClientes(AbmFactura.ListarFacturas listarFacturas)
@@ -38,6 +40,7 @@ namespace PagoAgilFrba.AbmCliente
             _listarFacturas = listarFacturas;
             cmdEditar.Text = "Seleccionar";
             cmdMenu.Hide();
+            cmdCancelar.Show();
         }
 
         private void cmdBuscar_Click(object sender, EventArgs e)
@@ -145,6 +148,19 @@ namespace PagoAgilFrba.AbmCliente
         public void Actualizar()
         {
             BuscarClientes();
+        }
+
+        private void cmdCancelar_Click(object sender, EventArgs e)
+        {
+            if (_altaFactura != null)
+            {
+                _altaFactura.Show();
+            }
+            else
+            {
+                _listarFacturas.Show();
+            }
+            this.Close();
         }
     }
 }

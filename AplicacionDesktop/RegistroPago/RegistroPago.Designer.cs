@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmdLimpiarFacturas = new System.Windows.Forms.Button();
+            this.cmdQuitar = new System.Windows.Forms.Button();
+            this.cmdAgregar = new System.Windows.Forms.Button();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmdAgregar = new System.Windows.Forms.Button();
-            this.cmdQuitar = new System.Windows.Forms.Button();
-            this.cmdLimpiarFacturas = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmdPagar = new System.Windows.Forms.Button();
             this.cboMetodosPago = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmdPagar = new System.Windows.Forms.Button();
+            this.cmdMenu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -60,6 +61,39 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingrese facturas a cobrar";
+            // 
+            // cmdLimpiarFacturas
+            // 
+            this.cmdLimpiarFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLimpiarFacturas.Location = new System.Drawing.Point(12, 203);
+            this.cmdLimpiarFacturas.Name = "cmdLimpiarFacturas";
+            this.cmdLimpiarFacturas.Size = new System.Drawing.Size(107, 28);
+            this.cmdLimpiarFacturas.TabIndex = 38;
+            this.cmdLimpiarFacturas.Text = "Limpiar";
+            this.cmdLimpiarFacturas.UseVisualStyleBackColor = true;
+            this.cmdLimpiarFacturas.Click += new System.EventHandler(this.cmdLimpiarFacturas_Click);
+            // 
+            // cmdQuitar
+            // 
+            this.cmdQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdQuitar.Location = new System.Drawing.Point(389, 203);
+            this.cmdQuitar.Name = "cmdQuitar";
+            this.cmdQuitar.Size = new System.Drawing.Size(107, 28);
+            this.cmdQuitar.TabIndex = 37;
+            this.cmdQuitar.Text = "Quitar";
+            this.cmdQuitar.UseVisualStyleBackColor = true;
+            this.cmdQuitar.Click += new System.EventHandler(this.cmdQuitar_Click);
+            // 
+            // cmdAgregar
+            // 
+            this.cmdAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdAgregar.Location = new System.Drawing.Point(502, 203);
+            this.cmdAgregar.Name = "cmdAgregar";
+            this.cmdAgregar.Size = new System.Drawing.Size(107, 28);
+            this.cmdAgregar.TabIndex = 36;
+            this.cmdAgregar.Text = "Agregar";
+            this.cmdAgregar.UseVisualStyleBackColor = true;
+            this.cmdAgregar.Click += new System.EventHandler(this.cmdAgregar_Click);
             // 
             // dgvFacturas
             // 
@@ -116,51 +150,31 @@
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             // 
-            // cmdAgregar
-            // 
-            this.cmdAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAgregar.Location = new System.Drawing.Point(502, 203);
-            this.cmdAgregar.Name = "cmdAgregar";
-            this.cmdAgregar.Size = new System.Drawing.Size(107, 28);
-            this.cmdAgregar.TabIndex = 36;
-            this.cmdAgregar.Text = "Agregar";
-            this.cmdAgregar.UseVisualStyleBackColor = true;
-            this.cmdAgregar.Click += new System.EventHandler(this.cmdAgregar_Click);
-            // 
-            // cmdQuitar
-            // 
-            this.cmdQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdQuitar.Location = new System.Drawing.Point(389, 203);
-            this.cmdQuitar.Name = "cmdQuitar";
-            this.cmdQuitar.Size = new System.Drawing.Size(107, 28);
-            this.cmdQuitar.TabIndex = 37;
-            this.cmdQuitar.Text = "Quitar";
-            this.cmdQuitar.UseVisualStyleBackColor = true;
-            this.cmdQuitar.Click += new System.EventHandler(this.cmdQuitar_Click);
-            // 
-            // cmdLimpiarFacturas
-            // 
-            this.cmdLimpiarFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdLimpiarFacturas.Location = new System.Drawing.Point(12, 203);
-            this.cmdLimpiarFacturas.Name = "cmdLimpiarFacturas";
-            this.cmdLimpiarFacturas.Size = new System.Drawing.Size(107, 28);
-            this.cmdLimpiarFacturas.TabIndex = 38;
-            this.cmdLimpiarFacturas.Text = "Limpiar";
-            this.cmdLimpiarFacturas.UseVisualStyleBackColor = true;
-            this.cmdLimpiarFacturas.Click += new System.EventHandler(this.cmdLimpiarFacturas_Click);
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmdMenu);
             this.groupBox2.Controls.Add(this.cmdPagar);
             this.groupBox2.Controls.Add(this.cboMetodosPago);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 250);
+            this.groupBox2.Location = new System.Drawing.Point(0, 246);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(621, 121);
+            this.groupBox2.Size = new System.Drawing.Size(621, 159);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Metodo de pago";
+            // 
+            // cmdPagar
+            // 
+            this.cmdPagar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdPagar.Location = new System.Drawing.Point(224, 56);
+            this.cmdPagar.Name = "cmdPagar";
+            this.cmdPagar.Size = new System.Drawing.Size(156, 53);
+            this.cmdPagar.TabIndex = 32;
+            this.cmdPagar.Text = "Pagar";
+            this.cmdPagar.UseVisualStyleBackColor = true;
+            this.cmdPagar.Click += new System.EventHandler(this.cmdPagar_Click);
             // 
             // cboMetodosPago
             // 
@@ -183,23 +197,23 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Seleccione metodo de pago";
             // 
-            // cmdPagar
+            // cmdMenu
             // 
-            this.cmdPagar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdPagar.Location = new System.Drawing.Point(224, 56);
-            this.cmdPagar.Name = "cmdPagar";
-            this.cmdPagar.Size = new System.Drawing.Size(156, 53);
-            this.cmdPagar.TabIndex = 32;
-            this.cmdPagar.Text = "Pagar";
-            this.cmdPagar.UseVisualStyleBackColor = true;
-            this.cmdPagar.Click += new System.EventHandler(this.cmdPagar_Click);
+            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdMenu.Location = new System.Drawing.Point(484, 114);
+            this.cmdMenu.Name = "cmdMenu";
+            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
+            this.cmdMenu.TabIndex = 35;
+            this.cmdMenu.Text = "Menu Principal";
+            this.cmdMenu.UseVisualStyleBackColor = true;
+            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
             // 
             // RegistroPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 371);
+            this.ClientSize = new System.Drawing.Size(621, 405);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistroPago";
@@ -228,5 +242,6 @@
         private System.Windows.Forms.ComboBox cboMetodosPago;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cmdPagar;
+        private System.Windows.Forms.Button cmdMenu;
     }
 }

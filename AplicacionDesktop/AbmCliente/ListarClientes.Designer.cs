@@ -38,9 +38,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.cmdLimpiar = new System.Windows.Forms.Button();
-            this.cmdMenu = new System.Windows.Forms.Button();
-            this.cmdEditar = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +45,10 @@
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Activo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmdLimpiar = new System.Windows.Forms.Button();
+            this.cmdMenu = new System.Windows.Forms.Button();
+            this.cmdEditar = new System.Windows.Forms.Button();
+            this.cmdCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -138,6 +139,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmdCancelar);
             this.groupBox2.Controls.Add(this.dgvClientes);
             this.groupBox2.Controls.Add(this.cmdLimpiar);
             this.groupBox2.Controls.Add(this.cmdMenu);
@@ -174,41 +176,6 @@
             this.dgvClientes.Size = new System.Drawing.Size(825, 255);
             this.dgvClientes.TabIndex = 34;
             this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
-            // 
-            // cmdLimpiar
-            // 
-            this.cmdLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdLimpiar.Location = new System.Drawing.Point(277, 280);
-            this.cmdLimpiar.Name = "cmdLimpiar";
-            this.cmdLimpiar.Size = new System.Drawing.Size(156, 53);
-            this.cmdLimpiar.TabIndex = 31;
-            this.cmdLimpiar.Text = "Limpiar";
-            this.cmdLimpiar.UseVisualStyleBackColor = true;
-            this.cmdLimpiar.Click += new System.EventHandler(this.cmdLimpiar_Click);
-            // 
-            // cmdMenu
-            // 
-            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdMenu.Location = new System.Drawing.Point(724, 357);
-            this.cmdMenu.Name = "cmdMenu";
-            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
-            this.cmdMenu.TabIndex = 33;
-            this.cmdMenu.Text = "Menu Principal";
-            this.cmdMenu.UseVisualStyleBackColor = true;
-            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
-            // 
-            // cmdEditar
-            // 
-            this.cmdEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEditar.Location = new System.Drawing.Point(442, 280);
-            this.cmdEditar.Name = "cmdEditar";
-            this.cmdEditar.Size = new System.Drawing.Size(156, 53);
-            this.cmdEditar.TabIndex = 32;
-            this.cmdEditar.UseVisualStyleBackColor = true;
-            this.cmdEditar.Click += new System.EventHandler(this.cmdEditar_Click);
             // 
             // Id
             // 
@@ -260,6 +227,53 @@
             this.Activo.ReadOnly = true;
             this.Activo.Width = 43;
             // 
+            // cmdLimpiar
+            // 
+            this.cmdLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLimpiar.Location = new System.Drawing.Point(277, 280);
+            this.cmdLimpiar.Name = "cmdLimpiar";
+            this.cmdLimpiar.Size = new System.Drawing.Size(156, 53);
+            this.cmdLimpiar.TabIndex = 31;
+            this.cmdLimpiar.Text = "Limpiar";
+            this.cmdLimpiar.UseVisualStyleBackColor = true;
+            this.cmdLimpiar.Click += new System.EventHandler(this.cmdLimpiar_Click);
+            // 
+            // cmdMenu
+            // 
+            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdMenu.Location = new System.Drawing.Point(724, 357);
+            this.cmdMenu.Name = "cmdMenu";
+            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
+            this.cmdMenu.TabIndex = 33;
+            this.cmdMenu.Text = "Menu Principal";
+            this.cmdMenu.UseVisualStyleBackColor = true;
+            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
+            // 
+            // cmdEditar
+            // 
+            this.cmdEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEditar.Location = new System.Drawing.Point(442, 280);
+            this.cmdEditar.Name = "cmdEditar";
+            this.cmdEditar.Size = new System.Drawing.Size(156, 53);
+            this.cmdEditar.TabIndex = 32;
+            this.cmdEditar.UseVisualStyleBackColor = true;
+            this.cmdEditar.Click += new System.EventHandler(this.cmdEditar_Click);
+            // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.Location = new System.Drawing.Point(714, 357);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(125, 37);
+            this.cmdCancelar.TabIndex = 35;
+            this.cmdCancelar.Text = "Cancelar";
+            this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
+            // 
             // ListarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,5 +313,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Activo;
+        private System.Windows.Forms.Button cmdCancelar;
     }
 }

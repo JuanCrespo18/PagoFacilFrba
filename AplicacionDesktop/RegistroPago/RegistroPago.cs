@@ -103,5 +103,11 @@ namespace PagoAgilFrba.RegistroPago
                 MessageBox.Show(ex.Message, "Pagar facturas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void cmdMenu_Click(object sender, EventArgs e)
+        {
+            _menuPrincipal.Show();
+            this.Close();
+        }
     }
 }

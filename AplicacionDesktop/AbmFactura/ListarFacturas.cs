@@ -35,6 +35,7 @@ namespace PagoAgilFrba.AbmFactura
             _registroPago = registroPago;
             _evento = 'P';
             cmdEditar.Text = "Seleccionar";
+            cmdMenu.Hide();
         }
 
         public ListarFacturas(Devoluciones.Devoluciones devoluciones, char tipoDev)
@@ -193,7 +194,8 @@ namespace PagoAgilFrba.AbmFactura
             txtCliente.Clear();
             cboEmpresas.SelectedIndex = -1;
             txtNumeroFactura.Clear();
-            cmdEditar.Text = "Agregar";
+            if(cmdEditar.Text == "Editar")
+                cmdEditar.Text = "Agregar";
             dgvFacturas.Rows.Clear();
         }
 
