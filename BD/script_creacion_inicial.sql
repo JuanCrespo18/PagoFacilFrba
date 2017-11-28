@@ -446,11 +446,10 @@ VALUES (1,1),(1,2),(2,2)
 set identity_insert ONEFORALL.PAGOS on
 insert into ONEFORALL.PAGOS
 (PAGO_ID, PAGO_FECHA_PAGO, PAGO_CLIE_ID, PAGO_USER_ID, PAGO_FORMA_PAGO, PAGO_SUC_ID, PAGO_TOTAL)
-	select distinct Pago_nro, Pago_Fecha,  c.CLIE_ID, u.USER_ID, FormaPagoDescripcion, s.SUC_ID, Total
+	select distinct Pago_nro, Pago_Fecha,  c.CLIE_ID, 1, FormaPagoDescripcion, s.SUC_ID, Total
 	from gd_esquema.Maestra M
 	join ONEFORALL.CLIENTES C on M.[Cliente-Dni] = c.CLIE_DNI
 	join ONEFORALL.SUCURSALES S on M.Sucursal_Nombre = S.SUC_NOMBRE
-	join ONEFORALL.USUARIOS U on 1 = 1
 set identity_insert ONEFORALL.PAGOS off
 GO
 
