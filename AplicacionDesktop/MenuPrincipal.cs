@@ -15,6 +15,20 @@ namespace PagoAgilFrba
         public MenuPrincipal()
         {
             InitializeComponent();
+            desactivarBotones();
+        }
+
+        private void desactivarBotones()
+        {
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Realizar Devoluciones")))
+            {
+                cmdDevoluciones.Enabled = false;
+            }
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Rendir Facturas")))
+            {
+                cmdRendir.Enabled = false;
+            }
+
         }
 
         private void cmdRoles_Click_1(object sender, EventArgs e)

@@ -41,5 +41,34 @@ namespace PagoAgilFrba
             }
             con.cerrarConexion();
         }
+
+        public void cargarFuncionalidadesRol() {
+
+            var con = new Conexion();
+
+            con.query = "SELECT DISTINCT(fun.FUNC_DESCRIPCION) " +
+            "FROM ONEFORALL.USUARIOS u JOIN ONEFORALL.USUARIO_X_ROL uxr " +
+            "on " + id + " = uxr.USERX_ID " +
+            "JOIN ONEFORALL.ROLES rol ON rol.ROL_ID = uxr.ROLX_ID " +
+            "and rol.ROL_ACTIVO = 1 JOIN ONEFORALL.ROL_X_FUNCIONALIDAD rxf " +
+            "ON rxf.ROL_ID = rol.ROL_ID JOIN ONEFORALL.FUNCIONALIDADES fun " +
+            "ON fun.FUNC_ID = rxf.FUNC_ID";
+            con.leer();
+            if (!con.leerReader())
+            {
+                throw new Exception("Error carga de funcionalidades");
+            }
+            else
+            {
+                this.funcionalidades.Add(con.lector.GetString(0));
+                while (con.leerReader())
+                {
+                    this.funcionalidades.Add(con.lector.GetString(0));
+                }
+            }
+            con.cerrarConexion();
+
+        }
+
     }
 }

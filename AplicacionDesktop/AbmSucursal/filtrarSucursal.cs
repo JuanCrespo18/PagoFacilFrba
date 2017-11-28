@@ -63,8 +63,8 @@ namespace PagoAgilFrba.AbmSucursal
                     listaSucursales.Rows.Add(con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetString(3), con.lector.GetString(6),con.lector.GetBoolean(7));
                 }
             }
-            if (SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Sucursales")))
-                CargarColumnaModificacion();
+            
+            CargarColumnaModificacion();
             listaSucursales.Columns["id"].Visible = false;
             listaSucursales.Columns["activa"].Visible = false;
             listaSucursales.AllowUserToAddRows = false;
@@ -78,6 +78,10 @@ namespace PagoAgilFrba.AbmSucursal
             botonColumnaModificar.Text = "Modificar";
             botonColumnaModificar.Name = "Modificar";
             botonColumnaModificar.UseColumnTextForButtonValue = true;
+
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Sucursales")))
+                botonColumnaModificar.Visible = false;
+
             listaSucursales.Columns.Add(botonColumnaModificar);
         }
 
@@ -96,6 +100,7 @@ namespace PagoAgilFrba.AbmSucursal
             nombre.Text = "";
             direccion.Text = "";
             codPostal.Text = "";
+            listaSucursales.Rows.Clear();
         }
 
         public void refresh() {

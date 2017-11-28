@@ -76,6 +76,8 @@ namespace PagoAgilFrba.Login
                 SesionUsuario.user.sucursal = con.lector.GetInt32(0);
                 con.cerrarConexion();
 
+                SesionUsuario.usuario.cargarFuncionalidadesRol(); 
+
                 new MenuPrincipal().Show();
                 this.Close();
             }
