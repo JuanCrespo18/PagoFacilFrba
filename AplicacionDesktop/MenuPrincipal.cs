@@ -32,6 +32,10 @@ namespace PagoAgilFrba
             {
                 cmdRegistroPago.Enabled = false;
             }
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Generar Estadisticas")))
+            {
+                button1.Enabled = false;
+            }
         }
 
         private void cmdRoles_Click_1(object sender, EventArgs e)

@@ -137,6 +137,13 @@ namespace PagoAgilFrba.AbmFactura
                 if (cmdEditar.Text != "Seleccionar")
                     cmdEditar.Text = "Editar";
             }
+
+            if (cmdEditar.Text.Equals("Editar"))
+                if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Generar Estadisticas")))
+                {
+                    cmdEditar.Enabled = false;
+                }
+
             con.cerrarConexion();
         }
 
