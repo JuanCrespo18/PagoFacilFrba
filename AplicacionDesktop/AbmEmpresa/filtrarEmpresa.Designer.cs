@@ -1,4 +1,7 @@
-﻿namespace PagoAgilFrba.AbmEmpresa
+﻿using PagoAgilFrba.Dto;
+using System.Collections.Generic;
+
+namespace PagoAgilFrba.AbmEmpresa
 {
     partial class filtrarEmpresa
     {
@@ -42,6 +45,7 @@
             this.filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEmpresas)).BeginInit();
             this.SuspendLayout();
+            this.empresas = new List<EmpresaDto>();
             // 
             // filtros
             // 
@@ -65,6 +69,7 @@
             this.rubro.Name = "rubro";
             this.rubro.Size = new System.Drawing.Size(317, 21);
             this.rubro.TabIndex = 11;
+            this.rubro.SelectedIndexChanged += new System.EventHandler(this.rubro_SelectedIndexChanged);
             // 
             // razonSocial
             // 
@@ -128,6 +133,7 @@
             this.btnBuscar.TabIndex = 13;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // listaEmpresas
             // 
@@ -136,6 +142,7 @@
             this.listaEmpresas.Name = "listaEmpresas";
             this.listaEmpresas.Size = new System.Drawing.Size(442, 198);
             this.listaEmpresas.TabIndex = 14;
+            this.listaEmpresas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaEmpresa_celda_Click);
             // 
             // btnCancelar
             // 

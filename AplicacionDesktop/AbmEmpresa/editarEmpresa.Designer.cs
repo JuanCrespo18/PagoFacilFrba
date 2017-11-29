@@ -50,7 +50,6 @@
             this.direccion = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.linkVolverAtras = new System.Windows.Forms.LinkLabel();
             this.checkHabilitada = new System.Windows.Forms.CheckBox();
             this.datosEmpresa.SuspendLayout();
             this.dirEmpresa.SuspendLayout();
@@ -237,6 +236,7 @@
             this.btnGuardar.TabIndex = 21;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -247,16 +247,7 @@
             this.btnCancelar.TabIndex = 22;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // linkVolverAtras
-            // 
-            this.linkVolverAtras.AutoSize = true;
-            this.linkVolverAtras.Location = new System.Drawing.Point(12, 329);
-            this.linkVolverAtras.Name = "linkVolverAtras";
-            this.linkVolverAtras.Size = new System.Drawing.Size(63, 13);
-            this.linkVolverAtras.TabIndex = 23;
-            this.linkVolverAtras.TabStop = true;
-            this.linkVolverAtras.Text = "Volver atras";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // checkHabilitada
             // 
@@ -276,7 +267,6 @@
             this.Controls.Add(this.checkHabilitada);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.linkVolverAtras);
             this.Controls.Add(this.dirEmpresa);
             this.Controls.Add(this.datosEmpresa);
             this.Name = "editarEmpresa";
@@ -312,7 +302,6 @@
         private System.Windows.Forms.TextBox direccion;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.LinkLabel linkVolverAtras;
         private System.Windows.Forms.CheckBox checkHabilitada;
     }
 }

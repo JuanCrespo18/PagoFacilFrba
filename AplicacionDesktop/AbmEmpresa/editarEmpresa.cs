@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagoAgilFrba.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,29 @@ namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class editarEmpresa : Form
     {
-        private int _idEmpresa; 
+        private int _idEmpresa;
+        private EmpresaDto empresa;
         private filtrarEmpresa menuPadre;
     
         public editarEmpresa(String id_empresa,filtrarEmpresa parent)
         {
             InitializeComponent();
+            cargarRubros();
             this._idEmpresa = Convert.ToInt32(id_empresa);
             this.cargarEmpresa(_idEmpresa);
             this.menuPadre = parent;
+        }
+
+        private void cargarRubros()
+        {
+            rubro.Items.Clear();
+            var squery = "SELECT DISTINCT(RUB_DESCRIPCION) FROM ONEFORALL.RUBROS";
+            var con = new Conexion() { query = squery };
+            con.leer();
+            while (con.leerReader())
+            {
+                rubro.Items.Add(con.lector.GetString(0));
+            }
         }
 
         public void cargarEmpresa(int id_empresa)
@@ -38,14 +53,15 @@ namespace PagoAgilFrba.AbmEmpresa
                 razonSocial.Text = con.lector.GetString(2);
                 int idDireccion = con.lector.GetInt32(3);
                 int idRubro = con.lector.GetInt32(4);
-                checkHabilitada.Checked = con.lector.GetBoolean(5);
+                int dia_rendicion = con.lector.GetInt32(5);
+                checkHabilitada.Checked = con.lector.GetBoolean(6);
+
+                empresa = new EmpresaDto(id_empresa, razonSocial.Text, cuit.Text, idRubro ,idDireccion, con.lector.GetBoolean(6));
 
                 con.cerrarConexion();
 
-                con = new Conexion()
-                {
-                    query = string.Format("SELECT * FROM ONEFORALL.DIRECCIONES WHERE DIR_ID = {0}", idDireccion)
-                };
+                con.query = string.Format("SELECT * FROM ONEFORALL.DIRECCIONES WHERE DIR_ID = {0}", idDireccion);
+
                 con.leer();
                 con.leerReader();
 
@@ -55,19 +71,16 @@ namespace PagoAgilFrba.AbmEmpresa
                 departamento.Text = con.lector.IsDBNull(4) ? "" : con.lector.GetString(4);
                 localidad.Text = con.lector.GetString(5);
 
-
                 con.cerrarConexion();
 
-                con = new Conexion()
-                {
-                    query = string.Format("SELECT * FROM ONEFORALL.RUBROS WHERE RUB_ID = {0}", idRubro)
-                };
+                con.query = string.Format("SELECT * FROM ONEFORALL.RUBROS WHERE RUB_ID = {0}", idRubro);
+                
                 con.leer();
                 con.leerReader();
 
                 rubro.Text = con.lector.GetString(1);
 
-                ActualizarEmpresa(idDireccion, idRubro);
+               // ActualizarEmpresa(idDireccion, idRubro);
 
 
             }
@@ -105,68 +118,18 @@ namespace PagoAgilFrba.AbmEmpresa
             con.ejecutar();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
 
             if (!hayObligatoriosvacios())
             {
-                
-                var select = "SELECT EMP_DIR_ID FROM ONEFORALL.EMPRESAS WHERE EMP_ID = " + _idEmpresa;
-                var idDireccion = 0;
 
-                var idRubro = 0;
-                var con = new Conexion() { query = select };
-                con.leer();
-
-                    if (!con.leerReader())
-                    {
-                        MessageBox.Show("No se encontro ninguna Empresa", "Editar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        menuPadre.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        idDireccion = con.lector.GetInt32(0);
-                    }
-                    con.cerrarConexion();
+                //TODO terminar
 
 
-                    var query =  "SELECT RUB_ID FROM ONEFORALL.RUBROS ";
-                     query += "WHERE RUB_DESCRIPCION =" + rubro.Container + " ;";
+                btnCancelar_Click(null, null);
+              
 
-                    if (!con.leerReader())
-                    {
-                        MessageBox.Show("No se encontro ninguna Rubro", "Editar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        menuPadre.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        idRubro = con.lector.GetInt32(0);
-                    }
-
-                    con.cerrarConexion();
-
-                    query = "UPDATE ONEFORALL.DIRECCIONES SET ";
-                    query += "DIR_DIRECCION = '" + direccion.Text + "', ";
-                    if (!string.IsNullOrEmpty(piso.Text))
-                    {
-                        query += "DIR_PISO = '" + piso.Text + "',";
-                    }
-                    if (!string.IsNullOrEmpty(departamento.Text))
-                    {
-                        query += "DIR_DEPARTAMENTO = '" + departamento.Text + "',";
-                    }
-                    query += "DIR_LOCALIDAD = '" + localidad.Text + "' WHERE DIR_ID =" + idDireccion + " ;";
-
-                    con.query = query;
-                    con.ejecutar();
-                    MessageBox.Show("Se realizaron los cambios correctamente", "Editar Empresa", MessageBoxButtons.OK);
-               
-                    ActualizarEmpresa(idDireccion, idRubro);
-                    menuPadre.Show();
-                    menuPadre.refresh();
-                    this.Hide();
             }
             else {
                 MessageBox.Show("No se completaron los campos obligatorios", "editar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
