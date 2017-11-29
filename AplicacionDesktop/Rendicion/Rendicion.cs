@@ -47,18 +47,19 @@ namespace PagoAgilFrba.Rendicion
 
                 var con = new Conexion();
 
-                con.query = string.Format("SELECT EMP_ID FROM ONEFORALL.EMPRESAS WHERE EMP_NOMBRE = '{0}'", cboEmpresas.SelectedItem.ToString());
+                con.query = string.Format("SELECT EMP_ID, EMP_DIA_REND FROM ONEFORALL.EMPRESAS WHERE EMP_NOMBRE = '{0}'", cboEmpresas.SelectedItem.ToString());
                 con.leer();
                 con.leerReader();
                 _idEmpresa = con.lector.GetInt32(0);
+                var dia_rendicion = con.lector.GetInt32(1);
                 con.cerrarConexion();
 
                 con.query = string.Format("SELECT FACT_ID, CLIE_NOMBRE + ' ' + CLIE_APELLIDO, EMP_NOMBRE, PAGO_FECHA_PAGO, FACT_TOTAL FROM ONEFORALL.FACTURAS F " +
                     "INNER JOIN ONEFORALL.CLIENTES C ON F.FACT_CLIE_ID = C.CLIE_ID " +
                     "INNER JOIN ONEFORALL.PAGOS P ON F.FACT_PAGO_ID = P.PAGO_ID " +
-                    "INNER JOIN ONEFORALL.EMPRESAS E ON E.EMP_ID = {2}" +
+                    "INNER JOIN ONEFORALL.EMPRESAS E ON E.EMP_ID = {2} " +
                     "WHERE FACT_REND_ID IS NULL AND " +
-                    "PAGO_FECHA_PAGO > CONVERT(DATETIME,'{1}',101)", cboEmpresas.SelectedItem.ToString(), string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day), _idEmpresa);
+                    "PAGO_FECHA_PAGO > CONVERT(DATETIME,'{1}',101)", cboEmpresas.SelectedItem.ToString(), string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month - 1, dia_rendicion), _idEmpresa);
                 con.leer();
                 if (!con.leerReader())
                 {

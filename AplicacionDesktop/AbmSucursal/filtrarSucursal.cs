@@ -66,7 +66,6 @@ namespace PagoAgilFrba.AbmSucursal
             
             CargarColumnaModificacion();
             listaSucursales.Columns["id"].Visible = false;
-            listaSucursales.Columns["activa"].Visible = false;
             listaSucursales.AllowUserToAddRows = false;
         }
 
