@@ -58,7 +58,7 @@ namespace PagoAgilFrba.Rendicion
                     "INNER JOIN ONEFORALL.PAGOS P ON F.FACT_PAGO_ID = P.PAGO_ID " +
                     "INNER JOIN ONEFORALL.EMPRESAS E ON E.EMP_ID = {2}" +
                     "WHERE FACT_REND_ID IS NULL AND " +
-                    "PAGO_FECHA_PAGO > '{1}'", cboEmpresas.SelectedItem.ToString(), string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day), _idEmpresa);
+                    "PAGO_FECHA_PAGO > CONVERT(DATETIME,'{1}',101)", cboEmpresas.SelectedItem.ToString(), string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day), _idEmpresa);
                 con.leer();
                 if (!con.leerReader())
                 {
