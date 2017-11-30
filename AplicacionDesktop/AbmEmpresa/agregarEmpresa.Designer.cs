@@ -34,6 +34,9 @@ namespace PagoAgilFrba.AbmEmpresa
         private void InitializeComponent()
         {
             this.datosEmpresa = new System.Windows.Forms.GroupBox();
+            this.activa = new System.Windows.Forms.CheckBox();
+            this.diaRendicion = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.rubro = new System.Windows.Forms.ComboBox();
             this.razonSocial = new System.Windows.Forms.TextBox();
             this.cuit = new System.Windows.Forms.TextBox();
@@ -61,6 +64,9 @@ namespace PagoAgilFrba.AbmEmpresa
             // 
             // datosEmpresa
             // 
+            this.datosEmpresa.Controls.Add(this.activa);
+            this.datosEmpresa.Controls.Add(this.diaRendicion);
+            this.datosEmpresa.Controls.Add(this.label10);
             this.datosEmpresa.Controls.Add(this.rubro);
             this.datosEmpresa.Controls.Add(this.razonSocial);
             this.datosEmpresa.Controls.Add(this.cuit);
@@ -69,13 +75,42 @@ namespace PagoAgilFrba.AbmEmpresa
             this.datosEmpresa.Controls.Add(this.label1);
             this.datosEmpresa.Location = new System.Drawing.Point(12, 12);
             this.datosEmpresa.Name = "datosEmpresa";
-            this.datosEmpresa.Size = new System.Drawing.Size(442, 119);
+            this.datosEmpresa.Size = new System.Drawing.Size(442, 207);
             this.datosEmpresa.TabIndex = 0;
             this.datosEmpresa.TabStop = false;
             this.datosEmpresa.Text = "Datos Empresa";
             // 
+            // activa
+            // 
+            this.activa.AutoSize = true;
+            this.activa.Location = new System.Drawing.Point(198, 158);
+            this.activa.Name = "activa";
+            this.activa.Size = new System.Drawing.Size(73, 17);
+            this.activa.TabIndex = 14;
+            this.activa.Text = "Habilitada";
+            this.activa.UseVisualStyleBackColor = true;
+            // 
+            // diaRendicion
+            // 
+            this.diaRendicion.Location = new System.Drawing.Point(119, 110);
+            this.diaRendicion.Name = "diaRendicion";
+            this.diaRendicion.Size = new System.Drawing.Size(317, 20);
+            this.diaRendicion.TabIndex = 13;
+            this.diaRendicion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.diaRendicion_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label10.Location = new System.Drawing.Point(19, 113);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 16);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Dia Rendicion *";
+            // 
             // rubro
             // 
+            this.rubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rubro.FormattingEnabled = true;
             this.rubro.Location = new System.Drawing.Point(119, 83);
             this.rubro.Name = "rubro";
@@ -124,7 +159,7 @@ namespace PagoAgilFrba.AbmEmpresa
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Razos Social *";
+            this.label1.Text = "Razon Social *";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
@@ -180,7 +215,7 @@ namespace PagoAgilFrba.AbmEmpresa
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 301);
+            this.label9.Location = new System.Drawing.Point(12, 373);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 13);
             this.label9.TabIndex = 8;
@@ -224,23 +259,24 @@ namespace PagoAgilFrba.AbmEmpresa
             // bntAgregar
             // 
             this.bntAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.bntAgregar.Location = new System.Drawing.Point(354, 320);
+            this.bntAgregar.Location = new System.Drawing.Point(354, 392);
             this.bntAgregar.Name = "bntAgregar";
             this.bntAgregar.Size = new System.Drawing.Size(100, 37);
             this.bntAgregar.TabIndex = 16;
             this.bntAgregar.Text = "Agregar";
             this.bntAgregar.UseVisualStyleBackColor = true;
+            this.bntAgregar.Click += new System.EventHandler(this.bntAgregar_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.btnLimpiar.Location = new System.Drawing.Point(247, 320);
+            this.btnLimpiar.Location = new System.Drawing.Point(247, 392);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(101, 37);
             this.btnLimpiar.TabIndex = 17;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
-
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // dirEmpresa
             // 
@@ -254,7 +290,7 @@ namespace PagoAgilFrba.AbmEmpresa
             this.dirEmpresa.Controls.Add(this.codPostal);
             this.dirEmpresa.Controls.Add(this.localidad);
             this.dirEmpresa.Controls.Add(this.direccion);
-            this.dirEmpresa.Location = new System.Drawing.Point(12, 153);
+            this.dirEmpresa.Location = new System.Drawing.Point(12, 225);
             this.dirEmpresa.Name = "dirEmpresa";
             this.dirEmpresa.Size = new System.Drawing.Size(442, 139);
             this.dirEmpresa.TabIndex = 19;
@@ -264,7 +300,7 @@ namespace PagoAgilFrba.AbmEmpresa
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(12, 320);
+            this.btnCancelar.Location = new System.Drawing.Point(12, 392);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 37);
             this.btnCancelar.TabIndex = 20;
@@ -276,7 +312,7 @@ namespace PagoAgilFrba.AbmEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 369);
+            this.ClientSize = new System.Drawing.Size(466, 443);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.bntAgregar);
             this.Controls.Add(this.btnLimpiar);
@@ -320,9 +356,8 @@ namespace PagoAgilFrba.AbmEmpresa
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox dirEmpresa;
         private System.Windows.Forms.Button btnCancelar;
-
-
-
-
+        private System.Windows.Forms.CheckBox activa;
+        private System.Windows.Forms.TextBox diaRendicion;
+        private System.Windows.Forms.Label label10;
     }
 }
