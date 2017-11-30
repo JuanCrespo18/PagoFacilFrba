@@ -27,10 +27,26 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(nombre.Text) && !string.IsNullOrEmpty(direccion.Text) && !string.IsNullOrEmpty(codPostal.Text) && !string.IsNullOrEmpty(localidad.Text))
+            if (!string.IsNullOrEmpty(nombre.Text) && !string.IsNullOrEmpty(direccion.Text) && !string.IsNullOrEmpty(codPostal.Text) && !string.IsNullOrEmpty(label.Text))
             {
                 try
                 {
+                    var existe_cp = 0;
+                    var con = new Conexion();
+                    con.query = "SELECT COUNT(*) FROM ONEFORALL.SUCURSALES S " +
+                               "JOIN ONEFORALL.DIRECCIONES D ON S.SUC_DIR_ID = D.DIR_ID WHERE D.DIR_CODIGO_POSTAL = " + codPostal.Text;
+                    con.leer();
+                    if (con.leerReader())
+                    {
+                        existe_cp = con.lector.GetInt32(0);
+                    }
+                    con.cerrarConexion();
+                    if (existe_cp > 0)
+                    {
+                        MessageBox.Show("Ya existe el codigo postal", "Editar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     string insertarDir = "INSERT INTO ONEFORALL.DIRECCIONES VALUES('" + direccion.Text +"','"+ codPostal.Text+"'";
                     string insertarSuc = "INSERT INTO ONEFORALL.SUCURSALES VALUES(";
 
@@ -47,10 +63,10 @@ namespace PagoAgilFrba.AbmSucursal
                     else {
                         insertarDir += ", '" + departamento.Text+"'";
                     }
-                    insertarDir += ", '" + campoLocalidad.Text + "');" ;
-                    var con = new Conexion() { query = insertarDir};
+                    insertarDir += ", '" + localidad.Text + "');" ;
+                    con.query = insertarDir;
                     con.ejecutar();
-                    var select = "SELECT DIR_ID FROM ONEFORALL.DIRECCIONES WHERE DIR_CODIGO_POSTAL = '" + codPostal.Text + "'";
+                    var select = "SELECT DIR_ID FROM ONEFORALL.DIRECCIONES WHERE DIR_CODIGO_POSTAL = '" + codPostal.Text + "' AND DIR_DIRECCION = '"+ direccion.Text +"' AND DIR_LOCALIDAD = '"+ localidad.Text+"'";
                     con.query = select;
                     con.leer();
                     con.leerReader();

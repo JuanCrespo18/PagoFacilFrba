@@ -38,7 +38,6 @@ namespace PagoAgilFrba.AbmSucursal
                 nombre.Text = con.lector.GetString(1);
                 direccion.Text = con.lector.GetString(2);
                 codPostal.Text = con.lector.GetString(3);
-                codPostal.Enabled = false;
                 try
                 {
                     piso.Text = con.lector.GetString(4);
@@ -72,6 +71,7 @@ namespace PagoAgilFrba.AbmSucursal
                 {
                     var select = "SELECT SUC_DIR_ID FROM ONEFORALL.SUCURSALES WHERE SUC_ID = " + id;
                     var dir_id = 0;
+                    var existe_cp = 0;
                     var con = new Conexion() { query = select };
                     con.leer();
 
@@ -86,7 +86,16 @@ namespace PagoAgilFrba.AbmSucursal
                         dir_id = con.lector.GetInt32(0);
                     }
                     con.cerrarConexion();
-                    con.query = "UPDATE ONEFORALL.SUCURSALES SET SUC_NOMBRE ='" + nombre.Text + "', SUC_ACTIVA = " + Convert.ToInt32(checkHabilitado.Checked) + " WHERE SUC_ID =" + id + ";";
+
+                    con.query = "SELECT COUNT(*) FROM ONEFORALL.SUCURSALES S " +
+                                "JOIN ONEFORALL.DIRECCIONES D ON S.SUC_DIR_ID = D.DIR_ID WHERE D.DIR_CODIGO_POSTAL = "+ codPostal.Text ;
+                    con.leer();
+                    if (con.leerReader()) {
+                        existe_cp = con.lector.GetInt32(0);
+                    }
+                    con.cerrarConexion();
+
+                    con.query = "UPDATE ONEFORALL.SUCURSALES SET SUC_NOMBRE ='" + nombre.Text + "', SUC_HABILITADA = " + Convert.ToInt32(checkHabilitado.Checked) + " WHERE SUC_ID =" + id + ";";
                     con.ejecutar();
                     var query = "UPDATE ONEFORALL.DIRECCIONES SET ";
                     query += "DIR_DIRECCION = '" + direccion.Text + "', ";
@@ -98,6 +107,13 @@ namespace PagoAgilFrba.AbmSucursal
                     {
                         query += "DIR_DEPARTAMENTO = '" + departamento.Text + "',";
                     }
+                    if (existe_cp > 0) {
+
+                        MessageBox.Show("Ya existe el codigo postal", "Editar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    query += "DIR_CODIGO_POSTAL = '"+ codPostal.Text +"', ";
+
                     query += "DIR_LOCALIDAD = '" + localidad.Text + "' WHERE DIR_ID =" + dir_id + " ;";
                     con.query = query;
                     con.ejecutar();

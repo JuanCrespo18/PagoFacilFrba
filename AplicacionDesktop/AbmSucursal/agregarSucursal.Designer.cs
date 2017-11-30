@@ -34,8 +34,8 @@
             this.pisoSucursal = new System.Windows.Forms.Label();
             this.dptoSucursal = new System.Windows.Forms.Label();
             this.GrupoDatos = new System.Windows.Forms.GroupBox();
-            this.campoLocalidad = new System.Windows.Forms.TextBox();
-            this.localidad = new System.Windows.Forms.Label();
+            this.localidad = new System.Windows.Forms.TextBox();
+            this.label = new System.Windows.Forms.Label();
             this.codPostal = new System.Windows.Forms.TextBox();
             this.piso = new System.Windows.Forms.TextBox();
             this.departamento = new System.Windows.Forms.TextBox();
@@ -99,8 +99,8 @@
             // 
             // GrupoDatos
             // 
-            this.GrupoDatos.Controls.Add(this.campoLocalidad);
             this.GrupoDatos.Controls.Add(this.localidad);
+            this.GrupoDatos.Controls.Add(this.label);
             this.GrupoDatos.Controls.Add(this.codPostal);
             this.GrupoDatos.Controls.Add(this.piso);
             this.GrupoDatos.Controls.Add(this.departamento);
@@ -118,23 +118,23 @@
             this.GrupoDatos.TabStop = false;
             this.GrupoDatos.Text = "Datos Sucursal";
             // 
-            // campoLocalidad
-            // 
-            this.campoLocalidad.Location = new System.Drawing.Point(127, 118);
-            this.campoLocalidad.Name = "campoLocalidad";
-            this.campoLocalidad.Size = new System.Drawing.Size(400, 20);
-            this.campoLocalidad.TabIndex = 7;
-            this.campoLocalidad.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // localidad
             // 
-            this.localidad.AutoSize = true;
-            this.localidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.localidad.Location = new System.Drawing.Point(15, 121);
+            this.localidad.Location = new System.Drawing.Point(127, 118);
             this.localidad.Name = "localidad";
-            this.localidad.Size = new System.Drawing.Size(76, 16);
-            this.localidad.TabIndex = 6;
-            this.localidad.Text = "Localidad *";
+            this.localidad.Size = new System.Drawing.Size(400, 20);
+            this.localidad.TabIndex = 7;
+            this.localidad.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label.Location = new System.Drawing.Point(15, 121);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(76, 16);
+            this.label.TabIndex = 6;
+            this.label.Text = "Localidad *";
             // 
             // codPostal
             // 
@@ -233,7 +233,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox campoLocalidad;
-        private System.Windows.Forms.Label localidad;
+        private System.Windows.Forms.TextBox localidad;
+        private System.Windows.Forms.Label label;
     }
 }

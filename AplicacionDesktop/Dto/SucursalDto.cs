@@ -11,7 +11,7 @@ namespace PagoAgilFrba.Dto
         private int id { get; set; }
         private String nombre { get; set; }
         private String direccion { get; set; }
-        private String cp { get; set; }
+        public String cp { get; set; }
         private String piso { get; set; }
         private String departamento { get; set; }
         private String localidad { get; set; }
