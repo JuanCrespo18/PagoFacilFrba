@@ -70,7 +70,8 @@ namespace PagoAgilFrba.AbmCliente
             con.leer();
             if (!con.leerReader())
             {
-                cmdEditar.Text = "Agregar";
+                if(cmdEditar.Text == "Editar")
+                    cmdEditar.Text = "Agregar";
                 MessageBox.Show("La busqueda no produjo ningún resultado", "Filtrar clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
