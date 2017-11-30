@@ -125,7 +125,7 @@ namespace PagoAgilFrba.AbmRol
                     }
                     con.cerrarConexion();
 
-                    var insertar = idsFuncNuevas.Select(x => string.Format("({0},{1})", x, _idRol)).ToList();
+                    var insertar = idsFuncNuevas.Select(x => string.Format("({1},{0})", x, _idRol)).ToList();
 
                     con = new Conexion()
                     {
@@ -189,6 +189,7 @@ namespace PagoAgilFrba.AbmRol
                 _funcionalidadesQuitadas.Clear();
 
                 _abmListadoRol.CargarRoles();
+                this.CargarRol(txtRol.Text, _idRol);
                 _abmListadoRol.Show();
                 this.Close();
             }
