@@ -18,6 +18,8 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             InitializeComponent();
             menuPrincipal = menu;
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Agregar Empresas")))
+                btnAgregar.Enabled = false;
         }
 
         private void MenuEmpresas_Load(object sender, EventArgs e)

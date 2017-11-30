@@ -122,29 +122,60 @@ namespace PagoAgilFrba.AbmEmpresa
 
                     con.cerrarConexion();
 
-                    con.query = "UPDATE ONEFORALL.DIRECCIONES SET ";
-                    query += "DIR_DIRECCION = '" + direccion.Text + "', ";
+                    
+                    var update = "UPDATE ONEFORALL.DIRECCIONES SET ";
+                    update += " DIR_DIRECCION = '" + direccion.Text + "', ";
+                    update += " DIR_CODIGO_POSTAL = '" + codPostal.Text + "',";
                     if (!string.IsNullOrEmpty(piso.Text))
                     {
-                        query += "DIR_PISO = '" + piso.Text + "',";
+                        update += "DIR_PISO = '" + piso.Text + "',";
                     }
                     if (!string.IsNullOrEmpty(departamento.Text))
                     {
-                        query += "DIR_DEPARTAMENTO = '" + departamento.Text + "',";
+                        update += "DIR_DEPARTAMENTO = '" + departamento.Text + "',";
                     }
-                    query += "DIR_LOCALIDAD = '" + localidad.Text + "' WHERE DIR_ID =" + dir_id + " ;";
-                    con.query = query;
+                    update += "DIR_LOCALIDAD = '" + localidad.Text + "' WHERE DIR_ID = " + dir_id + " ;";
+                    con.query = update;
                     con.ejecutar();
 
-                    if (empresa.activa != empresaModificada.activa && empresaModificada.activa)
+
+                    con.query = "SELECT RUB_ID FROM ONEFORALL.RUBROS WHERE RUB_DESCRIPCION = '"+ rubro.SelectedItem +"'";
+                    con.leer();
+
+                    if (con.leerReader())
                     {
+                        rub_id = con.lector.GetInt32(0);
+                    }
+                    con.cerrarConexion();
 
-                        //todo se debe comprobar si hay rendiciones pendientes
+                    if (empresa.activa != empresaModificada.activa && !empresaModificada.activa)
+                    {
+                        var cant = 0;
+                        con.query = "SELECT COUNT(*) from ONEFORALL.FACTURAS f left join " +
+                                    "ONEFORALL.RENDICIONES r on r.REND_ID = f.FACT_REND_ID and " +
+                                    "r.REND_EMP_ID = "+ empresa.id +" where f.FACT_REND_ID is null";
+                        con.leer();
 
+                        if (con.leerReader()) {
+                            cant = con.lector.GetInt32(0);
+                        }
+                        if (cant > 0) {
+                            MessageBox.Show("No puede desactivar porque tiene pendientes de rendicion","Editar Empresa",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                            return;
+                        }
+                        con.cerrarConexion();
                     }
 
+                    var upEmp = "UPDATE ONEFORALL.EMPRESAS SET ";
+                    upEmp += "EMP_CUIT = '" + cuit.Text +"', ";
+                    upEmp += "EMP_NOMBRE = '" + razonSocial.Text +"', ";
+                    upEmp += "EMP_RUB_ID = " + rub_id + ", ";
+                    upEmp += "EMP_ACTIVA = " + Convert.ToInt32(checkHabilitada.Checked);
+                    upEmp += " WHERE EMP_ID = " + empresa.id;
 
-
+                    con.query = upEmp;
+                    con.ejecutar();
+                    MessageBox.Show("Se realizaron los cambios correctamente", "Editar Empresa", MessageBoxButtons.OK);
                 }
 
                 menuPadre.Show();
@@ -155,7 +186,6 @@ namespace PagoAgilFrba.AbmEmpresa
                 MessageBox.Show("No se completaron los campos obligatorios", "editar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e) 
         {
             menuPadre.Show();

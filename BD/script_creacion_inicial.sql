@@ -506,7 +506,9 @@ VALUES  ('Agregar Rol'),
 		('Registrar Pago'),
 		('Agregar Cliente'),
 		('Agregar Factura'),
-		('Cobrar Facturas')
+		('Cobrar Facturas'),
+		('Modificar Empresas'),
+		('Agregar Empresas')
 
 ----------------------------------------------------------------------------------------
 ---------------------------------CARGO TABLA [ROL_X_FUNCIONALIDAD]------------------------------
@@ -530,6 +532,8 @@ VALUES 	(1,1),
 		(1,15),
 		(1,16),
 		(1,17),
+		(1,18),
+		(1,19),
 		(2,4),
 		(2,5),
 		(2,12),
