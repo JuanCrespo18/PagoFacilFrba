@@ -114,6 +114,9 @@ namespace PagoAgilFrba.AbmEmpresa
             botonColumnaModificar.Text = "Modificar";
             botonColumnaModificar.Name = "Modificar";
             botonColumnaModificar.UseColumnTextForButtonValue = true;
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Empresas")))
+                botonColumnaModificar.Visible = false;
+
             listaEmpresas.Columns.Add(botonColumnaModificar);
         }
 
@@ -132,6 +135,8 @@ namespace PagoAgilFrba.AbmEmpresa
        private void btnLimpiar_Click(object sender, EventArgs e) {
                 razonSocial.Clear();
                 cuit.Clear();
+                rubro.SelectedItem = null;
+                listaEmpresas.Rows.Clear();
         }
 
         public void refresh() {
