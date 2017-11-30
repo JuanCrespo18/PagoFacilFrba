@@ -151,16 +151,14 @@ namespace PagoAgilFrba.AbmEmpresa
                     if (empresa.activa != empresaModificada.activa && !empresaModificada.activa)
                     {
                         var cant = 0;
-                        con.query = "SELECT COUNT(*) from ONEFORALL.FACTURAS f left join " +
-                                    "ONEFORALL.RENDICIONES r on r.REND_ID = f.FACT_REND_ID and " +
-                                    "r.REND_EMP_ID = "+ empresa.id +" where f.FACT_REND_ID is null";
+                        con.query = string.Format("SELECT COUNT(*) FROM ONEFORALL.FACTURAS F JOIN ONEFORALL.PAGOS P ON F.FACT_PAGO_ID = P.PAGO_ID LEFT JOIN ONEFORALL.RENDICIONES R ON F.FACT_REND_ID = R.REND_ID WHERE F.FACT_EMP_ID = {0} AND F.FACT_REND_ID IS NULL", empresa.id);
                         con.leer();
 
                         if (con.leerReader()) {
                             cant = con.lector.GetInt32(0);
                         }
                         if (cant > 0) {
-                            MessageBox.Show("No puede desactivar porque tiene pendientes de rendicion","Editar Empresa",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                            MessageBox.Show("No puede desactivar porque tiene facturas pendientes de rendicion","Editar Empresa",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                             return;
                         }
                         con.cerrarConexion();
