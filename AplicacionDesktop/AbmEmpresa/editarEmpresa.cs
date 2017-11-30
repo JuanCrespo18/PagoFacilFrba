@@ -13,16 +13,14 @@ namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class editarEmpresa : Form
     {
-        private int _idEmpresa;
         private EmpresaDto empresa;
         private filtrarEmpresa menuPadre;
     
-        public editarEmpresa(String id_empresa,filtrarEmpresa parent)
+        public editarEmpresa(String _idEmpresa ,filtrarEmpresa parent)
         {
             InitializeComponent();
             cargarRubros();
-            this._idEmpresa = Convert.ToInt32(id_empresa);
-            this.cargarEmpresa(_idEmpresa);
+            this.cargarEmpresa(Convert.ToInt32(_idEmpresa));
             this.menuPadre = parent;
         }
 
@@ -38,9 +36,9 @@ namespace PagoAgilFrba.AbmEmpresa
             }
         }
 
-        public void cargarEmpresa(int id_empresa)
+        public void cargarEmpresa(int _idEmpresa)
         {
-            var query = "SELECT * FROM ONEFORALL.EMPRESAS WHERE EMP_ID = " + Convert.ToString(id_empresa) + ";";
+            var query = "SELECT * FROM ONEFORALL.EMPRESAS WHERE EMP_ID = " + Convert.ToString(_idEmpresa) + ";";
             var con = new Conexion() { query = query};
             con.leer();
             if (!con.leerReader())
@@ -56,8 +54,6 @@ namespace PagoAgilFrba.AbmEmpresa
                 int dia_rendicion = con.lector.GetInt32(5);
                 checkHabilitada.Checked = con.lector.GetBoolean(6);
 
-                empresa = new EmpresaDto(id_empresa, razonSocial.Text, cuit.Text, idRubro ,idDireccion, con.lector.GetBoolean(6));
-
                 con.cerrarConexion();
 
                 con.query = string.Format("SELECT * FROM ONEFORALL.DIRECCIONES WHERE DIR_ID = {0}", idDireccion);
@@ -70,18 +66,13 @@ namespace PagoAgilFrba.AbmEmpresa
                 piso.Text = con.lector.IsDBNull(3) ? "" : con.lector.GetString(3);
                 departamento.Text = con.lector.IsDBNull(4) ? "" : con.lector.GetString(4);
                 localidad.Text = con.lector.GetString(5);
-
                 con.cerrarConexion();
-
                 con.query = string.Format("SELECT * FROM ONEFORALL.RUBROS WHERE RUB_ID = {0}", idRubro);
-                
                 con.leer();
                 con.leerReader();
-
                 rubro.Text = con.lector.GetString(1);
 
-               // ActualizarEmpresa(idDireccion, idRubro);
-
+                empresa = new EmpresaDto(_idEmpresa, razonSocial.Text, cuit.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text,checkHabilitada.Checked);
 
             }
             con.cerrarConexion();
@@ -100,36 +91,65 @@ namespace PagoAgilFrba.AbmEmpresa
             return false;
         }
 
-        private void ActualizarEmpresa(int direccionId,int rubroId)
-        {
-            var con = new Conexion()
-            {
-                query = string.Format("UPDATE ONEFORALL.EMPRESAS " +
-                "SET EMP_ID = '{0}', " +
-                "EMP_CUIT = '{1}', " +
-                "EMP_NOMBRE = '{2}', " +
-                "EMP_DIR_ID = {3}, " +
-                "EMP_RUB_ID = '{4}', " +
-                "EMP_ACTIVA = '{5}', " +
-                "WHERE EMP_ID = {6}",
-                _idEmpresa, cuit.Text, razonSocial.Text, direccionId, rubroId, Convert.ToInt16(checkHabilitada.Checked),
-                _idEmpresa)
-            };
-            con.ejecutar();
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            var dir_id = 0;
+            var rub_id = 0;
 
             if (!hayObligatoriosvacios())
             {
+                var empresaModificada = new EmpresaDto(empresa.id, razonSocial.Text, cuit.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text, checkHabilitada.Checked);
 
-                //TODO terminar
+                if (!empresaModificada.equals(empresa))
+                {
+
+                    var query = "SELECT EMP_DIR_ID FROM ONEFORALL.EMPRESAS WHERE EMP_ID = " + empresa.id;
+
+                    var con = new Conexion() { query = query };
+
+                    con.leer();
+
+                    if (!con.leerReader())
+                    {
+                        MessageBox.Show("No se encontro ninguna Sucursal", "Editar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        menuPadre.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        dir_id = con.lector.GetInt32(0);
+                    }
+
+                    con.cerrarConexion();
+
+                    con.query = "UPDATE ONEFORALL.DIRECCIONES SET ";
+                    query += "DIR_DIRECCION = '" + direccion.Text + "', ";
+                    if (!string.IsNullOrEmpty(piso.Text))
+                    {
+                        query += "DIR_PISO = '" + piso.Text + "',";
+                    }
+                    if (!string.IsNullOrEmpty(departamento.Text))
+                    {
+                        query += "DIR_DEPARTAMENTO = '" + departamento.Text + "',";
+                    }
+                    query += "DIR_LOCALIDAD = '" + localidad.Text + "' WHERE DIR_ID =" + dir_id + " ;";
+                    con.query = query;
+                    con.ejecutar();
+
+                    if (empresa.activa != empresaModificada.activa && empresaModificada.activa)
+                    {
+
+                        //todo se debe comprobar si hay rendiciones pendientes
+
+                    }
 
 
-                btnCancelar_Click(null, null);
-              
 
+                }
+
+                menuPadre.Show();
+                menuPadre.refresh();
+                this.Hide();
             }
             else {
                 MessageBox.Show("No se completaron los campos obligatorios", "editar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

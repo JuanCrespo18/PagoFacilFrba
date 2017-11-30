@@ -79,8 +79,6 @@ namespace PagoAgilFrba.AbmEmpresa
             }
             else {
 
-                empresas.Add(new EmpresaDto(con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetInt32(3), con.lector.GetInt32(5), con.lector.GetBoolean(11)));
-
                 listaEmpresas.Rows.Add(con.lector.GetInt32(0),
                                         con.lector.GetString(1),
                                         con.lector.GetString(2),
@@ -91,8 +89,6 @@ namespace PagoAgilFrba.AbmEmpresa
                                         con.lector.GetBoolean(11));
                 while (con.leerReader())
                 {
-
-                    empresas.Add(new EmpresaDto(con.lector.GetInt32(0), con.lector.GetString(1), con.lector.GetString(2), con.lector.GetInt32(3), con.lector.GetInt32(5), con.lector.GetBoolean(11)));
 
                     listaEmpresas.Rows.Add(con.lector.GetInt32(0),
                                         con.lector.GetString(1),
@@ -126,8 +122,9 @@ namespace PagoAgilFrba.AbmEmpresa
             // Controla que la celda que se clickeo fue la de modificar
             if (e.ColumnIndex == listaEmpresas.Columns["Modificar"].Index && e.RowIndex >= 0)
             {
-                String _idEmpresa = listaEmpresas.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                new editarEmpresa(_idEmpresa, this).ShowDialog();
+                String idEmpresa = listaEmpresas.Rows[e.RowIndex].Cells["id"].Value.ToString();
+
+                new editarEmpresa(idEmpresa, this).ShowDialog();
                 return;
             }
         }
