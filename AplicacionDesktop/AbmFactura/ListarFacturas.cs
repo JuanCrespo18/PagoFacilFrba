@@ -26,6 +26,7 @@ namespace PagoAgilFrba.AbmFactura
             _menuPrincipal = menuPrincipal;
             cmdEditar.Text = "Agregar";
             _evento = 'E';
+            cmdCancelar.Hide();
         }
 
         public ListarFacturas(RegistroPago.RegistroPago registroPago)
@@ -36,6 +37,7 @@ namespace PagoAgilFrba.AbmFactura
             _evento = 'P';
             cmdEditar.Text = "Seleccionar";
             cmdMenu.Hide();
+            cmdCancelar.Show();
         }
 
         public ListarFacturas(Devoluciones.Devoluciones devoluciones, char tipoDev)
@@ -47,6 +49,7 @@ namespace PagoAgilFrba.AbmFactura
             _tipoDev = tipoDev;
             cmdEditar.Text = "Seleccionar";
             cmdMenu.Hide();
+            cmdCancelar.Hide();
         }
 
         private void cmdBuscarCliente_Click(object sender, EventArgs e)
@@ -210,6 +213,12 @@ namespace PagoAgilFrba.AbmFactura
         private void cmdMenu_Click(object sender, EventArgs e)
         {
             _menuPrincipal.Show();
+            this.Close();
+        }
+
+        private void cmdCancelar_Click(object sender, EventArgs e)
+        {
+            _registroPago.Show();
             this.Close();
         }
     }
