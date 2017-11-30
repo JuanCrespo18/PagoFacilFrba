@@ -137,7 +137,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 errores += "- El dia de rendicion debe estar entre el 1 y el 28\n";
 
 
-            if (!int.TryParse(cuit.Text, out asd)) errores += "- El 'cuit' debe ser numérico \n";
+            //if (!int.TryParse(cuit.Text, out asd)) errores += "- El 'cuit' debe ser numérico \n";
             
             return errores;
         }
