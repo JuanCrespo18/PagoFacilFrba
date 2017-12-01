@@ -29,7 +29,7 @@ namespace PagoAgilFrba.ListadoEstadistico
         private void CargarReporte()
         {
             var con = new Conexion();
-            con.query = string.Format("select b.EMP_NOMBRE, count(FACT_EMP_ID)/(select count(1)from ONEFORALL.FACTURAS a WHERE FACT_PAGO_ID in (Select PAGO_ID from ONEFORALL.PAGOS " +
+            con.query = string.Format("select TOP 5 b.EMP_NOMBRE, count(FACT_EMP_ID)/(select count(1)from ONEFORALL.FACTURAS a WHERE FACT_PAGO_ID in (Select PAGO_ID from ONEFORALL.PAGOS " +
                 "WHERE YEAR(PAGO_FECHA_PAGO) = {0} and MONTH(PAGO_FECHA_PAGO)/4 = ({1}-1) ))*100 as Porcentaje from ONEFORALL.FACTURAS "+
                 "join ONEFORALL.EMPRESAS b on FACT_EMP_ID=EMP_ID " +
                 "join ONEFORALL.PAGOS c on FACT_PAGO_ID = PAGO_ID "+
