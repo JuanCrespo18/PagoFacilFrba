@@ -19,6 +19,7 @@ namespace PagoAgilFrba.AbmEmpresa
         public filtrarEmpresa(MenuEmpresas menu)
         {
             InitializeComponent();
+            this.empresas = new List<EmpresaDto>();
             menuEmpresas = menu;
             cargarRubros();
             listaEmpresas.Columns.Add("id", "id");

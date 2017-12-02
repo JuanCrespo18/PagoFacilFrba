@@ -45,7 +45,7 @@ namespace PagoAgilFrba.AbmEmpresa
             this.filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEmpresas)).BeginInit();
             this.SuspendLayout();
-            this.empresas = new List<EmpresaDto>();
+            
             // 
             // filtros
             // 
