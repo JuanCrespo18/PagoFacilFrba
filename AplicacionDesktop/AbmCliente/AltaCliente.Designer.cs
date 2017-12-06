@@ -192,11 +192,11 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "Localidad";
             // 
-            // txtDirLoc
+            // txtDirLocalidad
             // 
             this.txtDirLocalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDirLocalidad.Location = new System.Drawing.Point(153, 137);
-            this.txtDirLocalidad.Name = "txtDirLoc";
+            this.txtDirLocalidad.Name = "txtDirLocalidad";
             this.txtDirLocalidad.Size = new System.Drawing.Size(211, 23);
             this.txtDirLocalidad.TabIndex = 9;
             // 
@@ -210,11 +210,11 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Calle y Numero";
             // 
-            // txtDirCalle
+            // txtDirDireccion
             // 
             this.txtDirDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDirDireccion.Location = new System.Drawing.Point(153, 21);
-            this.txtDirDireccion.Name = "txtDirCalle";
+            this.txtDirDireccion.Name = "txtDirDireccion";
             this.txtDirDireccion.Size = new System.Drawing.Size(211, 23);
             this.txtDirDireccion.TabIndex = 7;
             // 
@@ -310,6 +310,7 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(211, 23);
             this.txtTel.TabIndex = 29;
+            this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // label6
             // 
@@ -360,13 +361,13 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "Nombre";
             // 
-            // CrearEditarCliente
+            // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 466);
             this.Controls.Add(this.groupBox1);
-            this.Name = "CrearEditarCliente";
+            this.Name = "AltaCliente";
             this.Text = "CrearEditarCliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

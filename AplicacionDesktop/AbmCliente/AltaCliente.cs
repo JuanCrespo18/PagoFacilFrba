@@ -33,6 +33,7 @@ namespace PagoAgilFrba.AbmCliente
             _listarClientes = listarClientes;
             if (_evento == 'E')
                 cmdLimpiar.Text = "Restaurar";
+            dtpFecNac.MaxDate = DateTime.Today;
         }
 
         private void CargarCliente()
@@ -102,6 +103,7 @@ namespace PagoAgilFrba.AbmCliente
             try
             {
                 ValidarCamposNoNulos();
+                ValidarMailExistente();
                 int direccionId = ObtenerDireccion();
                 if (_evento == 'A')
                     AgregarCliente(direccionId);
@@ -116,6 +118,20 @@ namespace PagoAgilFrba.AbmCliente
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ValidarMailExistente()
+        {
+            var con = new Conexion();
+            con.query = string.Format("SELECT * FROM ONEFORALL.CLIENTES WHERE CLIE_MAIL = '{0}'", txtMail.Text);
+            con.leer();
+            if (con.leerReader())
+            {
+                con.cerrarConexion();
+                throw new Exception("Ya existe un cliente con ese mail");
+            }
+            else
+                con.cerrarConexion();
         }
 
         private void ValidarCamposNoNulos()
@@ -222,6 +238,14 @@ namespace PagoAgilFrba.AbmCliente
                 query = insert
             };
             con.ejecutar();
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
