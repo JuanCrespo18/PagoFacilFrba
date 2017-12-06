@@ -52,7 +52,7 @@ namespace PagoAgilFrba.AbmFactura
             _tipoDev = tipoDev;
             cmdEditar.Text = "Seleccionar";
             cmdMenu.Hide();
-            cmdCancelar.Hide();
+            cmdCancelar.Show();
         }
 
         private void cmdBuscarCliente_Click(object sender, EventArgs e)
@@ -119,7 +119,8 @@ namespace PagoAgilFrba.AbmFactura
             con.leer();
             if (!con.leerReader())
             {
-                cmdEditar.Text = "Agregar";
+                if(cmdEditar.Text == "Editar")
+                    cmdEditar.Text = "Agregar";
                 MessageBox.Show("La busqueda no produjo ningún resultado", "Filtrar facturas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
@@ -221,7 +222,10 @@ namespace PagoAgilFrba.AbmFactura
 
         private void cmdCancelar_Click(object sender, EventArgs e)
         {
-            _registroPago.Show();
+            if (_registroPago != null)
+                _registroPago.Show();
+            else
+                _devoluciones.Show();
             this.Close();
         }
     }
