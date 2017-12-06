@@ -15,6 +15,7 @@ namespace PagoAgilFrba.AbmCliente
         private char _evento;
         private int _idCliente;
         private ListarClientes _listarClientes;
+        private string _mailCliente;
 
         public static AltaCliente Crear(ListarClientes listarClientes, char evento, string idCliente)
         {
@@ -23,6 +24,7 @@ namespace PagoAgilFrba.AbmCliente
                 _idCliente = Convert.ToInt32(idCliente)
             };
             abm.CargarCliente();
+            abm._mailCliente = abm.txtMail.Text;
             return abm;
         }
 
@@ -126,11 +128,14 @@ namespace PagoAgilFrba.AbmCliente
             con.query = string.Format("SELECT * FROM ONEFORALL.CLIENTES WHERE CLIE_MAIL = '{0}'", txtMail.Text);
             con.leer();
             if (con.leerReader())
-            {
-                con.cerrarConexion();
-                throw new Exception("Ya existe un cliente con ese mail");
+            { 
+                if(_evento == 'A' || _mailCliente != txtMail.Text)
+                {
+                    con.cerrarConexion();
+                    throw new Exception("Ya existe un cliente con ese mail");
+                }
             }
-            else
+            else 
                 con.cerrarConexion();
         }
 
