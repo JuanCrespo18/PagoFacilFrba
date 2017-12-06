@@ -30,13 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_Trimestre = new System.Windows.Forms.TextBox();
             this.textBox_Anio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.list_Reporte = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnMenuPral = new System.Windows.Forms.Button();
+            this.textBox_Trimestre = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -60,13 +60,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Trimestre";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textBox_Trimestre
-            // 
-            this.textBox_Trimestre.Location = new System.Drawing.Point(130, 125);
-            this.textBox_Trimestre.Name = "textBox_Trimestre";
-            this.textBox_Trimestre.Size = new System.Drawing.Size(100, 20);
-            this.textBox_Trimestre.TabIndex = 2;
             // 
             // textBox_Anio
             // 
@@ -135,18 +128,34 @@
             this.btnMenuPral.UseVisualStyleBackColor = true;
             this.btnMenuPral.Click += new System.EventHandler(this.btnMenuPral_Click);
             // 
+            // textBox_Trimestre
+            // 
+            this.textBox_Trimestre.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox_Trimestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.textBox_Trimestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Trimestre.FormattingEnabled = true;
+            this.textBox_Trimestre.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.textBox_Trimestre.Location = new System.Drawing.Point(130, 119);
+            this.textBox_Trimestre.Name = "textBox_Trimestre";
+            this.textBox_Trimestre.Size = new System.Drawing.Size(77, 24);
+            this.textBox_Trimestre.TabIndex = 11;
+            // 
             // MenuListadoEstadistico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 264);
+            this.Controls.Add(this.textBox_Trimestre);
             this.Controls.Add(this.btnMenuPral);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.list_Reporte);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_Anio);
-            this.Controls.Add(this.textBox_Trimestre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "MenuListadoEstadistico";
@@ -160,12 +169,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_Trimestre;
         private System.Windows.Forms.TextBox textBox_Anio;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox list_Reporte;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnMenuPral;
+        private System.Windows.Forms.ComboBox textBox_Trimestre;
     }
 }
