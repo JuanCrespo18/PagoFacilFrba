@@ -29,23 +29,27 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvFacturas = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cmdMenu = new System.Windows.Forms.Button();
+            this.cboEmpresas = new System.Windows.Forms.ComboBox();
+            this.cmdRendir = new System.Windows.Forms.Button();
             this.cmdCargarFacturas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmdRendir = new System.Windows.Forms.Button();
-            this.cboEmpresas = new System.Windows.Forms.ComboBox();
-            this.cmdMenu = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtComision = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtComision);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cmdMenu);
             this.groupBox1.Controls.Add(this.cboEmpresas);
             this.groupBox1.Controls.Add(this.cmdRendir);
@@ -55,10 +59,62 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(616, 398);
+            this.groupBox1.Size = new System.Drawing.Size(616, 434);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Facturas";
+            // 
+            // cmdMenu
+            // 
+            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdMenu.Location = new System.Drawing.Point(480, 385);
+            this.cmdMenu.Name = "cmdMenu";
+            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
+            this.cmdMenu.TabIndex = 34;
+            this.cmdMenu.Text = "Menu Principal";
+            this.cmdMenu.UseVisualStyleBackColor = true;
+            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
+            // 
+            // cboEmpresas
+            // 
+            this.cboEmpresas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEmpresas.FormattingEnabled = true;
+            this.cboEmpresas.Location = new System.Drawing.Point(150, 36);
+            this.cboEmpresas.Name = "cboEmpresas";
+            this.cboEmpresas.Size = new System.Drawing.Size(292, 21);
+            this.cboEmpresas.TabIndex = 40;
+            // 
+            // cmdRendir
+            // 
+            this.cmdRendir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdRendir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdRendir.Location = new System.Drawing.Point(228, 325);
+            this.cmdRendir.Name = "cmdRendir";
+            this.cmdRendir.Size = new System.Drawing.Size(156, 53);
+            this.cmdRendir.TabIndex = 39;
+            this.cmdRendir.Text = "Rendir";
+            this.cmdRendir.UseVisualStyleBackColor = true;
+            this.cmdRendir.Click += new System.EventHandler(this.cmdRendir_Click);
+            // 
+            // cmdCargarFacturas
+            // 
+            this.cmdCargarFacturas.Location = new System.Drawing.Point(457, 20);
+            this.cmdCargarFacturas.Name = "cmdCargarFacturas";
+            this.cmdCargarFacturas.Size = new System.Drawing.Size(130, 50);
+            this.cmdCargarFacturas.TabIndex = 38;
+            this.cmdCargarFacturas.Text = "Cargar Facturas";
+            this.cmdCargarFacturas.UseVisualStyleBackColor = true;
+            this.cmdCargarFacturas.Click += new System.EventHandler(this.cmdCargarFacturas_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Seleccione empresa";
             // 
             // dgvFacturas
             // 
@@ -81,25 +137,6 @@
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturas.Size = new System.Drawing.Size(597, 178);
             this.dgvFacturas.TabIndex = 35;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Seleccione empresa";
-            // 
-            // cmdCargarFacturas
-            // 
-            this.cmdCargarFacturas.Location = new System.Drawing.Point(457, 20);
-            this.cmdCargarFacturas.Name = "cmdCargarFacturas";
-            this.cmdCargarFacturas.Size = new System.Drawing.Size(130, 50);
-            this.cmdCargarFacturas.TabIndex = 38;
-            this.cmdCargarFacturas.Text = "Cargar Facturas";
-            this.cmdCargarFacturas.UseVisualStyleBackColor = true;
-            this.cmdCargarFacturas.Click += new System.EventHandler(this.cmdCargarFacturas_Click);
             // 
             // Numero
             // 
@@ -134,44 +171,28 @@
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             // 
-            // cmdRendir
+            // label2
             // 
-            this.cmdRendir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdRendir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdRendir.Location = new System.Drawing.Point(228, 292);
-            this.cmdRendir.Name = "cmdRendir";
-            this.cmdRendir.Size = new System.Drawing.Size(156, 53);
-            this.cmdRendir.TabIndex = 39;
-            this.cmdRendir.Text = "Rendir";
-            this.cmdRendir.UseVisualStyleBackColor = true;
-            this.cmdRendir.Click += new System.EventHandler(this.cmdRendir_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(200, 283);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 13);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "Porcentaje Comision";
             // 
-            // cboEmpresas
+            // txtComision
             // 
-            this.cboEmpresas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEmpresas.FormattingEnabled = true;
-            this.cboEmpresas.Location = new System.Drawing.Point(150, 36);
-            this.cboEmpresas.Name = "cboEmpresas";
-            this.cboEmpresas.Size = new System.Drawing.Size(292, 21);
-            this.cboEmpresas.TabIndex = 40;
-            // 
-            // cmdMenu
-            // 
-            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdMenu.Location = new System.Drawing.Point(480, 352);
-            this.cmdMenu.Name = "cmdMenu";
-            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
-            this.cmdMenu.TabIndex = 34;
-            this.cmdMenu.Text = "Menu Principal";
-            this.cmdMenu.UseVisualStyleBackColor = true;
-            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
+            this.txtComision.Location = new System.Drawing.Point(309, 280);
+            this.txtComision.Name = "txtComision";
+            this.txtComision.Size = new System.Drawing.Size(100, 20);
+            this.txtComision.TabIndex = 42;
+            this.txtComision.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComision_KeyPress);
             // 
             // Rendicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 398);
+            this.ClientSize = new System.Drawing.Size(616, 434);
             this.Controls.Add(this.groupBox1);
             this.Name = "Rendicion";
             this.Text = "Rendicion";
@@ -196,5 +217,7 @@
         private System.Windows.Forms.Button cmdRendir;
         private System.Windows.Forms.ComboBox cboEmpresas;
         private System.Windows.Forms.Button cmdMenu;
+        private System.Windows.Forms.TextBox txtComision;
+        private System.Windows.Forms.Label label2;
     }
 }

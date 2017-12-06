@@ -97,8 +97,19 @@ namespace PagoAgilFrba.RegistroPago
                         SesionUsuario.user.id, 
                         SesionUsuario.user.sucursal); 
                     con.ejecutar();
+
+                    con.query = "SELECT MAX(PAGO_ID) FROM ONEFORALL.PAGOS";
+                    con.leer();
+                    con.leerReader();
+                    decimal idPago = con.lector.GetDecimal(0);
+                    con.cerrarConexion();
+
+                    con.query = string.Format("UPDATE ONEFORALL.FACTURAS SET FACT_PAGO_ID = {0} " +
+                        "WHERE FACT_ID = {1}", idPago, factura.Cells["Numero"].Value.ToString());
+                    con.ejecutar();
                 }
                 MessageBox.Show("Pago realizado con éxito", "Devolver facturas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvFacturas.Rows.Clear();
             }
             catch (Exception ex)
             {

@@ -89,9 +89,14 @@ namespace PagoAgilFrba.Rendicion
         {
             try
             {
+                if (string.IsNullOrEmpty(txtComision.Text))
+                    throw new Exception("Indique un porcentaje de comision");
+
+                _porcentajeComision = Convert.ToInt32(txtComision.Text);
+
                 var con = new Conexion();
 
-                con.query = string.Format("SELECT EMP_FECHA_RENDICION FROM ONEFORALL.EMPRESAS WHERE EMP_ID = {0}", _idEmpresa);
+                con.query = string.Format("SELECT EMP_DIA_REND FROM ONEFORALL.EMPRESAS WHERE EMP_ID = {0}", _idEmpresa);
                 con.leer();
                 con.leerReader();
                 int fechaRendicion = con.lector.GetInt32(0);
@@ -117,6 +122,8 @@ namespace PagoAgilFrba.Rendicion
                 cboEmpresas.SelectedIndex = -1;
                 dgvFacturas.Rows.Clear();
                 _idEmpresa = 0;
+
+                MessageBox.Show("Operación realizada con éxito", "Rendición", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -128,6 +135,14 @@ namespace PagoAgilFrba.Rendicion
         {
             _menuPrincipal.Show();
             this.Close();
+        }
+
+        private void txtComision_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             InitializeComponent();
             CargarEmpresas();
+            SesionUsuario.user.cargarFuncionalidadesRol();
             _menuPrincipal = menuPrincipal;
             cmdEditar.Text = "Agregar";
             _evento = 'E';
@@ -33,6 +34,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             InitializeComponent();
             CargarEmpresas();
+            SesionUsuario.user.cargarFuncionalidadesRol();
             _registroPago = registroPago;
             _evento = 'P';
             cmdEditar.Text = "Seleccionar";
@@ -44,6 +46,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             InitializeComponent();
             CargarEmpresas();
+            SesionUsuario.user.cargarFuncionalidadesRol();
             _devoluciones = devoluciones;
             _evento = 'D';
             _tipoDev = tipoDev;
