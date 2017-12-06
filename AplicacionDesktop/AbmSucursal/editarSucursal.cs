@@ -16,12 +16,14 @@ namespace PagoAgilFrba.AbmSucursal
         private int id;
         private SucursalDto sucursalDto;
         private filtrarSucursal menuPadre;
+        private string codigoPostal;
         public editarSucursal(String id_Sucursal,filtrarSucursal parent)
         {
             InitializeComponent();
             this.id = Convert.ToInt32(id_Sucursal);
             this.cargarSucursal(id);
             this.menuPadre = parent;
+            codigoPostal = codPostal.Text;
         }
 
         public void cargarSucursal(int id_sucursal) {
@@ -107,7 +109,7 @@ namespace PagoAgilFrba.AbmSucursal
                     {
                         query += "DIR_DEPARTAMENTO = '" + departamento.Text + "',";
                     }
-                    if (existe_cp > 0) {
+                    if (existe_cp > 0 && codPostal.Text != codigoPostal) {
 
                         MessageBox.Show("Ya existe el codigo postal", "Editar Sucursal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
