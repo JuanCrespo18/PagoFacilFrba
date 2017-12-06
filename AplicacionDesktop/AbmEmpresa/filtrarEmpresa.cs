@@ -115,7 +115,7 @@ namespace PagoAgilFrba.AbmEmpresa
             botonColumnaModificar.Text = "Modificar";
             botonColumnaModificar.Name = "Modificar";
             botonColumnaModificar.UseColumnTextForButtonValue = true;
-            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Empresas")))
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Empresa")))
                 botonColumnaModificar.Visible = false;
 
             listaEmpresas.Columns.Add(botonColumnaModificar);

@@ -76,6 +76,8 @@ namespace PagoAgilFrba.RegistroPago
             {
                 if (dgvFacturas.RowCount == 0)
                     throw new Exception("Debe agregar facturas para registrar el pago");
+                if (cboMetodosPago.SelectedIndex == -1)
+                    throw new Exception("Debe seleccionar un método de pago");
 
                 foreach(DataGridViewRow factura in dgvFacturas.Rows)
                 {

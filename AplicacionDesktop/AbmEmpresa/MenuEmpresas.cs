@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             InitializeComponent();
             menuPrincipal = menu;
-            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Agregar Empresas")))
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Agregar Empresa")))
                 btnAgregar.Enabled = false;
         }
 

@@ -24,11 +24,11 @@ namespace PagoAgilFrba
             {
                 cmdDevoluciones.Enabled = false;
             }
-            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Rendir Facturas")))
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Rendir Factura")))
             {
                 cmdRendir.Enabled = false;
             }
-            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Cobrar Facturas")))
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Cobrar Factura")))
             {
                 cmdRegistroPago.Enabled = false;
             }

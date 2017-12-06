@@ -466,25 +466,20 @@ GO
 ----------------------------------------------------------------------------------------
 INSERT INTO ONEFORALL.FUNCIONALIDADES
 (FUNC_DESCRIPCION)
-VALUES  ('Agregar Rol'),
-		('Modificar Rol'), 
-		('Cobrar Facturas'),
-		('Rendir Facturas'),
-		('Modificar Clientes'),
-		('Generar Estadisticas'),
-		('Agregar Sucursal'),
-		('Modificar Sucursales'),
-		('Agregar Empresa'),
-		('Modificar Empresa'),
-		('Realizar Devoluciones'),
-		('Agregar Clientes'),
-		('Rendir Facturas'),
-		('Registrar Pago'),
-		('Agregar Cliente'),
-		('Agregar Factura'),
-		('Cobrar Facturas'),
-		('Modificar Empresas'),
-		('Agregar Empresas')
+VALUES  ('Agregar Rol'), --1
+		('Modificar Rol'), --2 
+		('Agregar Factura'), --3
+		('Modificar Factura'), --4
+		('Cobrar Factura'), --5
+		('Rendir Factura'), --6
+		('Agregar Cliente'), --7
+		('Modificar Cliente'), --8
+		('Generar Estadisticas'), --9
+		('Agregar Sucursal'), --10
+		('Modificar Sucursal'), --11
+		('Agregar Empresa'), --12
+		('Modificar Empresa'), --13
+		('Realizar Devoluciones') --14
 
 ----------------------------------------------------------------------------------------
 ---------------------------------CARGO TABLA [ROL_X_FUNCIONALIDAD]------------------------------
@@ -505,17 +500,9 @@ VALUES 	(1,1),
 		(1,12),
 		(1,13),
 		(1,14),
-		(1,15),
-		(1,16),
-		(1,17),
-		(1,18),
-		(1,19),
-		(2,4),
 		(2,5),
-		(2,12),
-		(2,9),
-		(2,3),
+		(2,6),
 		(2,14),
-		(2,17)
+		(2,9)
 
 

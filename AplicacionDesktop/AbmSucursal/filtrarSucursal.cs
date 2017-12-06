@@ -78,7 +78,7 @@ namespace PagoAgilFrba.AbmSucursal
             botonColumnaModificar.Name = "Modificar";
             botonColumnaModificar.UseColumnTextForButtonValue = true;
 
-            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Sucursales")))
+            if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Modificar Sucursal")))
                 botonColumnaModificar.Visible = false;
 
             listaSucursales.Columns.Add(botonColumnaModificar);
