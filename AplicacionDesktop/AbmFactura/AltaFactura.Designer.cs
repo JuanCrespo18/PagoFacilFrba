@@ -29,9 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmdCancelar = new System.Windows.Forms.Button();
+            this.chkHabilitada = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmdAgregarItem = new System.Windows.Forms.Button();
+            this.cmdEliminarItem = new System.Windows.Forms.Button();
+            this.dgvItems = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmdAceptar = new System.Windows.Forms.Button();
             this.cmdLimpiar = new System.Windows.Forms.Button();
-            this.dgvItems = new System.Windows.Forms.DataGridView();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpVto = new System.Windows.Forms.DateTimePicker();
@@ -45,17 +53,9 @@
             this.cmdBuscarCliente = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmdEliminarItem = new System.Windows.Forms.Button();
-            this.cmdAgregarItem = new System.Windows.Forms.Button();
-            this.chkHabilitada = new System.Windows.Forms.CheckBox();
-            this.cmdCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,6 +86,101 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.Location = new System.Drawing.Point(25, 503);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(109, 41);
+            this.cmdCancelar.TabIndex = 41;
+            this.cmdCancelar.Text = "Cancelar";
+            this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
+            // 
+            // chkHabilitada
+            // 
+            this.chkHabilitada.AutoSize = true;
+            this.chkHabilitada.Location = new System.Drawing.Point(295, 288);
+            this.chkHabilitada.Name = "chkHabilitada";
+            this.chkHabilitada.Size = new System.Drawing.Size(73, 17);
+            this.chkHabilitada.TabIndex = 40;
+            this.chkHabilitada.Text = "Habilitada";
+            this.chkHabilitada.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cmdAgregarItem);
+            this.groupBox2.Controls.Add(this.cmdEliminarItem);
+            this.groupBox2.Controls.Add(this.dgvItems);
+            this.groupBox2.Location = new System.Drawing.Point(12, 311);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(362, 174);
+            this.groupBox2.TabIndex = 38;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Items";
+            // 
+            // cmdAgregarItem
+            // 
+            this.cmdAgregarItem.Location = new System.Drawing.Point(276, 134);
+            this.cmdAgregarItem.Name = "cmdAgregarItem";
+            this.cmdAgregarItem.Size = new System.Drawing.Size(75, 23);
+            this.cmdAgregarItem.TabIndex = 37;
+            this.cmdAgregarItem.Text = "Agregar";
+            this.cmdAgregarItem.UseVisualStyleBackColor = true;
+            this.cmdAgregarItem.Click += new System.EventHandler(this.cmdAgregarItem_Click);
+            // 
+            // cmdEliminarItem
+            // 
+            this.cmdEliminarItem.Location = new System.Drawing.Point(195, 134);
+            this.cmdEliminarItem.Name = "cmdEliminarItem";
+            this.cmdEliminarItem.Size = new System.Drawing.Size(75, 23);
+            this.cmdEliminarItem.TabIndex = 36;
+            this.cmdEliminarItem.Text = "Eliminar";
+            this.cmdEliminarItem.UseVisualStyleBackColor = true;
+            this.cmdEliminarItem.Click += new System.EventHandler(this.cmdEliminarItem_Click);
+            // 
+            // dgvItems
+            // 
+            this.dgvItems.AllowUserToAddRows = false;
+            this.dgvItems.AllowUserToDeleteRows = false;
+            this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Cantidad,
+            this.Monto});
+            this.dgvItems.Location = new System.Drawing.Point(6, 19);
+            this.dgvItems.MultiSelect = false;
+            this.dgvItems.Name = "dgvItems";
+            this.dgvItems.ReadOnly = true;
+            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvItems.Size = new System.Drawing.Size(350, 109);
+            this.dgvItems.TabIndex = 35;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 41;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Monto
+            // 
+            this.Monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            this.Monto.ReadOnly = true;
+            // 
             // cmdAceptar
             // 
             this.cmdAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -109,26 +204,6 @@
             this.cmdLimpiar.Text = "Limpiar";
             this.cmdLimpiar.UseVisualStyleBackColor = true;
             this.cmdLimpiar.Click += new System.EventHandler(this.cmdLimpiar_Click);
-            // 
-            // dgvItems
-            // 
-            this.dgvItems.AllowUserToAddRows = false;
-            this.dgvItems.AllowUserToDeleteRows = false;
-            this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Cantidad,
-            this.Monto});
-            this.dgvItems.Location = new System.Drawing.Point(6, 19);
-            this.dgvItems.MultiSelect = false;
-            this.dgvItems.Name = "dgvItems";
-            this.dgvItems.ReadOnly = true;
-            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(350, 109);
-            this.dgvItems.TabIndex = 35;
             // 
             // txtTotal
             // 
@@ -243,81 +318,6 @@
             this.txtCliente.Size = new System.Drawing.Size(156, 20);
             this.txtCliente.TabIndex = 0;
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 41;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // Monto
-            // 
-            this.Monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Monto.HeaderText = "Monto";
-            this.Monto.Name = "Monto";
-            this.Monto.ReadOnly = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cmdAgregarItem);
-            this.groupBox2.Controls.Add(this.cmdEliminarItem);
-            this.groupBox2.Controls.Add(this.dgvItems);
-            this.groupBox2.Location = new System.Drawing.Point(12, 311);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(362, 174);
-            this.groupBox2.TabIndex = 38;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Items";
-            // 
-            // cmdEliminarItem
-            // 
-            this.cmdEliminarItem.Location = new System.Drawing.Point(195, 134);
-            this.cmdEliminarItem.Name = "cmdEliminarItem";
-            this.cmdEliminarItem.Size = new System.Drawing.Size(75, 23);
-            this.cmdEliminarItem.TabIndex = 36;
-            this.cmdEliminarItem.Text = "Eliminar";
-            this.cmdEliminarItem.UseVisualStyleBackColor = true;
-            this.cmdEliminarItem.Click += new System.EventHandler(this.cmdEliminarItem_Click);
-            // 
-            // cmdAgregarItem
-            // 
-            this.cmdAgregarItem.Location = new System.Drawing.Point(276, 134);
-            this.cmdAgregarItem.Name = "cmdAgregarItem";
-            this.cmdAgregarItem.Size = new System.Drawing.Size(75, 23);
-            this.cmdAgregarItem.TabIndex = 37;
-            this.cmdAgregarItem.Text = "Agregar";
-            this.cmdAgregarItem.UseVisualStyleBackColor = true;
-            this.cmdAgregarItem.Click += new System.EventHandler(this.cmdAgregarItem_Click);
-            // 
-            // chkHabilitada
-            // 
-            this.chkHabilitada.AutoSize = true;
-            this.chkHabilitada.Location = new System.Drawing.Point(295, 288);
-            this.chkHabilitada.Name = "chkHabilitada";
-            this.chkHabilitada.Size = new System.Drawing.Size(73, 17);
-            this.chkHabilitada.TabIndex = 40;
-            this.chkHabilitada.Text = "Habilitada";
-            this.chkHabilitada.UseVisualStyleBackColor = true;
-            // 
-            // cmdCancelar
-            // 
-            this.cmdCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCancelar.Location = new System.Drawing.Point(25, 503);
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(109, 41);
-            this.cmdCancelar.TabIndex = 41;
-            this.cmdCancelar.Text = "Cancelar";
-            this.cmdCancelar.UseVisualStyleBackColor = true;
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
-            // 
             // AltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,11 +325,11 @@
             this.ClientSize = new System.Drawing.Size(386, 585);
             this.Controls.Add(this.groupBox1);
             this.Name = "AltaFactura";
-            this.Text = "Form1";
+            this.Text = "Factura";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.ResumeLayout(false);
 
         }

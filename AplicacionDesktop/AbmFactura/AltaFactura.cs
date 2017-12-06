@@ -21,6 +21,7 @@ namespace PagoAgilFrba.AbmFactura
         public AltaFactura(ListarFacturas listarFacturas, char evento)
         {
             InitializeComponent();
+            dtpAlta.MaxDate = DateTime.Today;
             CargarEmpresas();
             _listarFacturas = listarFacturas;
             _evento = evento;
@@ -49,12 +50,19 @@ namespace PagoAgilFrba.AbmFactura
 
         public void AgregarItem(string cantidad, string monto)
         {
-            var con = new Conexion()
+            if (_evento == 'E')
             {
-                query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", _numeroFactura, cantidad, monto)
-            };
-            con.ejecutar();
-            CargarFactura();
+                var con = new Conexion()
+                {
+                    query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", _numeroFactura, cantidad, monto)
+                };
+                con.ejecutar();
+                CargarFactura();
+            }
+            else
+            {
+                dgvItems.Rows.Add(new Object[] { 0, cantidad, monto });
+            }
         }
 
         private void CargarFactura()
@@ -218,6 +226,9 @@ namespace PagoAgilFrba.AbmFactura
             if (string.IsNullOrEmpty(txtTotal.Text))
                 throw new Exception("Debe ingresar el total");
 
+            if (dtpAlta.Value > dtpVto.Value)
+                throw new Exception("La fecha de vencimiento no puede ser anterior a la del alta de la factura");
+
             try
             {
                 Convert.ToDecimal(txtNumeroFactura.Text);
@@ -254,11 +265,18 @@ namespace PagoAgilFrba.AbmFactura
                 if (dgvItems.SelectedRows.Count == 0)
                     throw new Exception("Elija un item para eliminar");
 
-                var con = new Conexion();
-                con.query = string.Format("DELETE FROM ONEFORALL.ITEMS WHERE ITEM_ID = {0}", dgvItems.SelectedRows[0].Cells["Id"].Value.ToString());
-                con.ejecutar();
+                if (_evento == 'E')
+                {
+                    var con = new Conexion();
+                    con.query = string.Format("DELETE FROM ONEFORALL.ITEMS WHERE ITEM_ID = {0}", dgvItems.SelectedRows[0].Cells["Id"].Value.ToString());
+                    con.ejecutar();
 
-                CargarFactura();
+                    CargarFactura();
+                }
+                else
+                {
+                    dgvItems.Rows.RemoveAt(dgvItems.SelectedRows[0].Index);
+                }
             }
             catch (Exception ex)
             {
