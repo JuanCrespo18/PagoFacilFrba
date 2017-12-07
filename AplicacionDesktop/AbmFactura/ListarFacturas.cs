@@ -228,5 +228,19 @@ namespace PagoAgilFrba.AbmFactura
                 _devoluciones.Show();
             this.Close();
         }
+
+        private void cmdEditar_TextChanged(object sender, EventArgs e)
+        {
+            if (cmdEditar.Text == "Agregar")
+                if (!SesionUsuario.usuario.funcionalidades.Contains("Agregar Factura"))
+                    cmdEditar.Enabled = false;
+                else
+                    cmdEditar.Enabled = true;
+            else if (cmdEditar.Text == "Editar")
+                if (!SesionUsuario.usuario.funcionalidades.Contains("Modificar Factura"))
+                    cmdEditar.Enabled = false;
+                else
+                    cmdEditar.Enabled = true;
+        }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmdCancelar = new System.Windows.Forms.Button();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +53,6 @@
             this.cmdBuscarCliente = new System.Windows.Forms.Button();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmdCancelar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -73,6 +73,18 @@
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
+            // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.Location = new System.Drawing.Point(715, 357);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(125, 37);
+            this.cmdCancelar.TabIndex = 36;
+            this.cmdCancelar.Text = "Cancelar";
+            this.cmdCancelar.UseVisualStyleBackColor = true;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // dgvFacturas
             // 
@@ -197,11 +209,12 @@
             // 
             this.cmdEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmdEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEditar.Location = new System.Drawing.Point(442, 280);
+            this.cmdEditar.Location = new System.Drawing.Point(439, 280);
             this.cmdEditar.Name = "cmdEditar";
             this.cmdEditar.Size = new System.Drawing.Size(156, 53);
             this.cmdEditar.TabIndex = 32;
             this.cmdEditar.UseVisualStyleBackColor = true;
+            this.cmdEditar.TextChanged += new System.EventHandler(this.cmdEditar_TextChanged);
             this.cmdEditar.Click += new System.EventHandler(this.cmdEditar_Click);
             // 
             // cmdBuscar
@@ -307,18 +320,6 @@
             this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 14;
             this.label1.Text = "Cliente";
-            // 
-            // cmdCancelar
-            // 
-            this.cmdCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCancelar.Location = new System.Drawing.Point(715, 357);
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(125, 37);
-            this.cmdCancelar.TabIndex = 36;
-            this.cmdCancelar.Text = "Cancelar";
-            this.cmdCancelar.UseVisualStyleBackColor = true;
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // ListarFacturas
             // 
