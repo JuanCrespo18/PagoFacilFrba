@@ -62,9 +62,15 @@ namespace PagoAgilFrba.AbmEmpresa
             {
                 squery += " and e.EMP_NOMBRE LIKE '%" + razonSocial.Text + "%' ";
             }
-            if (!string.IsNullOrEmpty(cuit.Text))
+
+            if (tieneCuitIncompleto()) {
+                MessageBox.Show("El Cuit debe estar completo", "filtrar Empresas",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(cuit1.Text) && !string.IsNullOrEmpty(cuit2.Text) & !string.IsNullOrEmpty(cuit3.Text))
             {
-                squery += " and e.EMP_CUIT LIKE '%" + cuit.Text + "%' ";
+                squery += " and e.EMP_CUIT = '" + cuit1.Text +"-"+cuit2.Text+"-"+cuit3.Text+"' ";
             }
             if (rubro.SelectedItem != null && !string.IsNullOrEmpty(rubro.SelectedItem.ToString())) {
 
@@ -135,7 +141,7 @@ namespace PagoAgilFrba.AbmEmpresa
 
        private void btnLimpiar_Click(object sender, EventArgs e) {
                 razonSocial.Clear();
-                cuit.Clear();
+                cuit1.Clear();
                 rubro.SelectedItem = null;
                 listaEmpresas.Rows.Clear();
         }
@@ -148,6 +154,33 @@ namespace PagoAgilFrba.AbmEmpresa
 
             
 
+        }
+
+        private bool tieneCuitIncompleto()
+        {
+            if (!string.IsNullOrEmpty(cuit1.Text)) {
+                if (string.IsNullOrEmpty(cuit2.Text) || string.IsNullOrEmpty(cuit3.Text))
+                    return true;
+            }
+            if (!string.IsNullOrEmpty(cuit2.Text))
+            {
+                if (string.IsNullOrEmpty(cuit1.Text) || string.IsNullOrEmpty(cuit3.Text))
+                    return true;
+            }
+            if (!string.IsNullOrEmpty(cuit3.Text))
+            {
+                if (string.IsNullOrEmpty(cuit1.Text) || string.IsNullOrEmpty(cuit2.Text))
+                    return true;
+            }
+            return false;
+        }
+
+        private void onlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
     }

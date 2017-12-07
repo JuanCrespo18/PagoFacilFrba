@@ -127,6 +127,7 @@
             this.cuit3.Name = "cuit3";
             this.cuit3.Size = new System.Drawing.Size(22, 21);
             this.cuit3.TabIndex = 21;
+            this.cuit3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
             this.cuit3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cuit2
@@ -137,6 +138,7 @@
             this.cuit2.Name = "cuit2";
             this.cuit2.Size = new System.Drawing.Size(80, 21);
             this.cuit2.TabIndex = 20;
+            this.cuit2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
             this.cuit2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cuit1
@@ -147,6 +149,7 @@
             this.cuit1.Name = "cuit1";
             this.cuit1.Size = new System.Drawing.Size(27, 21);
             this.cuit1.TabIndex = 19;
+            this.cuit1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers_KeyPress);
             this.cuit1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rubro

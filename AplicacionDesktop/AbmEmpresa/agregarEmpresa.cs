@@ -125,7 +125,6 @@ namespace PagoAgilFrba.AbmEmpresa
         public  string errorCampos()
         {    // Validacion de campos
             String errores = "";
-            int asd;
             if (String.IsNullOrWhiteSpace(razonSocial.Text)) errores += "- El campo 'Razon Social' no puede estar vacío \n";
             if (String.IsNullOrWhiteSpace(cuit1.Text) || String.IsNullOrWhiteSpace(cuit2.Text) || String.IsNullOrWhiteSpace(cuit3.Text)) errores += "- Debe ingresar un numero de cuit\n";
             if (String.IsNullOrWhiteSpace(direccion.Text)) errores += "- El campo 'Direccion' no puede estar vacío\n";
