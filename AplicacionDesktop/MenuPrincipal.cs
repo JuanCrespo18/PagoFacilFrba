@@ -20,22 +20,27 @@ namespace PagoAgilFrba
 
         private void desactivarBotones()
         {
+            SesionUsuario.user.cargarFuncionalidadesRol();
+
             if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Realizar Devoluciones")))
-            {
                 cmdDevoluciones.Enabled = false;
-            }
+            else
+                cmdDevoluciones.Enabled = true;
+
             if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Rendir Factura")))
-            {
                 cmdRendir.Enabled = false;
-            }
+            else
+                cmdRendir.Enabled = true;
+
             if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Cobrar Factura")))
-            {
                 cmdRegistroPago.Enabled = false;
-            }
+            else
+                cmdRegistroPago.Enabled = true;
+
             if (!SesionUsuario.usuario.funcionalidades.Exists(f => f.Equals("Generar Estadisticas")))
-            {
                 button1.Enabled = false;
-            }
+            else
+                button1.Enabled = true;
         }
 
         private void cmdRoles_Click_1(object sender, EventArgs e)
@@ -115,6 +120,11 @@ namespace PagoAgilFrba
             new Login.Login().Show();
             SesionUsuario.usuario = null;
             this.Close();
+        }
+
+        private void MenuPrincipal_Activated(object sender, EventArgs e)
+        {
+            desactivarBotones();
         }
     }
 }

@@ -207,6 +207,7 @@ namespace PagoAgilFrba.AbmFactura
                     con.ejecutar();
                 }
                 _listarFacturas.Limpiar();
+                MessageBox.Show("Operación realizada con éxito", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _listarFacturas.Show();
                 this.Close();
             }

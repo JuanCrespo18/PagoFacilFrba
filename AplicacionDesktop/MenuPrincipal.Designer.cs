@@ -179,6 +179,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "MenuPrincipal";
             this.Text = "Menu Principal";
+            this.Activated += new System.EventHandler(this.MenuPrincipal_Activated);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

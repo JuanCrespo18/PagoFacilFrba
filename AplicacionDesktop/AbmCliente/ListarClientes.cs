@@ -23,6 +23,7 @@ namespace PagoAgilFrba.AbmCliente
             _menuPrincipal = menuPrincipal;
             cmdEditar.Text = "Agregar";
             cmdCancelar.Hide();
+            SesionUsuario.user.cargarFuncionalidadesRol();
         }
 
         public ListarClientes(AbmFactura.AltaFactura altaFactura)
@@ -162,6 +163,20 @@ namespace PagoAgilFrba.AbmCliente
                 _listarFacturas.Show();
             }
             this.Close();
+        }
+
+        private void cmdEditar_TextChanged(object sender, EventArgs e)
+        {
+            if (cmdEditar.Text == "Agregar")
+                if (!SesionUsuario.usuario.funcionalidades.Contains("Agregar Cliente"))
+                    cmdEditar.Enabled = false;
+                else
+                    cmdEditar.Enabled = true;
+            else if (cmdEditar.Text == "Editar")
+                if (!SesionUsuario.usuario.funcionalidades.Contains("Modificar Cliente"))
+                    cmdEditar.Enabled = false;
+                else
+                    cmdEditar.Enabled = true;
         }
     }
 }
