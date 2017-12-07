@@ -33,7 +33,6 @@
             this.datosEmpresa = new System.Windows.Forms.GroupBox();
             this.rubro = new System.Windows.Forms.ComboBox();
             this.razonSocial = new System.Windows.Forms.TextBox();
-            this.cuit = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,15 +50,24 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.checkHabilitada = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cuit3 = new System.Windows.Forms.TextBox();
+            this.cuit2 = new System.Windows.Forms.TextBox();
+            this.cuit1 = new System.Windows.Forms.TextBox();
             this.datosEmpresa.SuspendLayout();
             this.dirEmpresa.SuspendLayout();
             this.SuspendLayout();
             // 
             // datosEmpresa
             // 
+            this.datosEmpresa.Controls.Add(this.label12);
+            this.datosEmpresa.Controls.Add(this.label11);
+            this.datosEmpresa.Controls.Add(this.cuit3);
+            this.datosEmpresa.Controls.Add(this.cuit2);
+            this.datosEmpresa.Controls.Add(this.cuit1);
             this.datosEmpresa.Controls.Add(this.rubro);
             this.datosEmpresa.Controls.Add(this.razonSocial);
-            this.datosEmpresa.Controls.Add(this.cuit);
             this.datosEmpresa.Controls.Add(this.label3);
             this.datosEmpresa.Controls.Add(this.label2);
             this.datosEmpresa.Controls.Add(this.label1);
@@ -84,13 +92,6 @@
             this.razonSocial.Name = "razonSocial";
             this.razonSocial.Size = new System.Drawing.Size(317, 20);
             this.razonSocial.TabIndex = 10;
-            // 
-            // cuit
-            // 
-            this.cuit.Location = new System.Drawing.Point(119, 55);
-            this.cuit.Name = "cuit";
-            this.cuit.Size = new System.Drawing.Size(317, 20);
-            this.cuit.TabIndex = 9;
             // 
             // label3
             // 
@@ -259,6 +260,54 @@
             this.checkHabilitada.Text = "Habilitada";
             this.checkHabilitada.UseVisualStyleBackColor = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(254, 58);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(10, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "-";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(152, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(10, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "-";
+            // 
+            // cuit3
+            // 
+            this.cuit3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.cuit3.Location = new System.Drawing.Point(270, 55);
+            this.cuit3.MaxLength = 1;
+            this.cuit3.Name = "cuit3";
+            this.cuit3.Size = new System.Drawing.Size(22, 21);
+            this.cuit3.TabIndex = 21;
+            this.cuit3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cuit2
+            // 
+            this.cuit2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.cuit2.Location = new System.Drawing.Point(167, 55);
+            this.cuit2.MaxLength = 8;
+            this.cuit2.Name = "cuit2";
+            this.cuit2.Size = new System.Drawing.Size(80, 21);
+            this.cuit2.TabIndex = 20;
+            this.cuit2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cuit1
+            // 
+            this.cuit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.cuit1.Location = new System.Drawing.Point(119, 55);
+            this.cuit1.MaxLength = 2;
+            this.cuit1.Name = "cuit1";
+            this.cuit1.Size = new System.Drawing.Size(27, 21);
+            this.cuit1.TabIndex = 19;
+            this.cuit1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // editarEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,7 +334,6 @@
         private System.Windows.Forms.GroupBox datosEmpresa;
         private System.Windows.Forms.ComboBox rubro;
         private System.Windows.Forms.TextBox razonSocial;
-        private System.Windows.Forms.TextBox cuit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -303,5 +351,10 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.CheckBox checkHabilitada;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox cuit3;
+        private System.Windows.Forms.TextBox cuit2;
+        private System.Windows.Forms.TextBox cuit1;
     }
 }

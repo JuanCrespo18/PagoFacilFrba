@@ -47,7 +47,10 @@ namespace PagoAgilFrba.AbmEmpresa
             }
             else
             {
-                cuit.Text = con.lector.GetString(1);
+                String[] cuitCompleto = con.lector.GetString(1).Split('-');
+                cuit1.Text = cuitCompleto[0];
+                cuit2.Text = cuitCompleto[1];
+                cuit3.Text = cuitCompleto[2];
                 razonSocial.Text = con.lector.GetString(2);
                 int idDireccion = con.lector.GetInt32(3);
                 int idRubro = con.lector.GetInt32(4);
@@ -72,7 +75,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 con.leerReader();
                 rubro.Text = con.lector.GetString(1);
 
-                empresa = new EmpresaDto(_idEmpresa, razonSocial.Text, cuit.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text,checkHabilitada.Checked);
+                empresa = new EmpresaDto(_idEmpresa, razonSocial.Text, cuit1.Text+"-"+cuit2.Text+"-"+cuit3.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text,checkHabilitada.Checked);
 
             }
             con.cerrarConexion();
@@ -82,7 +85,9 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             if (
                 String.IsNullOrWhiteSpace(razonSocial.Text)||
-                String.IsNullOrWhiteSpace(cuit.Text)||
+                String.IsNullOrWhiteSpace(cuit1.Text)||
+                String.IsNullOrWhiteSpace(cuit2.Text) ||
+                String.IsNullOrWhiteSpace(cuit3.Text) ||
                 String.IsNullOrWhiteSpace(direccion.Text)||
                 String.IsNullOrWhiteSpace(rubro.Text)||
                 String.IsNullOrWhiteSpace(localidad.Text)||
@@ -98,7 +103,7 @@ namespace PagoAgilFrba.AbmEmpresa
 
             if (!hayObligatoriosvacios())
             {
-                var empresaModificada = new EmpresaDto(empresa.id, razonSocial.Text, cuit.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text, checkHabilitada.Checked);
+                var empresaModificada = new EmpresaDto(empresa.id, razonSocial.Text, cuit1.Text + "-" + cuit2.Text + "-" + cuit3.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text, checkHabilitada.Checked);
 
                 if (!empresaModificada.equals(empresa))
                 {
@@ -165,7 +170,7 @@ namespace PagoAgilFrba.AbmEmpresa
                     }
 
                     var upEmp = "UPDATE ONEFORALL.EMPRESAS SET ";
-                    upEmp += "EMP_CUIT = '" + cuit.Text +"', ";
+                    upEmp += "EMP_CUIT = '" + cuit1.Text + "-" + cuit2.Text + "-" + cuit3.Text + "', ";
                     upEmp += "EMP_NOMBRE = '" + razonSocial.Text +"', ";
                     upEmp += "EMP_RUB_ID = " + rub_id + ", ";
                     upEmp += "EMP_ACTIVA = " + Convert.ToInt32(checkHabilitada.Checked);

@@ -44,7 +44,7 @@ namespace PagoAgilFrba.AbmEmpresa
         private void AgregarEmpresa(int direccionId,int rubroid)
         {
             string insert = string.Format("INSERT INTO ONEFORALL.EMPRESAS VALUES ('{0}', '{1}', {2}, {3}, {4}, {5})",
-                cuit.Text, razonSocial.Text, direccionId, rubroid, diaRendicion.Text, Convert.ToInt16(activa.Checked));
+                cuit1.Text+"-"+cuit2.Text+"-"+cuit3.Text, razonSocial.Text, direccionId, rubroid, diaRendicion.Text, Convert.ToInt16(activa.Checked));
 
             var con = new Conexion()
             {
@@ -127,7 +127,7 @@ namespace PagoAgilFrba.AbmEmpresa
             String errores = "";
             int asd;
             if (String.IsNullOrWhiteSpace(razonSocial.Text)) errores += "- El campo 'Razon Social' no puede estar vacío \n";
-            if (String.IsNullOrWhiteSpace(cuit.Text)) errores += "- El campo 'Cuit' no puede estar vacío\n";
+            if (String.IsNullOrWhiteSpace(cuit1.Text) || String.IsNullOrWhiteSpace(cuit2.Text) || String.IsNullOrWhiteSpace(cuit3.Text)) errores += "- Debe ingresar un numero de cuit\n";
             if (String.IsNullOrWhiteSpace(direccion.Text)) errores += "- El campo 'Direccion' no puede estar vacío\n";
             if (String.IsNullOrWhiteSpace(rubro.Text)) errores += "- El campo 'Rubro' no puede estar vacío\n";
             if (String.IsNullOrWhiteSpace(localidad.Text)) errores += "- El campo 'Localidad' no puede estar vacío\n";
@@ -145,7 +145,7 @@ namespace PagoAgilFrba.AbmEmpresa
         public void limpiar()
         {
             razonSocial.Clear();
-            cuit.Clear();
+            cuit1.Clear();
             direccion.Clear();
             rubro.SelectedIndex = -1;
             localidad.Clear();
@@ -183,6 +183,13 @@ namespace PagoAgilFrba.AbmEmpresa
         }
 
         private void diaRendicion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void textCuit_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
