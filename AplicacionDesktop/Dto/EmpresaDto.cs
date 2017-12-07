@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Dto
 {
-    class EmpresaDto
+    public class EmpresaDto
     {
         public int id { get; set; }
         private string razon_social { get; set; }
@@ -18,8 +18,9 @@ namespace PagoAgilFrba.Dto
         private string piso { get; set; }
         private string depto { get; set; }
         public bool activa { get; set; }
+        public string diaRendicion { get; set; }
 
-        public EmpresaDto(int _id, string _razon_social, string _cuit, string _rubro, string _direccion, string _localidad, string _cp, string _piso, string _depto, bool _activo)
+        public EmpresaDto(int _id, string _razon_social, string _cuit, string _rubro, string _direccion, string _localidad, string _cp, string _piso, string _depto, bool _activo, string _diaRendicion)
         {
             id = _id;
             razon_social = _razon_social;
@@ -31,6 +32,7 @@ namespace PagoAgilFrba.Dto
             piso = _piso;
             depto = _depto;
             activa = _activo;
+            diaRendicion = _diaRendicion;
         }
 
         public EmpresaDto() { }
@@ -46,7 +48,8 @@ namespace PagoAgilFrba.Dto
                 this.cp == _empresa.cp &&
                 this.piso == _empresa.piso &&
                 this.depto == _empresa.depto &&
-                this.activa == _empresa.activa 
+                this.activa == _empresa.activa &&
+                this.diaRendicion == _empresa.diaRendicion
                 ) return true;
             return false;
         }

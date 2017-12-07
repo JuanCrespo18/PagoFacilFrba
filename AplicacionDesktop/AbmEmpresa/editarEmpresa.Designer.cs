@@ -31,6 +31,13 @@
         private void InitializeComponent()
         {
             this.datosEmpresa = new System.Windows.Forms.GroupBox();
+            this.diaRendicion = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cuit3 = new System.Windows.Forms.TextBox();
+            this.cuit2 = new System.Windows.Forms.TextBox();
+            this.cuit1 = new System.Windows.Forms.TextBox();
             this.rubro = new System.Windows.Forms.ComboBox();
             this.razonSocial = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,17 +57,14 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.checkHabilitada = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cuit3 = new System.Windows.Forms.TextBox();
-            this.cuit2 = new System.Windows.Forms.TextBox();
-            this.cuit1 = new System.Windows.Forms.TextBox();
             this.datosEmpresa.SuspendLayout();
             this.dirEmpresa.SuspendLayout();
             this.SuspendLayout();
             // 
             // datosEmpresa
             // 
+            this.datosEmpresa.Controls.Add(this.diaRendicion);
+            this.datosEmpresa.Controls.Add(this.label10);
             this.datosEmpresa.Controls.Add(this.label12);
             this.datosEmpresa.Controls.Add(this.label11);
             this.datosEmpresa.Controls.Add(this.cuit3);
@@ -73,13 +77,81 @@
             this.datosEmpresa.Controls.Add(this.label1);
             this.datosEmpresa.Location = new System.Drawing.Point(12, 12);
             this.datosEmpresa.Name = "datosEmpresa";
-            this.datosEmpresa.Size = new System.Drawing.Size(442, 119);
+            this.datosEmpresa.Size = new System.Drawing.Size(442, 144);
             this.datosEmpresa.TabIndex = 1;
             this.datosEmpresa.TabStop = false;
             this.datosEmpresa.Text = "Datos Empresa";
             // 
+            // diaRendicion
+            // 
+            this.diaRendicion.Location = new System.Drawing.Point(119, 110);
+            this.diaRendicion.MaxLength = 2;
+            this.diaRendicion.Name = "diaRendicion";
+            this.diaRendicion.Size = new System.Drawing.Size(43, 20);
+            this.diaRendicion.TabIndex = 25;
+            this.diaRendicion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.diaRendicion_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label10.Location = new System.Drawing.Point(19, 111);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 16);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Dia Rendicion *";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(254, 58);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(10, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "-";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(152, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(10, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "-";
+            // 
+            // cuit3
+            // 
+            this.cuit3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.cuit3.Location = new System.Drawing.Point(270, 55);
+            this.cuit3.MaxLength = 1;
+            this.cuit3.Name = "cuit3";
+            this.cuit3.Size = new System.Drawing.Size(22, 21);
+            this.cuit3.TabIndex = 21;
+            this.cuit3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cuit2
+            // 
+            this.cuit2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.cuit2.Location = new System.Drawing.Point(167, 55);
+            this.cuit2.MaxLength = 8;
+            this.cuit2.Name = "cuit2";
+            this.cuit2.Size = new System.Drawing.Size(80, 21);
+            this.cuit2.TabIndex = 20;
+            this.cuit2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cuit1
+            // 
+            this.cuit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.cuit1.Location = new System.Drawing.Point(119, 55);
+            this.cuit1.MaxLength = 2;
+            this.cuit1.Name = "cuit1";
+            this.cuit1.Size = new System.Drawing.Size(27, 21);
+            this.cuit1.TabIndex = 19;
+            this.cuit1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // rubro
             // 
+            this.rubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rubro.FormattingEnabled = true;
             this.rubro.Location = new System.Drawing.Point(119, 83);
             this.rubro.Name = "rubro";
@@ -136,7 +208,7 @@
             this.dirEmpresa.Controls.Add(this.codPostal);
             this.dirEmpresa.Controls.Add(this.localidad);
             this.dirEmpresa.Controls.Add(this.direccion);
-            this.dirEmpresa.Location = new System.Drawing.Point(12, 154);
+            this.dirEmpresa.Location = new System.Drawing.Point(13, 162);
             this.dirEmpresa.Name = "dirEmpresa";
             this.dirEmpresa.Size = new System.Drawing.Size(442, 139);
             this.dirEmpresa.TabIndex = 20;
@@ -231,7 +303,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.btnGuardar.Location = new System.Drawing.Point(352, 305);
+            this.btnGuardar.Location = new System.Drawing.Point(353, 313);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(100, 37);
             this.btnGuardar.TabIndex = 21;
@@ -242,7 +314,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.btnCancelar.Location = new System.Drawing.Point(245, 305);
+            this.btnCancelar.Location = new System.Drawing.Point(246, 313);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(101, 37);
             this.btnCancelar.TabIndex = 22;
@@ -253,66 +325,18 @@
             // checkHabilitada
             // 
             this.checkHabilitada.AutoSize = true;
-            this.checkHabilitada.Location = new System.Drawing.Point(12, 299);
+            this.checkHabilitada.Location = new System.Drawing.Point(13, 307);
             this.checkHabilitada.Name = "checkHabilitada";
             this.checkHabilitada.Size = new System.Drawing.Size(73, 17);
             this.checkHabilitada.TabIndex = 24;
             this.checkHabilitada.Text = "Habilitada";
             this.checkHabilitada.UseVisualStyleBackColor = true;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(254, 58);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(10, 13);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "-";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(152, 58);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(10, 13);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "-";
-            // 
-            // cuit3
-            // 
-            this.cuit3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.cuit3.Location = new System.Drawing.Point(270, 55);
-            this.cuit3.MaxLength = 1;
-            this.cuit3.Name = "cuit3";
-            this.cuit3.Size = new System.Drawing.Size(22, 21);
-            this.cuit3.TabIndex = 21;
-            this.cuit3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cuit2
-            // 
-            this.cuit2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.cuit2.Location = new System.Drawing.Point(167, 55);
-            this.cuit2.MaxLength = 8;
-            this.cuit2.Name = "cuit2";
-            this.cuit2.Size = new System.Drawing.Size(80, 21);
-            this.cuit2.TabIndex = 20;
-            this.cuit2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cuit1
-            // 
-            this.cuit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.cuit1.Location = new System.Drawing.Point(119, 55);
-            this.cuit1.MaxLength = 2;
-            this.cuit1.Name = "cuit1";
-            this.cuit1.Size = new System.Drawing.Size(27, 21);
-            this.cuit1.TabIndex = 19;
-            this.cuit1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // editarEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 354);
+            this.ClientSize = new System.Drawing.Size(467, 365);
             this.Controls.Add(this.checkHabilitada);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
@@ -356,5 +380,7 @@
         private System.Windows.Forms.TextBox cuit3;
         private System.Windows.Forms.TextBox cuit2;
         private System.Windows.Forms.TextBox cuit1;
+        private System.Windows.Forms.TextBox diaRendicion;
+        private System.Windows.Forms.Label label10;
     }
 }

@@ -13,7 +13,7 @@ namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class editarEmpresa : Form
     {
-        private EmpresaDto empresa;
+        private Dto.EmpresaDto empresa;
         private filtrarEmpresa menuPadre;
     
         public editarEmpresa(String _idEmpresa ,filtrarEmpresa parent)
@@ -74,8 +74,9 @@ namespace PagoAgilFrba.AbmEmpresa
                 con.leer();
                 con.leerReader();
                 rubro.Text = con.lector.GetString(1);
+                diaRendicion.Text = dia_rendicion.ToString();
 
-                empresa = new EmpresaDto(_idEmpresa, razonSocial.Text, cuit1.Text+"-"+cuit2.Text+"-"+cuit3.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text,checkHabilitada.Checked);
+                empresa = new EmpresaDto(_idEmpresa, razonSocial.Text, cuit1.Text+"-"+cuit2.Text+"-"+cuit3.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text,checkHabilitada.Checked, diaRendicion.Text);
 
             }
             con.cerrarConexion();
@@ -91,7 +92,8 @@ namespace PagoAgilFrba.AbmEmpresa
                 String.IsNullOrWhiteSpace(direccion.Text)||
                 String.IsNullOrWhiteSpace(rubro.Text)||
                 String.IsNullOrWhiteSpace(localidad.Text)||
-                String.IsNullOrWhiteSpace(codPostal.Text)
+                String.IsNullOrWhiteSpace(codPostal.Text) ||
+                String.IsNullOrWhiteSpace(diaRendicion.Text)
                 ) return true;
             return false;
         }
@@ -103,7 +105,12 @@ namespace PagoAgilFrba.AbmEmpresa
 
             if (!hayObligatoriosvacios())
             {
-                var empresaModificada = new EmpresaDto(empresa.id, razonSocial.Text, cuit1.Text + "-" + cuit2.Text + "-" + cuit3.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text, checkHabilitada.Checked);
+                if(Convert.ToInt32(diaRendicion.Text) > 28 || Convert.ToInt32(diaRendicion.Text) < 1)
+                {
+                    MessageBox.Show("El día de rendición debe estar entre 1 y 28", "Empresa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var empresaModificada = new EmpresaDto(empresa.id, razonSocial.Text, cuit1.Text + "-" + cuit2.Text + "-" + cuit3.Text, rubro.Text, direccion.Text, localidad.Text, codPostal.Text, piso.Text, departamento.Text, checkHabilitada.Checked, diaRendicion.Text);
 
                 if (!empresaModificada.equals(empresa))
                 {
@@ -173,6 +180,7 @@ namespace PagoAgilFrba.AbmEmpresa
                     upEmp += "EMP_CUIT = '" + cuit1.Text + "-" + cuit2.Text + "-" + cuit3.Text + "', ";
                     upEmp += "EMP_NOMBRE = '" + razonSocial.Text +"', ";
                     upEmp += "EMP_RUB_ID = " + rub_id + ", ";
+                    upEmp += "EMP_DIA_REND = " + diaRendicion.Text + ", ";
                     upEmp += "EMP_ACTIVA = " + Convert.ToInt32(checkHabilitada.Checked);
                     upEmp += " WHERE EMP_ID = " + empresa.id;
 
@@ -193,6 +201,14 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             menuPadre.Show();
             this.Hide();
+        }
+
+        private void diaRendicion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
