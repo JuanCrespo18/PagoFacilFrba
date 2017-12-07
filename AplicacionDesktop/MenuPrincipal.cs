@@ -113,6 +113,7 @@ namespace PagoAgilFrba
         private void cmdLogout_Click(object sender, EventArgs e)
         {
             new Login.Login().Show();
+            SesionUsuario.usuario = null;
             this.Close();
         }
     }

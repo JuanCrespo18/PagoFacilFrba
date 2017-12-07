@@ -30,7 +30,7 @@ namespace PagoAgilFrba.AbmRol
         {
             cboRoles.Items.Clear();
             Conexion con = new Conexion();
-            con.query = "SELECT DISTINCT(rol.ROL_NOMBRE) FROM ONEFORALL.USUARIOS u JOIN ONEFORALL.USUARIO_X_ROL uxr on uxr.USERX_ID = " + SesionUsuario.usuario.id + " JOIN ONEFORALL.ROLES rol on uxr.ROLX_ID = rol.ROL_ID";
+            con.query = "SELECT DISTINCT(rol.ROL_NOMBRE) FROM ONEFORALL.ROLES rol";
 
             con.leer();
             while (con.leerReader())
@@ -56,6 +56,7 @@ namespace PagoAgilFrba.AbmRol
             con.leer();
             con.leerReader();
             _idRolSeleccionado = con.lector.GetInt32(0);
+            SesionUsuario.usuario.rol = _idRolSeleccionado;
             con.cerrarConexion();
             desactivarBotones();
         }

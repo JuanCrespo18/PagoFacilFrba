@@ -49,7 +49,7 @@ namespace PagoAgilFrba
             con.query = "SELECT DISTINCT(fun.FUNC_DESCRIPCION) " +
             "FROM ONEFORALL.USUARIOS u JOIN ONEFORALL.USUARIO_X_ROL uxr " +
             "on " + id + " = uxr.USERX_ID " +
-            "JOIN ONEFORALL.ROLES rol ON rol.ROL_ID = uxr.ROLX_ID " +
+            "JOIN ONEFORALL.ROLES rol ON rol.ROL_ID = "+ rol +" " +
             "and rol.ROL_ACTIVO = 1 JOIN ONEFORALL.ROL_X_FUNCIONALIDAD rxf " +
             "ON rxf.ROL_ID = rol.ROL_ID JOIN ONEFORALL.FUNCIONALIDADES fun " +
             "ON fun.FUNC_ID = rxf.FUNC_ID";
@@ -68,6 +68,22 @@ namespace PagoAgilFrba
             }
             con.cerrarConexion();
 
+        }
+
+        public bool tieneRolesActivos()
+        {
+            var query = String.Format("SELECT COUNT(*) FROM ONEFORALL.USUARIO_X_ROL u JOIN ONEFORALL.ROLES r ON r.ROL_ID = u.ROLX_ID WHERE u.USERX_ID = {0} AND r.ROL_ACTIVO = 1", SesionUsuario.usuario.id);
+            var con = new Conexion() { query = query };
+            con.leer();
+            con.leerReader();
+            if (con.lector.GetInt32(0) == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
     }

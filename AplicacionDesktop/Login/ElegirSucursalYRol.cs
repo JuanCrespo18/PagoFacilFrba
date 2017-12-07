@@ -25,7 +25,7 @@ namespace PagoAgilFrba.Login
             Conexion con = new Conexion();
             con.query = string.Format("SELECT ROL_NOMBRE FROM ONEFORALL.ROLES R " +
                 "INNER JOIN ONEFORALL.USUARIO_X_ROL UR ON R.ROL_ID = UR.ROLX_ID " +
-                "WHERE USERX_ID = {0} ", SesionUsuario.user.id);
+                "WHERE USERX_ID = {0} AND R.ROL_ACTIVO = 1", SesionUsuario.user.id);
 
             con.leer();
             while (con.leerReader())

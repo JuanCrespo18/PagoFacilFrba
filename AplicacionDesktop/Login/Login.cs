@@ -49,7 +49,13 @@ namespace PagoAgilFrba.Login
                 con.query = "UPDATE ONEFORALL.USUARIOS SET USER_INTENTOS = 0 WHERE USER_ID =" + SesionUsuario.usuario.id;
                 con.ejecutar();
 
-                SesionUsuario.user.cargarFuncionalidadesRol();
+                if (!SesionUsuario.usuario.tieneRolesActivos()) {
+
+                    MessageBox.Show("El usuario no posee Roles activos", "Login Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //SesionUsuario.user.cargarFuncionalidadesRol();
 
                 this.Hide();
                 con.query = string.Format("SELECT COUNT(*) FROM ONEFORALL.USUARIO_X_ROL WHERE USERX_ID = {0}", SesionUsuario.user.id);

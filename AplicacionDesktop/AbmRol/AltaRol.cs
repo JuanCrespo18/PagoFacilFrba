@@ -132,6 +132,8 @@ namespace PagoAgilFrba.AbmRol
                         query = string.Format("INSERT INTO ONEFORALL.ROL_X_FUNCIONALIDAD VALUES {0}", string.Join(",", insertar))
                     };
                     con.ejecutar();
+                    con.query = string.Format("INSERT INTO ONEFORALL.USUARIO_X_ROL VALUES ({0},{1})", SesionUsuario.usuario.id, _idRol);
+                    con.ejecutar();
                     con.cerrarConexion();
                     _funcionalidadesNuevas.ForEach(x => _funcionalidades.Add(x));
                 }
@@ -167,14 +169,14 @@ namespace PagoAgilFrba.AbmRol
                     };
                     con.ejecutar();
 
-                    if (!chkActivo.Checked)
+                   /* if (!chkActivo.Checked)
                     {
                         con = new Conexion()
                         {
-                            query = string.Format("DELETE FROM ONEFORALL.USUARIO_X_ROL WHERE ROL_ID = {0}", _idRol)
+                            query = string.Format("DELETE FROM ONEFORALL.USUARIO_X_ROL WHERE ROLX_ID = {0}", _idRol)
                         };
                     con.ejecutar();
-                    }
+                    }*/
                 }
                 if (_evento == 'A')
                 {
