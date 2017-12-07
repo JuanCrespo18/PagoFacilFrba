@@ -188,7 +188,6 @@
             this.txtTotal.Size = new System.Drawing.Size(108, 20);
             this.txtTotal.TabIndex = 12;
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotal_KeyPress);
             // 
             // cmdAceptar
             // 

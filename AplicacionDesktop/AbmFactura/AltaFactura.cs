@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,9 +65,9 @@ namespace PagoAgilFrba.AbmFactura
             {
                 dgvItems.Rows.Add(new Object[] { 0, cantidad, monto });
             }
-             double total = 0;
+             float total = 0;
             for (Int32 i = 0; i < dgvItems.Rows.Count; i++) {
-                total += Convert.ToDouble(dgvItems.Rows[i].Cells["Monto"].Value.ToString());
+                total += float.Parse(dgvItems.Rows[i].Cells["Monto"].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
             }
             txtTotal.Text = Convert.ToString(total);
         }
@@ -175,16 +176,16 @@ namespace PagoAgilFrba.AbmFactura
 
                 if (_evento == 'A')
                 {
-                    con.query = string.Format("INSERT INTO ONEFORALL.FACTURAS VALUES ({0}, {1}, {2}, '{3}', '{4}', NULL, NULL, {5}, {6})",
+                    con.query = string.Format("INSERT INTO ONEFORALL.FACTURAS VALUES ({0}, {1}, {2}, CONVERT(DATETIME,'{3}',120), CONVERT(DATETIME,'{4}',120), NULL, NULL, {5}, {6})",
                         txtNumeroFactura.Text, _idCliente, empresa,
-                        dtpVto.Value.ToString("yyyy-MM-dd HH:mm:ss"), dtpAlta.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+                        dtpVto.Value.ToString("yyyy-MM-dd HH:mm:ss"),dtpAlta.Value.ToString("yyyy-MM-dd HH:mm:ss"),
                         total, Convert.ToInt16(chkHabilitada.Checked));
                     con.ejecutar();
 
                     for (int i = 0; i < dgvItems.RowCount; i++)
                     {
                         int cantidad = Convert.ToInt32(dgvItems.Rows[i].Cells["Cantidad"].Value);
-                        int monto = Convert.ToInt32(dgvItems.Rows[i].Cells["Monto"].Value);
+                        decimal monto = Convert.ToDecimal(dgvItems.Rows[i].Cells["Monto"].Value);
                         con.query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", txtNumeroFactura.Text, cantidad, monto);
                         con.ejecutar();
                     }
@@ -194,8 +195,8 @@ namespace PagoAgilFrba.AbmFactura
                     con.query = string.Format("UPDATE ONEFORALL.FACTURAS " +
                                 "SET FACT_CLIE_ID = {0}, " +
                                 "FACT_EMP_ID = {1}, " +
-                                "FACT_VENCIMIENTO = '{2}', " +
-                                "FACT_ALTA = '{3}', " +
+                                "FACT_VENCIMIENTO = CONVERT(DATETIME,'{2}',120), " +
+                                "FACT_ALTA = CONVERT(DATETIME,'{3}',120), " +
                                 "FACT_TOTAL = {4}, " +
                                 "FACT_ACTIVA = {5} " +
                                 "WHERE FACT_ID = {6}",
@@ -284,10 +285,10 @@ namespace PagoAgilFrba.AbmFactura
                     dgvItems.Rows.RemoveAt(dgvItems.SelectedRows[0].Index);
                 }
 
-                double total = 0;
+                float total = 0;
                 for (Int32 i = 0; i < dgvItems.Rows.Count; i++)
                 {
-                    total += Convert.ToDouble(dgvItems.Rows[i].Cells["Monto"].Value.ToString());
+                    total += float.Parse(dgvItems.Rows[i].Cells["Monto"].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
                 }
                 txtTotal.Text = Convert.ToString(total);
 
@@ -295,20 +296,6 @@ namespace PagoAgilFrba.AbmFactura
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Eliminar Item", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txtTotal_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
             }
         }
 
