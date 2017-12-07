@@ -25,6 +25,7 @@ namespace PagoAgilFrba.AbmFactura
             CargarEmpresas();
             _listarFacturas = listarFacturas;
             _evento = evento;
+            txtTotal.Enabled = false;
         }
 
         public static AltaFactura Crear(ListarFacturas listarFacturas, char evento, string numeroFactura)
@@ -63,6 +64,11 @@ namespace PagoAgilFrba.AbmFactura
             {
                 dgvItems.Rows.Add(new Object[] { 0, cantidad, monto });
             }
+             double total = 0;
+            for (Int32 i = 0; i < dgvItems.Rows.Count; i++) {
+                total += Convert.ToDouble(dgvItems.Rows[i].Cells["Monto"].Value.ToString());
+            }
+            txtTotal.Text = Convert.ToString(total);
         }
 
         private void CargarFactura()
@@ -277,6 +283,14 @@ namespace PagoAgilFrba.AbmFactura
                 {
                     dgvItems.Rows.RemoveAt(dgvItems.SelectedRows[0].Index);
                 }
+
+                double total = 0;
+                for (Int32 i = 0; i < dgvItems.Rows.Count; i++)
+                {
+                    total += Convert.ToDouble(dgvItems.Rows[i].Cells["Monto"].Value.ToString());
+                }
+                txtTotal.Text = Convert.ToString(total);
+
             }
             catch (Exception ex)
             {
