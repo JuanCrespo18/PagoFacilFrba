@@ -50,17 +50,27 @@ namespace PagoAgilFrba.Devoluciones
 
         private void cmdAgregar_Click(object sender, EventArgs e)
         {
-            char tipoDev;
-            if (rdbPago.Checked)
-                tipoDev = 'P';
-            else
-                tipoDev = 'R';
+            try
+            {
+                if (rdbPago.Enabled == false && rdbRendicion.Enabled == false)
+                    throw new Exception("Usted no tiene permisos para realizar devoluciones. Solo pueden hacerlo los cobradores y administradores");
 
-            rdbPago.Enabled = false;
-            rdbRendicion.Enabled = false;
+                char tipoDev;
+                if (rdbPago.Checked)
+                    tipoDev = 'P';
+                else
+                    tipoDev = 'R';
 
-            new AbmFactura.ListarFacturas(this, tipoDev).Show();
-            this.Hide();
+                rdbPago.Enabled = false;
+                rdbRendicion.Enabled = false;
+
+                new AbmFactura.ListarFacturas(this, tipoDev).Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Devoluciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void CargarFactura(string numeroFactura)
