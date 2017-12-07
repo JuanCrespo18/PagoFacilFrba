@@ -42,6 +42,8 @@ namespace PagoAgilFrba.Rendicion
         {
             try
             {
+                dgvFacturas.Rows.Clear();
+
                 if (cboEmpresas.SelectedIndex == -1)
                     throw new Exception("Seleccione una empresa");
 
@@ -57,9 +59,10 @@ namespace PagoAgilFrba.Rendicion
                 con.query = string.Format("SELECT FACT_ID, CLIE_NOMBRE + ' ' + CLIE_APELLIDO, EMP_NOMBRE, PAGO_FECHA_PAGO, FACT_TOTAL FROM ONEFORALL.FACTURAS F " +
                     "INNER JOIN ONEFORALL.CLIENTES C ON F.FACT_CLIE_ID = C.CLIE_ID " +
                     "INNER JOIN ONEFORALL.PAGOS P ON F.FACT_PAGO_ID = P.PAGO_ID " +
-                    "INNER JOIN ONEFORALL.EMPRESAS E ON E.EMP_ID = {2} " +
+                    "INNER JOIN ONEFORALL.EMPRESAS E ON E.EMP_ID = F.FACT_EMP_ID " +
                     "WHERE FACT_REND_ID IS NULL AND " +
-                    "PAGO_FECHA_PAGO < CONVERT(DATETIME,'{1}',101)", cboEmpresas.SelectedItem.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), _idEmpresa);
+                    "PAGO_FECHA_PAGO < CONVERT(DATETIME,'{0}',101) " +
+                    "AND E.EMP_ID = {1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), _idEmpresa);
                 con.leer();
                 if (!con.leerReader())
                 {
