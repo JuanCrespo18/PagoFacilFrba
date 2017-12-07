@@ -56,7 +56,6 @@ namespace PagoAgilFrba.AbmRol
             con.leer();
             con.leerReader();
             _idRolSeleccionado = con.lector.GetInt32(0);
-            SesionUsuario.usuario.rol = _idRolSeleccionado;
             con.cerrarConexion();
             desactivarBotones();
         }
