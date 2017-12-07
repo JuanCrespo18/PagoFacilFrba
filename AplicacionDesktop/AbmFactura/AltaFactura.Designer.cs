@@ -38,10 +38,10 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmdAceptar = new System.Windows.Forms.Button();
-            this.cmdLimpiar = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.cmdAceptar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.cmdLimpiar = new System.Windows.Forms.Button();
             this.dtpVto = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpAlta = new System.Windows.Forms.DateTimePicker();
@@ -63,10 +63,10 @@
             this.groupBox1.Controls.Add(this.cmdCancelar);
             this.groupBox1.Controls.Add(this.chkHabilitada);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.cmdAceptar);
-            this.groupBox1.Controls.Add(this.cmdLimpiar);
             this.groupBox1.Controls.Add(this.txtTotal);
+            this.groupBox1.Controls.Add(this.cmdAceptar);
             this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cmdLimpiar);
             this.groupBox1.Controls.Add(this.dtpVto);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dtpAlta);
@@ -101,7 +101,7 @@
             // chkHabilitada
             // 
             this.chkHabilitada.AutoSize = true;
-            this.chkHabilitada.Location = new System.Drawing.Point(295, 288);
+            this.chkHabilitada.Location = new System.Drawing.Point(290, 249);
             this.chkHabilitada.Name = "chkHabilitada";
             this.chkHabilitada.Size = new System.Drawing.Size(73, 17);
             this.chkHabilitada.TabIndex = 40;
@@ -113,7 +113,7 @@
             this.groupBox2.Controls.Add(this.cmdAgregarItem);
             this.groupBox2.Controls.Add(this.cmdEliminarItem);
             this.groupBox2.Controls.Add(this.dgvItems);
-            this.groupBox2.Location = new System.Drawing.Point(12, 311);
+            this.groupBox2.Location = new System.Drawing.Point(12, 262);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(362, 174);
             this.groupBox2.TabIndex = 38;
@@ -181,6 +181,15 @@
             this.Monto.Name = "Monto";
             this.Monto.ReadOnly = true;
             // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(254, 450);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(108, 20);
+            this.txtTotal.TabIndex = 12;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotal_KeyPress);
+            // 
             // cmdAceptar
             // 
             this.cmdAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -193,6 +202,15 @@
             this.cmdAceptar.UseVisualStyleBackColor = true;
             this.cmdAceptar.Click += new System.EventHandler(this.cmdAceptar_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(208, 453);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Total   $";
+            // 
             // cmdLimpiar
             // 
             this.cmdLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -204,23 +222,6 @@
             this.cmdLimpiar.Text = "Limpiar";
             this.cmdLimpiar.UseVisualStyleBackColor = true;
             this.cmdLimpiar.Click += new System.EventHandler(this.cmdLimpiar_Click);
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Location = new System.Drawing.Point(126, 250);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(237, 20);
-            this.txtTotal.TabIndex = 12;
-            this.txtTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotal_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(89, 253);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Total";
             // 
             // dtpVto
             // 
