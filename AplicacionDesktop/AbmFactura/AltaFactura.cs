@@ -56,7 +56,7 @@ namespace PagoAgilFrba.AbmFactura
             {
                 var con = new Conexion()
                 {
-                    query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", _numeroFactura, cantidad, monto)
+                    query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", _numeroFactura, cantidad, monto.Replace(',','.'))
                 };
                 con.ejecutar();
                 CargarFactura();
@@ -65,11 +65,20 @@ namespace PagoAgilFrba.AbmFactura
             {
                 dgvItems.Rows.Add(new Object[] { 0, cantidad, monto });
             }
-             float total = 0;
-            for (Int32 i = 0; i < dgvItems.Rows.Count; i++) {
-                total += float.Parse(dgvItems.Rows[i].Cells["Monto"].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+
+            decimal total = 0;
+            foreach (DataGridViewRow item in dgvItems.Rows)
+            {
+                total += Convert.ToDecimal(item.Cells["Monto"].Value.ToString().Replace('.', ','));
             }
-            txtTotal.Text = Convert.ToString(total);
+            txtTotal.Text = total.ToString();
+
+            if(_evento == 'E')
+            {
+                var con = new Conexion();
+                con.query = string.Format("UPDATE ONEFORALL.FACTURAS SET FACT_TOTAL = {0} WHERE FACT_ID = {1}", txtTotal.Text.Replace(',', '.'), _numeroFactura);
+                con.ejecutar();
+            }
         }
 
         private void CargarFactura()
@@ -185,8 +194,8 @@ namespace PagoAgilFrba.AbmFactura
                     for (int i = 0; i < dgvItems.RowCount; i++)
                     {
                         int cantidad = Convert.ToInt32(dgvItems.Rows[i].Cells["Cantidad"].Value);
-                        decimal monto = Convert.ToDecimal(dgvItems.Rows[i].Cells["Monto"].Value);
-                        con.query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", txtNumeroFactura.Text, cantidad, monto);
+                        decimal monto = Convert.ToDecimal(dgvItems.Rows[i].Cells["Monto"].Value.ToString().Replace('.',','));
+                        con.query = string.Format("INSERT INTO ONEFORALL.ITEMS VALUES ({0}, {1}, {2})", txtNumeroFactura.Text, cantidad, monto.ToString().Replace(',','.'));
                         con.ejecutar();
                     }
                 }
@@ -197,12 +206,11 @@ namespace PagoAgilFrba.AbmFactura
                                 "FACT_EMP_ID = {1}, " +
                                 "FACT_VENCIMIENTO = CONVERT(DATETIME,'{2}',120), " +
                                 "FACT_ALTA = CONVERT(DATETIME,'{3}',120), " +
-                                "FACT_TOTAL = {4}, " +
-                                "FACT_ACTIVA = {5} " +
-                                "WHERE FACT_ID = {6}",
+                                "FACT_ACTIVA = {4} " +
+                                "WHERE FACT_ID = {5}",
                                 _idCliente, empresa,
                                 dtpVto.Value.ToString("yyyy-MM-dd HH:mm:ss"), dtpAlta.Value.ToString("yyyy-MM-dd HH:mm:ss"),
-                                total, Convert.ToInt16(chkHabilitada.Checked),
+                                Convert.ToInt16(chkHabilitada.Checked),
                                 _numeroFactura);
                     con.ejecutar();
                 }
@@ -286,13 +294,19 @@ namespace PagoAgilFrba.AbmFactura
                     dgvItems.Rows.RemoveAt(dgvItems.SelectedRows[0].Index);
                 }
 
-                float total = 0;
-                for (Int32 i = 0; i < dgvItems.Rows.Count; i++)
+                decimal total = 0;
+                foreach (DataGridViewRow item in dgvItems.Rows)
                 {
-                    total += float.Parse(dgvItems.Rows[i].Cells["Monto"].Value.ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                    total += Convert.ToDecimal(item.Cells["Monto"].Value.ToString().Replace('.', ','));
                 }
-                txtTotal.Text = Convert.ToString(total);
+                txtTotal.Text = total.ToString();
 
+                if(_evento == 'E')
+                {
+                    var con = new Conexion();
+                    con.query = string.Format("UPDATE ONEFORALL.FACTURAS SET FACT_TOTAL = {0} WHERE FACT_ID = {1}", txtTotal.Text.Replace(',', '.'), _numeroFactura);
+                    con.ejecutar();
+                }
             }
             catch (Exception ex)
             {

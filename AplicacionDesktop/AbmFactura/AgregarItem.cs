@@ -27,9 +27,7 @@ namespace PagoAgilFrba.AbmFactura
                 if (string.IsNullOrEmpty(txtCantidad.Text) || string.IsNullOrEmpty(txtMonto.Text))
                     throw new Exception("Por favor complete los dos campos");
 
-                string monto = txtMonto.Text.Replace(',', '.');
-
-                _altaFactura.AgregarItem(txtCantidad.Text, monto);
+                _altaFactura.AgregarItem(txtCantidad.Text, txtMonto.Text);
                 this.Close();
             }
             catch (Exception ex)
