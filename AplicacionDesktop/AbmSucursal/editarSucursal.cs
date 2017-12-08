@@ -105,9 +105,15 @@ namespace PagoAgilFrba.AbmSucursal
                     {
                         query += "DIR_PISO = '" + piso.Text + "',";
                     }
+                    else {
+                        query += "DIR_PISO = null ,";
+                    }
                     if (!string.IsNullOrEmpty(departamento.Text))
                     {
                         query += "DIR_DEPARTAMENTO = '" + departamento.Text + "',";
+                    }
+                    else {
+                        query += "DIR_DEPARTAMENTO = null ,";
                     }
                     if (existe_cp > 0 && codPostal.Text != codigoPostal) {
 

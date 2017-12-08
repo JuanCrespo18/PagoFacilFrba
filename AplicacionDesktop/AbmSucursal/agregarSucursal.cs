@@ -66,7 +66,7 @@ namespace PagoAgilFrba.AbmSucursal
                     insertarDir += ", '" + localidad.Text + "');" ;
                     con.query = insertarDir;
                     con.ejecutar();
-                    var select = "SELECT DIR_ID FROM ONEFORALL.DIRECCIONES WHERE DIR_CODIGO_POSTAL = '" + codPostal.Text + "' AND DIR_DIRECCION = '"+ direccion.Text +"' AND DIR_LOCALIDAD = '"+ localidad.Text+"'";
+                    var select = "SELECT TOP 1 (DIR_ID) FROM ONEFORALL.DIRECCIONES WHERE DIR_CODIGO_POSTAL = '" + codPostal.Text + "' AND DIR_DIRECCION = '"+ direccion.Text +"' AND DIR_LOCALIDAD = '"+ localidad.Text+"' ORDER BY DIR_ID DESC";
                     con.query = select;
                     con.leer();
                     con.leerReader();
