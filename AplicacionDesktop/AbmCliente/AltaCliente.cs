@@ -218,7 +218,7 @@ namespace PagoAgilFrba.AbmCliente
                 query = string.Format("UPDATE ONEFORALL.CLIENTES " +
                 "SET CLIE_NOMBRE = '{0}', " +
                 "CLIE_APELLIDO = '{1}', " +
-                "CLIE_FECHA_NACIMIENTO = '{2}', " +
+                "CLIE_FECHA_NACIMIENTO = CONVERT(DATETIME, '{2}', 120), " +
                 "CLIE_DIR_ID = {3}, " +
                 "CLIE_DNI = '{4}', " +
                 "CLIE_MAIL = '{5}', " +
@@ -234,7 +234,7 @@ namespace PagoAgilFrba.AbmCliente
 
         private void AgregarCliente(int direccionId)
         {
-            string insert = string.Format("INSERT INTO ONEFORALL.CLIENTES VALUES ('{0}', '{1}', '{2}', {3}, '{4}', '{5}', {6}, {7})",
+            string insert = string.Format("INSERT INTO ONEFORALL.CLIENTES VALUES ('{0}', '{1}', CONVERT(DATETIME, '{2}', 120), {3}, '{4}', '{5}', {6}, {7})",
                 txtNombre.Text, txtApellido.Text, dtpFecNac.Value.ToString("yyyy-MM-dd HH:mm:ss"), direccionId, txtDni.Text, txtMail.Text, Convert.ToInt16(chkActivo.Checked),
                 string.IsNullOrEmpty(txtTel.Text) ? "null" : "'" + txtTel.Text + "'");
 

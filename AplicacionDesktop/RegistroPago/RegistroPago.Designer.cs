@@ -39,10 +39,10 @@
             this.Vto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmdMenu = new System.Windows.Forms.Button();
             this.cmdPagar = new System.Windows.Forms.Button();
             this.cboMetodosPago = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmdMenu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -164,6 +164,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Metodo de pago";
             // 
+            // cmdMenu
+            // 
+            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdMenu.Location = new System.Drawing.Point(484, 114);
+            this.cmdMenu.Name = "cmdMenu";
+            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
+            this.cmdMenu.TabIndex = 35;
+            this.cmdMenu.Text = "Menu Principal";
+            this.cmdMenu.UseVisualStyleBackColor = true;
+            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
+            // 
             // cmdPagar
             // 
             this.cmdPagar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -178,6 +190,7 @@
             // 
             // cboMetodosPago
             // 
+            this.cboMetodosPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMetodosPago.FormattingEnabled = true;
             this.cboMetodosPago.Items.AddRange(new object[] {
             "Efectivo",
@@ -196,18 +209,6 @@
             this.label1.Size = new System.Drawing.Size(140, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Seleccione metodo de pago";
-            // 
-            // cmdMenu
-            // 
-            this.cmdMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdMenu.Location = new System.Drawing.Point(484, 114);
-            this.cmdMenu.Name = "cmdMenu";
-            this.cmdMenu.Size = new System.Drawing.Size(125, 37);
-            this.cmdMenu.TabIndex = 35;
-            this.cmdMenu.Text = "Menu Principal";
-            this.cmdMenu.UseVisualStyleBackColor = true;
-            this.cmdMenu.Click += new System.EventHandler(this.cmdMenu_Click);
             // 
             // RegistroPago
             // 
